@@ -24,3 +24,8 @@ alias showalias="cat ~/.bashrc | alias"
 alias me="sudo"
 alias checknet="ping google.com"
 alias project="cd ~/Projects"
+
+function check_port() {
+	echo "lsof -i tcp:$@" | bash;
+}
+alias checkport="check_port"
