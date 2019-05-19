@@ -29,3 +29,8 @@ function check_port() {
 	echo "lsof -i tcp:$@" | bash;
 }
 alias checkport="check_port"
+
+function kill_port() {
+	echo "kill -9 $@" | bash;
+}
+alias killport="kill_port"
