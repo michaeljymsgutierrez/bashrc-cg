@@ -24,6 +24,7 @@ alias showalias="cat ~/.bashrc | alias"
 alias me="sudo"
 alias checknet="ping google.com"
 alias project="cd ~/Projects"
+alias sql="mysql -u root -pjsdeveloper7011"
 
 function check_port() {
 	echo "lsof -i tcp:$@" | bash;
