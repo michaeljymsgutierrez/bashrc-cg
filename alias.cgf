@@ -37,3 +37,8 @@ function kill_port() {
 	echo "kill -9 $@" | bash;
 }
 alias killport="kill_port"
+
+function generate_patch {
+	echo "git diff > ~/Desktop/Patches/$@"| bash;
+}
+alias gpatch="generate_patch";
