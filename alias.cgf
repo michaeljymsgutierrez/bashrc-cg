@@ -42,3 +42,30 @@ function generate_patch {
 	echo "git diff > ~/Desktop/Patches/$@"| bash;
 }
 alias gpatch="generate_patch";
+
+function find_exact_file() {
+	echo "find . -name  $@*" | bash;
+}
+alias fef="find_exact_file";
+
+function find_any_file() {
+	echo "find . -iname $@*" | bash;
+}
+alias faf="find_any_file"
+
+function find_file_contain {
+	ack "$@";
+}
+alias ffc="find_file_contain";
+
+function find_file {
+	ack -f | ack "$@";
+}
+alias ff="find_file"
+
+
+
+
+
+
+
