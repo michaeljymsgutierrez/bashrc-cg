@@ -39,6 +39,7 @@ endfunction
 
 autocmd BufEnter * call SyncTree()
 autocmd VimEnter * NERDTree
+autocmd BufEnter * NERDTreeMirror
 set wildignore+=*.swp
 let NERDTreeShowHidden = 1
 let NERDTreeRespectWildIgnore = 1
@@ -49,6 +50,9 @@ let g:jsx_ext_required = 1
 
 
 call vundle#end()
+
+nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Right> :tabnext<CR>
 
 
 
