@@ -1,5 +1,55 @@
 set number
-colorscheme delek
-set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+set nocompatible
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set rtp+=$HOME/.vim/bundle/Vundle.vim
+set showmatch
 set t_Co=256
 set laststatus=2
+set hlsearch
+syntax enable
+colorscheme monokai
+filetype off
+filetype plugin indent on
+
+call vundle#begin()
+
+Plugin 'Vundle/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'mattn/emmet-vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'mhinz/vim-signify'
+Plugin 'itchyny/lightline.vim'
+
+function! IsNERDTreeOpen()
+  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+endfunction
+
+function! SyncTree()
+  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
+    NERDTreeFind
+    wincmd p
+  endif
+endfunction
+
+autocmd BufEnter * call SyncTree()
+autocmd VimEnter * NERDTree
+set wildignore+=*.swp
+let NERDTreeShowHidden = 1
+let NERDTreeRespectWildIgnore = 1
+
+
+let g:javascript_plugin_jsdoc = 1
+let g:jsx_ext_required = 1
+
+
+call vundle#end()
+
+
+
+
