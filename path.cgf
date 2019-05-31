@@ -22,3 +22,6 @@ export SDKMAN_DIR="/home/chaelgutierrez/.sdkman"
 # DRUSH PATH
 export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 
+# FZF
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
