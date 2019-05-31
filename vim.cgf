@@ -12,6 +12,7 @@ set incsearch
 set ignorecase
 set smartcase
 set autoread
+set wildignore+=*.swp
 
 syntax enable
 colorscheme monokai
@@ -27,7 +28,6 @@ Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'mattn/emmet-vim'
-Plugin 'kien/ctrlp.vim'
 Plugin 'mhinz/vim-signify'
 Plugin 'itchyny/lightline.vim'
 Plugin 'xolox/vim-session'
@@ -47,18 +47,15 @@ endfunction
 autocmd BufEnter * call SyncTree()
 autocmd VimEnter * NERDTree
 autocmd BufEnter * silent NERDTreeMirror
-set wildignore+=*.swp
 let NERDTreeShowHidden = 1
 let NERDTreeRespectWildIgnore = 1
 
 let g:javascript_plugin_jsdoc = 1
 let g:jsx_ext_required = 1
 au BufReadPost *.hbs set ft=mustache |  set syntax=mustache
+au BufReadPost *.cgf set ft=sh |  set syntax=sh
 
 let g:session_autoload = 1
-let g:session_autosave = 1
-
-
 call vundle#end()
 
 nnoremap <C-Left> :tabprevious<CR>
