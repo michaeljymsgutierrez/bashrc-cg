@@ -46,7 +46,7 @@ endfunction
 
 autocmd BufEnter * call SyncTree()
 autocmd VimEnter * NERDTree
-autocmd BufEnter * NERDTreeMirror
+autocmd BufEnter * silent NERDTreeMirror
 set wildignore+=*.swp
 let NERDTreeShowHidden = 1
 let NERDTreeRespectWildIgnore = 1
