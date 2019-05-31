@@ -47,13 +47,9 @@ let NERDTreeRespectWildIgnore = 1
 
 let g:javascript_plugin_jsdoc = 1
 let g:jsx_ext_required = 1
-
+au BufReadPost *.hbs set syntax=mustache
 
 call vundle#end()
 
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
-
-
-
-
