@@ -8,6 +8,11 @@ set showmatch
 set t_Co=256
 set laststatus=2
 set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set autoread
+
 syntax enable
 colorscheme monokai
 filetype off
@@ -25,6 +30,8 @@ Plugin 'mattn/emmet-vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mhinz/vim-signify'
 Plugin 'itchyny/lightline.vim'
+Plugin 'xolox/vim-session'
+Plugin 'xolox/vim-misc'
 
 function! IsNERDTreeOpen()
   return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
@@ -44,10 +51,13 @@ set wildignore+=*.swp
 let NERDTreeShowHidden = 1
 let NERDTreeRespectWildIgnore = 1
 
-
 let g:javascript_plugin_jsdoc = 1
 let g:jsx_ext_required = 1
-au BufReadPost *.hbs set syntax=mustache
+au BufReadPost *.hbs set ft=mustache |  set syntax=mustache
+
+let g:session_autoload = 1
+let g:session_autosave = 1
+
 
 call vundle#end()
 
