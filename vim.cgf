@@ -65,3 +65,4 @@ nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 nnoremap <C-T> :tabnew<CR>
 nnoremap <C-F> :FZF<CR>
+nnoremap <C-N> :NERDTreeToggle<CR>
