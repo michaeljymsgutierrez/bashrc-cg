@@ -21,7 +21,6 @@ filetype off
 filetype plugin indent on
 
 call vundle#begin()
-
 Plugin 'Vundle/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ntpeters/vim-better-whitespace'
@@ -35,7 +34,6 @@ Plugin 'xolox/vim-session'
 Plugin 'xolox/vim-misc'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
-
 call vundle#end()
 
 function! IsNERDTreeOpen()
@@ -62,5 +60,8 @@ au BufReadPost *.cgf set ft=sh |  set syntax=sh
 
 let g:session_autoload = 1
 
+
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
+nnoremap <C-T> :tabnew<CR>
+nnoremap <C-F> :FZF<CR>
