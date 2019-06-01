@@ -1,9 +1,10 @@
+set rtp+=$HOME/.vim/bundle/Vundle.vim
+set rtp+=$HOME/.vim/bundle/fzf
 set number
 set nocompatible
 set tabstop=2
 set shiftwidth=2
 set expandtab
-set rtp+=$HOME/.vim/bundle/Vundle.vim
 set showmatch
 set t_Co=256
 set laststatus=2
@@ -32,6 +33,10 @@ Plugin 'mhinz/vim-signify'
 Plugin 'itchyny/lightline.vim'
 Plugin 'xolox/vim-session'
 Plugin 'xolox/vim-misc'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+
+call vundle#end()
 
 function! IsNERDTreeOpen()
   return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
@@ -56,7 +61,6 @@ au BufReadPost *.hbs set ft=mustache |  set syntax=mustache
 au BufReadPost *.cgf set ft=sh |  set syntax=sh
 
 let g:session_autoload = 1
-call vundle#end()
 
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
