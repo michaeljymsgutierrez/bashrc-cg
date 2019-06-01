@@ -17,11 +17,11 @@ export PATH=$PATH:/usr/local/go/bin
 
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/chaelgutierrez/.sdkman"
-[[ -s "/home/chaelgutierrez/.sdkman/bin/sdkman-init.sh" ]] && source "/home/chaelgutierrez/.sdkman/bin/sdkman-init.sh" 
+[[ -s "/home/chaelgutierrez/.sdkman/bin/sdkman-init.sh" ]] && source "/home/chaelgutierrez/.sdkman/bin/sdkman-init.sh"
 
 # DRUSH PATH
 export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 
-# FZF
+# FZF HOME
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
