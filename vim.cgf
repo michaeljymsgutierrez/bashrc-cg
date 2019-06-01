@@ -55,8 +55,9 @@ let NERDTreeShowHidden = 1
 let NERDTreeRespectWildIgnore = 1
 
 let g:javascript_plugin_jsdoc = 1
-let g:jsx_ext_required = 1
+let g:jsx_ext_required = 0
 au BufReadPost *.hbs set ft=mustache |  set syntax=mustache
+au BufReadPost *.jsx set ft=javascript.jsx|  set syntax=javascript.jsx
 au BufReadPost *.cgf set ft=sh |  set syntax=sh
 
 let g:session_autoload = 1
