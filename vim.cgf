@@ -34,6 +34,7 @@ Plugin 'xolox/vim-session'
 Plugin 'xolox/vim-misc'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
+Plugin 'itchyny/vim-gitbranch'
 call vundle#end()
 
 function! IsNERDTreeOpen()
@@ -59,6 +60,16 @@ au BufReadPost *.hbs set ft=mustache |  set syntax=mustache
 au BufReadPost *.cgf set ft=sh |  set syntax=sh
 
 let g:session_autoload = 1
+
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'gitbranch#name'
+      \ },
+      \ }
 
 
 nnoremap <C-Left> :tabprevious<CR>
