@@ -12,7 +12,7 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-set autoread
+set autoread | au CursorHold * checktime | call feedkeys("lh")
 set wildignore+=*.swp
 
 syntax enable
