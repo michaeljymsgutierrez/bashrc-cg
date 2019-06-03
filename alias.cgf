@@ -38,6 +38,11 @@ function kill_port() {
 }
 alias killport="kill_port"
 
+function find_file_contain {
+	ack "$@";
+}
+alias ffc="find_file_contain";
+
 function generate_patch {
 	echo "git diff > ~/Desktop/Patches/$@"| bash;
 }
