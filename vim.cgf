@@ -35,6 +35,7 @@ Plugin 'xolox/vim-misc'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'itchyny/vim-gitbranch'
+Plugin 'Yggdroot/indentLine'
 call vundle#end()
 
 function! IsNERDTreeOpen()
@@ -72,6 +73,7 @@ let g:lightline = {
       \ },
       \ }
 
+let g:indentLine_char = '¦'
 
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
