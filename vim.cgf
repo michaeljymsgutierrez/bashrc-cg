@@ -37,6 +37,7 @@ Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'itchyny/vim-gitbranch'
 Plugin 'Yggdroot/indentLine'
+Plugin 'prettier/vim-prettier'
 call vundle#end()
 
 function! IsNERDTreeOpen()
