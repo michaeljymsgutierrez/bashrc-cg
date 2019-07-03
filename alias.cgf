@@ -27,6 +27,8 @@ alias prj="cd ~/Projects"
 alias sql="mysql -u root -pjsdeveloper7011"
 alias ubottom="gsettings set com.canonical.Unity.Launcher launcher-position Bottom"
 alias uleft="gsettings set com.canonical.Unity.Launcher launcher-position Left"
+alias showicon="gsettings set org.gnome.desktop.background show-desktop-icons true"
+alias hideicon="gsettings set org.gnome.desktop.background show-desktop-icons false"
 alias e="exit"
 
 function check_port() {
