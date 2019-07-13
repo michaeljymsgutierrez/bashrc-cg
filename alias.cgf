@@ -29,6 +29,7 @@ alias ubottom="gsettings set com.canonical.Unity.Launcher launcher-position Bott
 alias uleft="gsettings set com.canonical.Unity.Launcher launcher-position Left"
 alias showicon="gsettings set org.gnome.desktop.background show-desktop-icons true"
 alias hideicon="gsettings set org.gnome.desktop.background show-desktop-icons false"
+alias create_gitignore_global="cd && touch .gitignore_global && git config --global core.excludesfile ~/.gitignore_global"
 alias e="exit"
 
 function check_port() {
