@@ -1,0 +1,26 @@
+[global_config]
+  borderless = True
+  geometry_hinting = False
+  handle_size = 1
+  inactive_color_offset = 0.76
+  window_state = fullscreen
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    background_color = "#300a24"
+    background_image = None
+    cursor_color = "#faff00"
+    font = Monospace 12
+    foreground_color = "#ffffff"
+    scrollback_infinite = True
+    show_titlebar = False
+    use_system_font = False
