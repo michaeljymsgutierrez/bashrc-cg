@@ -39,6 +39,7 @@ Plugin 'itchyny/vim-gitbranch'
 Plugin 'Yggdroot/indentLine'
 Plugin 'prettier/vim-prettier'
 Plugin 'wavded/vim-stylus'
+Plugin 'morhetz/gruvbox'
 call vundle#end()
 
 function! IsNERDTreeOpen()
