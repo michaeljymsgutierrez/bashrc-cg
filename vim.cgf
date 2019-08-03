@@ -85,3 +85,4 @@ nnoremap <C-T> :tabnew<CR>
 nnoremap <C-F> :FZF<CR>
 nnoremap <C-N> :NERDTreeToggle<CR>
 nnoremap <C-P> :Prettier<CR>
+nnoremap <C-E> :e<CR>
