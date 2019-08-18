@@ -1,7 +1,7 @@
 [global_config]
   borderless = True
   geometry_hinting = False
-  handle_size = 1
+  handle_size = 0
   inactive_color_offset = 0.76
   window_state = fullscreen
 [keybindings]
