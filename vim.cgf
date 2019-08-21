@@ -15,6 +15,7 @@ set smartcase
 set autoread | au CursorHold * checktime | call feedkeys("lh")
 set wildignore+=*.swp
 set mouse=a
+set clipboard=unnamedplus
 
 syntax enable
 colorscheme monokai
