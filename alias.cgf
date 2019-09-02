@@ -11,6 +11,7 @@ alias gbr="git branch -r"
 alias grv="git remote -v"
 alias gp="git push"
 alias gm="git commit -m"
+alias gco="git checkout"
 alias apk="./gradlew assembleRelease"
 alias linode="ssh root@172.104.161.220"
 alias die="killall node"
@@ -33,6 +34,7 @@ alias create_gitignore_global="cd && touch .gitignore_global && git config --glo
 alias removelock="sudo rm /var/lib/apt/lists/lock"
 alias vimgruvbox="vim -c 'colorscheme gruvbox' -c 'set background=light'"
 alias stopservices="sudo service apache2 stop && sudo service docker stop"
+alias cgbash="cd ~/bashrc-cg && vim"
 alias e="exit"
 
 function check_port() {
