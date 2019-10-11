@@ -37,6 +37,7 @@ alias vimgruvbox="vim -c 'colorscheme gruvbox' -c 'set background=light'"
 alias stopservices="sudo service apache2 stop && sudo service docker stop"
 alias cgbash="cd ~/bashrc-cg && vim"
 alias aptinstall="sudo apt-get install"
+alias removeswap="find . -type f -name "*.sw[klmnop]" -delete"
 alias e="exit"
 
 function check_port() {
