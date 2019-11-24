@@ -1,4 +1,5 @@
 #### BASH IMPORTS using source
+---
 
 ##### Installation
 1. Clone `bashrc-cg`
