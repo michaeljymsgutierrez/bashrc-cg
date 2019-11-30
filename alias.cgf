@@ -1,5 +1,5 @@
 # CG ALIAS
-alias unit_update="sudo apt-get update"
+alias sysupdate="sudo apt-get update"
 alias appinstalled='for app in /usr/share/applications/*.desktop; do echo "${app:24:-8}"; done'
 alias and_std="cd /home/chaelgutierrez/Desktop/android-studio/bin && ./studio.sh"
 alias avd_list="android list avd | grep Name"
