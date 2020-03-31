@@ -36,7 +36,7 @@ alias showicon="gsettings set org.gnome.desktop.background show-desktop-icons tr
 alias hideicon="gsettings set org.gnome.desktop.background show-desktop-icons false"
 alias create_gitignore_global="cd && touch .gitignore_global && git config --global core.excludesfile ~/.gitignore_global"
 alias removelock="sudo rm /var/lib/apt/lists/lock"
-alias vimgruvbox="vim -c 'colorscheme gruvbox' -c 'set background=light'"
+alias vg="vim -c 'colorscheme gruvbox' -c 'set background=light'"
 alias cgbash="cd ~/bashrc-cg && vim"
 alias aptinstall="sudo apt-get install"
 alias removeswap="find . -type f -name "*.sw[klmnop]" -delete"
