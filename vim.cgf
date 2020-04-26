@@ -1,3 +1,4 @@
+"INITIAL CONFIG"
 set rtp+=$HOME/.vim/bundle/Vundle.vim
 set rtp+=$HOME/.vim/bundle/fzf
 set number
@@ -22,6 +23,7 @@ colorscheme monokai
 filetype off
 filetype plugin indent on
 
+"VUNDLE PLUGINS"
 call vundle#begin()
 Plugin 'Vundle/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
@@ -44,6 +46,7 @@ Plugin 'morhetz/gruvbox'
 Plugin 'wakatime/vim-wakatime'
 call vundle#end()
 
+"NERDTREE CONFIG"
 function! IsNERDTreeOpen()
   return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
 endfunction
@@ -55,21 +58,27 @@ function! SyncTree()
   endif
 endfunction
 
-autocmd BufEnter * call SyncTree()
-autocmd VimEnter * NERDTree
-autocmd BufEnter * silent NERDTreeMirror
+"au BufEnter * call SyncTree()"
+"au VimEnter * NERDTree"
+"au BufEnter * silent NERDTreeMirror"
+
 let NERDTreeShowHidden = 1
 let NERDTreeRespectWildIgnore = 1
 
+"JAVASCRIPT CONFIG"
 let g:javascript_plugin_jsdoc = 1
 let g:jsx_ext_required = 0
+
+"FILE ASSOCIATION CONFIG"
 au BufReadPost *.hbs set ft=mustache |  set syntax=mustache
 au BufReadPost *.jsx set ft=javascript.jsx|  set syntax=javascript.jsx
 au BufReadPost *.styl set ft=stylus | set syntax=stylus
 au BufReadPost *.cgf set ft=sh |  set syntax=sh
 
-let g:session_autoload = 1
+"SESSION CONFIG"
+let g:session_autoload = 0
 
+"LIGHTLINE CONFIG"
 let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
@@ -82,6 +91,7 @@ let g:lightline = {
 
 let g:indentLine_char = '¦'
 
+"KEYBOARD MAPPING CONFIG"
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 nnoremap <C-T> :tabnew<CR>
