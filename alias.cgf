@@ -43,22 +43,22 @@ alias removeswap="find . -type f -name "*.sw[klmnop]" -delete"
 alias e="exit"
 
 function check_port() {
-	echo "lsof -i tcp:$@" | bash;
+	echo "lsof -i tcp:$@" | bash
 }
 alias checkport="check_port"
 
 function kill_port() {
-	echo "kill -9 $@" | bash;
+	echo "kill -9 $@" | bash
 }
 alias killport="kill_port"
 
 function find_file_contain {
 	ack "$@";
 }
-alias ffc="find_file_contain";
+alias ffc="find_file_contain"
 
 function generate_patch {
-	echo "git diff > ~/Desktop/Patches/$@"| bash;
+	echo "git diff > ~/Desktop/Patches/$@"| bash
 }
-alias gpatch="generate_patch";
+alias gpatch="generate_patch"
 
