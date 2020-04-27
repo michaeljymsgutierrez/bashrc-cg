@@ -58,9 +58,9 @@ function! SyncTree()
   endif
 endfunction
 
-"au BufEnter * call SyncTree()"
-"au VimEnter * NERDTree"
-"au BufEnter * silent NERDTreeMirror"
+au BufEnter * call SyncTree()
+au VimEnter * NERDTree
+au BufEnter * silent NERDTreeMirror
 
 let NERDTreeShowHidden = 1
 let NERDTreeRespectWildIgnore = 1
