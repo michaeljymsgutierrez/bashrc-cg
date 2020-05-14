@@ -25,3 +25,6 @@ export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 # FZF HOME
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# DENO
+export DENO_INSTALL="/home/chaelgutierrez/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
