@@ -27,6 +27,7 @@ filetype plugin indent on
 call vundle#begin()
 Plugin 'Vundle/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'tomtom/tcomment_vim'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'pangloss/vim-javascript'
