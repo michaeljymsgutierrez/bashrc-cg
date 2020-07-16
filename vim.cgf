@@ -32,8 +32,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
 Plugin 'mattn/emmet-vim'
 Plugin 'mhinz/vim-signify'
 Plugin 'itchyny/lightline.vim'
@@ -47,6 +45,10 @@ Plugin 'prettier/vim-prettier'
 Plugin 'wavded/vim-stylus'
 Plugin 'morhetz/gruvbox'
 Plugin 'wakatime/vim-wakatime'
+Plugin 'yuezk/vim-js'
+Plugin 'maxmellon/vim-jsx-pretty'
+"Plugin 'pangloss/vim-javascript'"
+"Plugin 'mxw/vim-jsx'"
 call vundle#end()
 
 "NERDTREE CONFIG"
@@ -69,13 +71,13 @@ let NERDTreeShowHidden = 1
 let NERDTreeRespectWildIgnore = 1
 
 "JAVASCRIPT CONFIG"
-let g:javascript_plugin_jsdoc = 1
-let g:xml_syntax_folding = 1
-let g:jsx_ext_required = 0
+"let g:javascript_plugin_jsdoc = 1"
+"let g:xml_syntax_folding = 1"
+"let g:jsx_ext_required = 0"
 
 "FILE ASSOCIATION CONFIG"
 au BufReadPost *.hbs set ft=mustache |  set syntax=mustache
-au BufReadPost *.jsx set ft=javascript.jsx|  set syntax=javascript.jsx
+"au BufReadPost *.jsx set ft=javascript.jsx|  set syntax=javascript.jsx"
 au BufReadPost *.styl set ft=stylus | set syntax=stylus
 au BufReadPost *.cgf set ft=sh |  set syntax=sh
 
@@ -96,11 +98,11 @@ let g:lightline = {
 let g:indentLine_char = '¦'
 
 "KEYBOARD MAPPING CONFIG"
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
-nnoremap <C-T> :tabnew<CR>
-nnoremap <C-F> :FZF<CR>
-nnoremap <C-N> :NERDTreeToggle<CR>
-nnoremap <C-P> :Prettier<CR>
-nnoremap <C-E> :e<CR>
-nnoremap <C-X> :x<CR>
+nnoremap <C-Left> :tabprevious <CR>
+nnoremap <C-Right> :tabnext <CR>
+nnoremap <C-T> :tabnew <CR>
+nnoremap <C-F> :FZF <CR>
+nnoremap <C-N> :NERDTreeToggle <CR>
+nnoremap <C-P> :Prettier <CR>
+nnoremap <C-E> :e <CR>
+nnoremap <C-X> :x <CR>
