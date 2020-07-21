@@ -22,6 +22,11 @@ set ttimeoutlen=0
 
 syntax enable
 colorscheme monokai
+"colorscheme xcodedark"
+"colorscheme xcodedarkhc"
+"colorscheme xcodelight"
+"colorscheme xcodelighthc"
+"colorscheme xcodewwdc"
 filetype off
 filetype plugin indent on
 
