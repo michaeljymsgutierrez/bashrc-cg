@@ -15,8 +15,6 @@
 3. Install latest `vim`, `vundle` and  `powerline-fonts`
 
     ```bash
-    sudo add-apt-repository ppa:jonathonf/vim
-    sudo apt-get update
     sudo apt install vim
     sudo apt-get install fonts-powerline
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
