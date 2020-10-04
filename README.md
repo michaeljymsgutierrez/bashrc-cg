@@ -16,6 +16,7 @@
 
     ```bash
     sudo apt install vim
+    sudo apt install vim-gtk3
     sudo apt-get install fonts-powerline
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     ```
