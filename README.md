@@ -10,7 +10,8 @@
 2. Install `fzf`
 
     ```bash
-    sudo apt-get install fzf
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
     ```
 3. Install latest `vim`, `vundle` and  `powerline-fonts`
 
