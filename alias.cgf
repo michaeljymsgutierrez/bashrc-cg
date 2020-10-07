@@ -54,7 +54,7 @@ function kill_port() {
 alias killport="kill_port"
 
 function find_file_contain {
-	ack "$@";
+	ack -i "$@";
 }
 alias ffc="find_file_contain"
 
