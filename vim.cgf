@@ -68,9 +68,24 @@ call vundle#end()
 "  endif"
 "endfunction"
 
+function! CloseHiddenBuffers()
+    let open_buffers = []
+
+    for i in range(tabpagenr('$'))
+        call extend(open_buffers, tabpagebuflist(i + 1))
+    endfor
+
+    for num in range(1, bufnr("$") + 1)
+        if buflisted(num) && index(open_buffers, num) == -1
+            exec "bdelete ".num
+        endif
+    endfor
+endfunction
+
 "au BufEnter * call SyncTree()"
 "au VimEnter * NERDTree"
 "au BufEnter * silent NERDTreeMirror"
+au BufEnter * call CloseHiddenBuffers()
 
 let NERDTreeShowHidden = 1
 let NERDTreeRespectWildIgnore = 1
