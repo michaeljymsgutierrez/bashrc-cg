@@ -63,3 +63,8 @@ function generate_patch {
 }
 alias gpatch="generate_patch"
 
+function vim_open_file {
+  vim $(fzf)
+}
+alias vf="vim_open_file"
+
