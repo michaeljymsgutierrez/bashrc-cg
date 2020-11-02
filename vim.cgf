@@ -45,10 +45,10 @@ Plugin 'itchyny/vim-gitbranch'
 Plugin 'Yggdroot/indentLine'
 Plugin 'prettier/vim-prettier'
 Plugin 'wavded/vim-stylus'
-Plugin 'wakatime/vim-wakatime'
 Plugin 'yuezk/vim-js'
 Plugin 'maxmellon/vim-jsx-pretty'
 Plugin 'tpope/vim-fugitive'
+"Plugin 'wakatime/vim-wakatime'"
 "Plugin 'xolox/vim-session'"
 "Plugin 'xolox/vim-misc'"
 "Plugin 'mattn/emmet-vim'"
