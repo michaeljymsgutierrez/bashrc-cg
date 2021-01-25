@@ -18,6 +18,7 @@
     ```bash
     sudo apt install vim
     sudo apt install vim-gtk3
+    sudo apt install tmux
     sudo apt-get install fonts-powerline
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     ```
@@ -35,8 +36,8 @@
     ```bash
     source ~/bashrc-cg/vim.cgf
     ```
-6. Restart your `terminal/terminal-emulator` by closing and reopening it
-    Run commands below on your terminal
+6. Restart your `terminal/terminal-emulator` by closing and reopening it or
+    run commands below on your terminal
 
     ```bash
     src
