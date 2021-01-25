@@ -27,6 +27,9 @@ syntax enable
 "colorscheme xcodelight"
 "colorscheme xcodelighthc"
 "colorscheme xcodewwdc"
+set background=dark
+colorscheme solarized8
+
 filetype off
 filetype plugin indent on
 
