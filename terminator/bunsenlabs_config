@@ -1,6 +1,6 @@
 [global_config]
   dbus = False
-  tab_position = bottom
+  tab_position = right
   title_use_system_font = False
   title_font = Monospace 10
 [keybindings]
