@@ -1,0 +1,31 @@
+/* uncomment the code below to enable steppers in gtk3 apps */
+/* (see ~/.gtkrc-2.0.mine for gtk2) */
+
+/*
+.scrollbar, .scrollbar.vertical {
+-GtkRange-stepper-size: 13;
+-GtkScrollbar-has-backward-stepper: 1;
+-GtkScrollbar-has-forward-stepper: 1;
+}
+*/
+
+/* end of stepper code */
+
+/* padding for lxterminal and some others */
+VteTerminal, vte-terminal { padding: 5px; }
+
+.terminator-terminal-window notebook tab {
+  /* background-color: darkgrey; */
+  font-size: 10px;
+  padding: 0;
+  border: 0;
+}
+
+.terminator-terminal-window notebook tab:checked {
+  /* background-color: #459cc4; */
+  font-size: 10px;
+}
+
+.terminator-terminal-window notebook tab button {
+  padding: 0;
+}
