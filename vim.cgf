@@ -131,3 +131,4 @@ nnoremap <C-L> :NERDTreeFind <CR>
 nnoremap <C-P> :Prettier <CR>
 nnoremap <C-E> :e <CR>
 nnoremap <C-X> :x <CR>
+nnoremap <C-W> :w <CR>
