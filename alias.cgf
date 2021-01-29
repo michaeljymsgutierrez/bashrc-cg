@@ -69,3 +69,8 @@ function vim_open_file {
 }
 alias vf="vim_open_file"
 
+function set_title() {
+  printf "\e]2;$*\a"
+}
+alias st="set_title"
+
