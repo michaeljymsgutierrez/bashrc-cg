@@ -97,13 +97,14 @@ let NERDTreeRespectWildIgnore = 1
 "let g:jsx_ext_required = 0"
 
 "FILE ASSOCIATION CONFIG"
-"au BufReadPost *.hbs set ft=mustache |  set syntax=mustache"
-au BufEnter *.hbs set ft=mustache |  set syntax=mustache
-"au BufReadPost *.jsx set ft=javascript.jsx|  set syntax=javascript.jsx"
+"au BufReadPost *.hbs set ft=mustache | set syntax=mustache"
+au BufEnter *.hbs set ft=mustache | set syntax=mustache
+"au BufReadPost *.jsx set ft=javascript.jsx | set syntax=javascript.jsx"
 "au BufReadPost *.styl set ft=stylus | set syntax=stylus"
 au BufEnter *.styl set ft=stylus | set syntax=stylus
-"au BufReadPost *.cgf set ft=sh |  set syntax=sh"
-au BufEnter *.cgf set ft=sh |  set syntax=sh
+"au BufReadPost *.cgf set ft=sh | set syntax=sh"
+au BufEnter *.cgf set ft=sh | set syntax=sh
+au BufEnter *.ts set ft=typescript | set syntax=javascript
 
 "SESSION CONFIG"
 let g:session_autoload = 0
