@@ -109,6 +109,7 @@ au BufEnter *.tsx set ft=javascript | set syntax=javascript
 
 "PRETTIER CONFIG"
 let g:prettier#config#semi = 'false'
+let g:prettier#config#single_quote = 'true'
 
 "SESSION CONFIG"
 let g:session_autoload = 0
