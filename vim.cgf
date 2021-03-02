@@ -104,7 +104,8 @@ au BufEnter *.hbs set ft=mustache | set syntax=mustache
 au BufEnter *.styl set ft=stylus | set syntax=stylus
 "au BufReadPost *.cgf set ft=sh | set syntax=sh"
 au BufEnter *.cgf set ft=sh | set syntax=sh
-au BufEnter *.ts set ft=typescript | set syntax=javascript
+au BufEnter *.ts set ft=javascript | set syntax=javascript
+au BufEnter *.tsx set ft=javascript | set syntax=javascript
 
 "SESSION CONFIG"
 let g:session_autoload = 0
