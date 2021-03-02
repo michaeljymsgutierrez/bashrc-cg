@@ -107,6 +107,9 @@ au BufEnter *.cgf set ft=sh | set syntax=sh
 au BufEnter *.ts set ft=javascript | set syntax=javascript
 au BufEnter *.tsx set ft=javascript | set syntax=javascript
 
+"PRETTIER CONFIG"
+let g:prettier#config#semi = 'false'
+
 "SESSION CONFIG"
 let g:session_autoload = 0
 
