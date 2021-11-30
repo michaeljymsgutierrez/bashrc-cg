@@ -48,6 +48,8 @@ Plugin 'wavded/vim-stylus'
 Plugin 'yuezk/vim-js'
 Plugin 'maxmellon/vim-jsx-pretty'
 Plugin 'tpope/vim-fugitive'
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/vim-gist'
 "Plugin 'wakatime/vim-wakatime'"
 "Plugin 'xolox/vim-session'"
 "Plugin 'xolox/vim-misc'"
@@ -126,6 +128,10 @@ let g:lightline = {
       \ }
 
 let g:indentLine_char = '¦'
+
+"VIM GIST CONFIG"
+let g:github_user = 'username'
+let g:gist_token='token'
 
 "KEYBOARD MAPPING CONFIG"
 nnoremap <C-Left> :tabprevious <CR>
