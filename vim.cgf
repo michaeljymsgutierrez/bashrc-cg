@@ -16,7 +16,7 @@ set smartcase
 "set autoread | au CursorHold * checktime | call feedkeys("lh")"
 set wildignore+=*.swp
 set mouse=a
-set clipboard=unnamedplus
+set clipboard+=unnamed
 set timeoutlen=1000
 set ttimeoutlen=0
 
