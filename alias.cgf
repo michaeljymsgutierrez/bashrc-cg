@@ -41,7 +41,7 @@ alias vg="vim -c 'colorscheme gruvbox' -c 'set background=light'"
 alias vs="vim -c 'colorscheme solarized8' -c 'set background=dark'"
 alias cgbash="cd ~/bashrc-cg && vim"
 alias aptinstall="sudo apt-get install"
-alias removeswap="find . -type f -name "*.sw[klmnop]" -delete"
+# alias removeswap="find . -type f -name "*.sw[klmnop]" -delete"
 alias e="exit"
 
 function check_port() {
