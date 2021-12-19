@@ -1,8 +1,10 @@
 # POWERLINE CUSTOM CONFIG
-function _update_ps1() {
-  PS1="\[\e[38;5;15m\]\[\e[48;5;237m\] \$ \[\e[0m\]\[\e[38;5;237m\] \[\e[0m\]"
-}
+#function _update_ps1() {
+#  PS1="\[\e[38;5;15m\]\[\e[48;5;237m\] \$ \[\e[0m\]\[\e[38;5;237m\] \[\e[0m\]"
+#}
 
-if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-  PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi
+# if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+#  PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+# fi
+
+PS1="$ "
