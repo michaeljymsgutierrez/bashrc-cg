@@ -3,9 +3,9 @@
 # export PATH=$JAVA_HOME/bin:$PATH
 
 # ANDROID HOME
-# export ANDROID_HOME=$HOME/Android/Sdk
-# export PATH=$PATH:$ANDROID_HOME/tools
-# export PATH=$PATH:$ANDROID_HOME/platform-tools
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # NODE VERSION MANAGER
 export NVM_DIR="$HOME/.nvm"
