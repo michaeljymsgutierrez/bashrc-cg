@@ -1,11 +1,11 @@
 # JAVA HOME
-export JAVA_HOME=/home/chaelgutierrez/jdk1.8.0_91/
-export PATH=$JAVA_HOME/bin:$PATH
+# export JAVA_HOME=/home/chaelgutierrez/jdk1.8.0_91/
+# export PATH=$JAVA_HOME/bin:$PATH
 
 # ANDROID HOME
-export ANDROID_HOME=$HOME/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/platform-tools
+# export ANDROID_HOME=$HOME/Android/Sdk
+# export PATH=$PATH:$ANDROID_HOME/tools
+# export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # NODE VERSION MANAGER
 export NVM_DIR="$HOME/.nvm"
@@ -13,18 +13,18 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # GO
-export PATH=$PATH:/usr/local/go/bin
+#export PATH=$PATH:/usr/local/go/bin
 
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/chaelgutierrez/.sdkman"
-[[ -s "/home/chaelgutierrez/.sdkman/bin/sdkman-init.sh" ]] && source "/home/chaelgutierrez/.sdkman/bin/sdkman-init.sh"
+#export SDKMAN_DIR="/home/chaelgutierrez/.sdkman"
+#[[ -s "/home/chaelgutierrez/.sdkman/bin/sdkman-init.sh" ]] && source "/home/chaelgutierrez/.sdkman/bin/sdkman-init.sh"
 
 # DRUSH PATH
-export PATH="$HOME/.config/composer/vendor/bin:$PATH"
+# export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 
 # FZF HOME
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # DENO
-export DENO_INSTALL="/home/chaelgutierrez/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
+# export DENO_INSTALL="/home/chaelgutierrez/.deno"
+# export PATH="$DENO_INSTALL/bin:$PATH"
