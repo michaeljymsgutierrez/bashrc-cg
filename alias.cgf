@@ -39,7 +39,7 @@ alias create_gitignore_global="cd && touch .gitignore_global && git config --glo
 # alias removelock="sudo rm /var/lib/apt/lists/lock"
 alias vg="vim -c 'colorscheme gruvbox' -c 'set background=light'"
 alias vs="vim -c 'colorscheme solarized8' -c 'set background=dark'"
-alias cgbash="cd ~/bashrc-cg && vim"
+alias cgshell="cd ~/bashrc-cg && vim"
 # alias aptinstall="sudo apt-get install"
 alias e="exit"
 
