@@ -1,4 +1,4 @@
-#### BASH IMPORTS using source
+#### SHELL IMPORTS using source
 ---
 
 ##### Installation
@@ -16,14 +16,16 @@
 3. Install latest `vim`, `vundle`, `tmux` and  `powerline-fonts`
 
     ```bash
+    # Linux specific only
     sudo apt install tmux
     sudo apt install vim
     sudo apt install vim-gtk3
     sudo apt-get install fonts-powerline
+    # Linux/OSX
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     ```
-4. Edit `~/.bashrc` file
-    Paste the following lines on `~/.bashrc` file
+4. Edit `~/.zshrc` file
+    Paste the following lines on `~/.zshrc` file
 
     ```bash
     source ~/bashrc-cg/path.cgf
