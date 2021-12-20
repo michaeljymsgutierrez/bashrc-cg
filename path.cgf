@@ -1,11 +1,14 @@
 # JAVA HOME
 # export JAVA_HOME=/home/chaelgutierrez/jdk1.8.0_91/
 # export PATH=$JAVA_HOME/bin:$PATH
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.0.1.jdk/Contents/Home
+export PATH=$JAVA_HOME/bin:$PATH
 
 # ANDROID HOME
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
 
 # NODE VERSION MANAGER
 export NVM_DIR="$HOME/.nvm"
