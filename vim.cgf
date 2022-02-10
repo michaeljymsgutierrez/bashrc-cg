@@ -20,6 +20,7 @@ set clipboard+=unnamed
 set timeoutlen=1000
 set ttimeoutlen=0
 set backspace=indent,eol,start
+"set encoding=UTF-8"
 
 syntax enable
 "colorscheme monokai"
@@ -109,6 +110,7 @@ au BufEnter *.styl set ft=stylus | set syntax=stylus
 au BufEnter *.cgf set ft=sh | set syntax=sh
 au BufEnter *.ts set ft=javascript | set syntax=javascript
 au BufEnter *.tsx set ft=javascript | set syntax=javascript
+au BufEnter *.svelte set ft=html | set syntax=html
 
 "PRETTIER CONFIG"
 let g:prettier#config#semi = 'false'
@@ -128,7 +130,7 @@ let g:lightline = {
       \ },
       \ }
 
-let g:indentLine_char = '¦'
+let g:indentLine_char = '│'
 
 "VIM GIST CONFIG"
 let g:github_user = 'username'
