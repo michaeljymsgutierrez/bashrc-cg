@@ -147,4 +147,3 @@ nnoremap <C-P> :Prettier <CR>
 nnoremap <C-E> :e <CR>
 nnoremap <C-X> :x <CR>
 nnoremap <C-O> :w <CR>
-nnoremap <C-M> :W <CR>
