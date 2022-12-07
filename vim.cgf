@@ -52,6 +52,8 @@ Plugin 'maxmellon/vim-jsx-pretty'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/vim-gist'
+Plugin 'fatih/vim-go'
+Plugin 'iamcco/markdown-preview.nvim'
 "Plugin 'wakatime/vim-wakatime'"
 "Plugin 'xolox/vim-session'"
 "Plugin 'xolox/vim-misc'"
