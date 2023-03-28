@@ -54,6 +54,7 @@ Plugin 'mattn/webapi-vim'
 Plugin 'mattn/vim-gist'
 Plugin 'fatih/vim-go'
 Plugin 'iamcco/markdown-preview.nvim'
+Plugin 'ryanoasis/vim-devicons'
 "Plugin 'wakatime/vim-wakatime'"
 "Plugin 'xolox/vim-session'"
 "Plugin 'xolox/vim-misc'"
@@ -128,11 +129,29 @@ let g:lightline = {
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ 'component_function': {
-      \   'gitbranch': 'gitbranch#name'
+      \   'gitbranch': 'MyFugitiveHead',
+      \   'filetype': 'MyFiletype',
+      \   'fileformat': 'MyFileformat',
       \ },
       \ }
 
 let g:indentLine_char = '│'
+
+function MyFugitiveHead()
+  let head = FugitiveHead()
+  if head != ""
+    let head = "\uf126 " .. head
+  endif
+  return head
+endfunction
+
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+endfunction
+
+function! MyFileformat()
+  return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+endfunction
 
 "VIM GIST CONFIG"
 let g:github_user = 'username'
