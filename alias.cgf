@@ -73,8 +73,13 @@ function vim_open_file {
 }
 alias vf="vim_open_file"
 
-function set_title() {
+function set_title {
   printf "\e]2;$*\a"
 }
 alias st="set_title"
+
+function set_iterm_title {
+  echo -ne "\033]0;"$*"\007"
+}
+alias iterm_title="set_iterm_title"
 
