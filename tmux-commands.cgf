@@ -1,0 +1,14 @@
+# Tmux Commands
+tmux => init tmux session
+ctrl + b [up,down,left,right] => navigate on split panes
+ctrl + b % => create new vertical pane
+ctrl + b '"' => create new horizontal pane
+ctrl + b c => create new tab pane
+ctrl + b , => rename window
+ctrl + b d => detached session
+tmux ls => list session
+tmux attach -t id => attach session
+tmux rename-session -t id session-name => rename session
+tmux new -s session-name => create session with name
+tmux kill-session -t session-name/id => kill session
+
