@@ -15,4 +15,7 @@ bind-key -T copy-mode-vi 'y' send -X copy-selection
 
 bind-key C-T new-window -c "#{pane_current_path}"
 bind-key | split-window -h -c "#{pane_current_path}"
-bind-key - split-window -v -c "#{pane_current_path}"
+bind-key _ split-window -v -c "#{pane_current_path}"
+
+bind-key C-Left previous-window
+bind-key C-Right next-window

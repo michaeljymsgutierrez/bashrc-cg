@@ -1,9 +1,4 @@
 # Tmux Commands
-tmux => init tmux session
-ctrl + b [up,down,left,right] => navigate on split panes
-ctrl + b % => create new vertical pane
-ctrl + b '"' => create new horizontal pane
-ctrl + b c => create new tab pane
 ctrl + b , => rename window
 ctrl + b d => detached session
 tmux ls => list session
