@@ -5,7 +5,7 @@ source ~/bashrc-cg/tmux-colors/monokai-nightasty_dark.tmux
 set -g prefix `
 setw -g mode-keys vi
 bind-key ` send-prefix
-bind-key C-R source-file ~/.tmux.conf\; display-message "Tmux was reloaded!"
+bind-key C-S source-file ~/.tmux.conf\; display-message "Tmux was reloaded!"
 
 bind v copy-mode
 
@@ -13,5 +13,6 @@ bind-key p paste-buffer
 bind-key -T copy-mode-vi 'v' send -X begin-selection
 bind-key -T copy-mode-vi 'y' send -X copy-selection
 
-bind-key | split-window -h
-bind-key - split-window -v
+bind-key C-T new-window -c "#{pane_current_path}"
+bind-key | split-window -h -c "#{pane_current_path}"
+bind-key - split-window -v -c "#{pane_current_path}"
