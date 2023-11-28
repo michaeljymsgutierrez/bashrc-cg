@@ -38,7 +38,12 @@
     ```bash
     source ~/bashrc-cg/vim.cgf
     ```
-6. Restart your `terminal/terminal-emulator` by closing and reopening it or
+6. Copy and paste these following lines on `~/.tmux.conf` file
+
+    ```bash
+    source ~/bashrc-cg/tmux.cgf
+    ```
+7. Restart your `terminal/terminal-emulator` by closing and reopening it or
     run these commands on your terminal
 
     ```bash
