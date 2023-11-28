@@ -169,4 +169,6 @@ nnoremap <C-P> :Prettier <CR>
 nnoremap <C-E> :e <CR>
 nnoremap <C-X> :x <CR>
 nnoremap <C-O> :w <CR>
+nnoremap <C-V><C-S> :vsplit <CR>
+nnoremap <C-H><C-S> :split <CR>
 nnoremap <C-K> :Gist -l <CR>
