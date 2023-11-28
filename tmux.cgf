@@ -19,3 +19,4 @@ bind-key _ split-window -v -c "#{pane_current_path}"
 
 bind-key C-Left previous-window
 bind-key C-Right next-window
+bind-key / copy-mode
