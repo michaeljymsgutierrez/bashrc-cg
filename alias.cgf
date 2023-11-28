@@ -5,7 +5,7 @@
 alias avd_list="avdmanager list avd | grep Name"
 alias avd_launch="cd $HOME/Library/Android/Sdk/emulator && ./emulator -avd "
 alias mip="ifconfig | grep Bcast"
-alias src="source ~/.zshrc"
+alias src="source ~/.zshrc && echo 'Shell was reloaded!'"
 alias gs="clear && git status"
 alias gb="clear && git branch"
 alias gwb="clear && git rev-parse --abbrev-ref HEAD"

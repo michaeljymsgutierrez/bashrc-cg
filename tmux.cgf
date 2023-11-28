@@ -1,9 +1,12 @@
+# TMUX COLORS
 source ~/bashrc-cg/tmux-colors/monokai-nightasty_dark.tmux
 
+# TMUX CONFIG AND BINDINGS
 set -g prefix `
 setw -g mode-keys vi
 bind-key ` send-prefix
-bind-key C-R source-file ~/.tmux.conf
+bind-key C-R source-file ~/.tmux.conf\; display-message "Tmux was reloaded!"
+
 bind v copy-mode
 
 bind-key p paste-buffer
