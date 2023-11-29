@@ -1,4 +1,4 @@
-# TMUX COLORS
+# TMUX IMPORTS
 source ~/bashrc-cg/tmux-colors/cg-theme.tmux
 
 # TMUX CONFIG AND BINDINGS

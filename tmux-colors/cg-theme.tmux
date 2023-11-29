@@ -26,19 +26,19 @@ set -g status-left-style NONE
 set -g status-right-style NONE
 
 tm_session="#[fg=$tm_black,bg=$tm_fg,bold]  #S "
-tm_datetime="#[fg=$tm_fg,bg=$tm_bg] %A %D  %r  "
+# tm_datetime="#[fg=$tm_fg,bg=$tm_bg] %A %D  %r  "
+tm_datetime="#[fg=$tm_fg,bg=$tm_bg]%A %D  %r  "
 
 tm_host="#[fg=$tm_black,bg=$tm_fg,nobold] 󱩊  #h "
 
 set -g status-left "$tm_session"
-set -g status-right "$tm_datetime$tm_host"
+# set -g status-right "$tm_datetime$tm_host"
+set -g status-right "$tm_datetime"
 
 setw -g window-status-activity-style "underscore,fg=$tm_fg,bg=$tm_bg_highlight"
 setw -g window-status-separator ""
 setw -g window-status-style "NONE,fg=$tm_fg,bg=$tm_bg_highlight"
 
-# tm_win_inactive="#[default]#I#W 󰧮"
-# tm_win_active="#[fg=$tm_green,bg=$tm_bg,bold]#I#W 󰷉 "
 tm_win_inactive="#[default]#I#W "
 tm_win_active="#[fg=$tm_green,bg=$tm_bg,bold]#I#W  "
 

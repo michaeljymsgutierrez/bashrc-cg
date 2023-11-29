@@ -1,9 +1,0 @@
-# Tmux Commands
-ctrl + b , => rename window
-ctrl + b d => detached session
-tmux ls => list session
-tmux attach -t id => attach session
-tmux rename-session -t id session-name => rename session
-tmux new -s session-name => create session with name
-tmux kill-session -t session-name/id => kill session
-
