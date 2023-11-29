@@ -27,19 +27,20 @@ set -g status-right-length "100"
 set -g status-left-style NONE
 set -g status-right-style NONE
 
-tm_session="#[fg=$tm_black,bg=$tm_green,bold]  #S"
+tm_session="#[fg=$tm_black,bg=$tm_green,bold]  #S "
 # tm_left_arrow="#[fg=$tm_green,bg=$tm_bg_highlight]"
-tm_left_arrow="#[fg=$tm_green,bg=$tm_bg_highlight]"
+# tm_left_arrow="#[fg=$tm_green,bg=$tm_bg_highlight]"
 
 # tm_clock_24="#[fg=$tm_bg,bg=$tm_bg_highlight]#[fg=$tm_green,bg=$tm_bg]  %H:%M"
 # tm_clock_12="#[fg=$tm_bg,bg=$tm_bg_highlight]#[fg=$tm_green,bg=$tm_bg]  %r"
 # tm_datetime="#[fg=$tm_bg,bg=$tm_bg_highlight]#[fg=$tm_green,bg=$tm_bg] %r %Y/%m/%d"
-tm_datetime="#[fg=$tm_bg,bg=$tm_bg_highlight]#[fg=$tm_green,bg=$tm_bg]  %Y %A, %b %d   %r   "
+tm_datetime="#[fg=$tm_bg,bg=$tm_bg_highlight]#[fg=$tm_green,bg=$tm_bg] %A %D  %r   "
 tm_host="#[fg=$tm_black,bg=$tm_green,bold]   #h "
 # tm_right_green_to_grey_sep="#[fg=$tm_bg_highlight,bg=$tm_bg]#[fg=$tm_green,bg=$tm_bg_highlight]"
 tm_right_green_to_grey_sep="#[fg=$tm_bg_highlight,bg=$tm_bg] #[fg=$tm_green,bg=$tm_bg_highlight]"
 
-set -g status-left "$tm_session $tm_left_arrow"
+# set -g status-left "$tm_session $tm_left_arrow"
+set -g status-left "$tm_session"
 # set -g status-right "$tm_datetime $tm_right_green_to_grey_sep$tm_host"
 set -g status-right "$tm_datetime$tm_host"
 # set -g status-right "$tm_clock_24 $tm_right_green_to_grey_sep$tm_host"
