@@ -28,7 +28,6 @@ set -g status-right-style NONE
 tm_session="#[fg=$tm_black,bg=$tm_fg,bold]  #S "
 tm_datetime="#[fg=$tm_fg,bg=$tm_bg] %A %D  %r  "
 
-
 tm_host="#[fg=$tm_black,bg=$tm_fg,nobold] 󱩊  #h "
 
 set -g status-left "$tm_session"
@@ -38,10 +37,10 @@ setw -g window-status-activity-style "underscore,fg=$tm_fg,bg=$tm_bg_highlight"
 setw -g window-status-separator ""
 setw -g window-status-style "NONE,fg=$tm_fg,bg=$tm_bg_highlight"
 
-tm_win_inactive="#[default]#I#W 󰧮"
-
-tm_win_active="#[fg=$tm_green,bg=$tm_bg,bold]#I#W 󰷉 "
-tm_win_act_sep_end="#[fg=$tm_bg,bg=$tm_bg_highlight,nobold]"
+# tm_win_inactive="#[default]#I#W 󰧮"
+# tm_win_active="#[fg=$tm_green,bg=$tm_bg,bold]#I#W 󰷉 "
+tm_win_inactive="#[default]#I#W "
+tm_win_active="#[fg=$tm_green,bg=$tm_bg,bold]#I#W  "
 
 setw -g window-status-format "$tm_win_inactive "
 setw -g window-status-current-format "$tm_win_active"
