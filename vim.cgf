@@ -1,3 +1,5 @@
+source ~/.vim/.gh-credentials
+
 "INITIAL CONFIG"
 set rtp+=$HOME/.vim/bundle/Vundle.vim
 set rtp+=$HOME/.vim/bundle/fzf
@@ -155,8 +157,8 @@ function! MyFileformat()
 endfunction
 
 "VIM GIST CONFIG"
-let g:github_user = 'username'
-let g:gist_token='token'
+let g:github_user = gh_user
+let g:gist_token = gh_token
 
 "KEYBOARD MAPPING CONFIG"
 nnoremap <C-Left> :tabprevious <CR>
