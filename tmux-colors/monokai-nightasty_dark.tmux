@@ -3,7 +3,7 @@
 tm_bg="#444444"
 tm_fg="#bcbcbc"
 tm_bg_highlight="#313131"
-tm_green="#a4e400"
+tm_green="#afdf00"
 tm_orange="#ff9700"
 tm_black="#000001"
 tm_border="#62d8f1"
@@ -27,40 +27,23 @@ set -g status-right-length "100"
 set -g status-left-style NONE
 set -g status-right-style NONE
 
-tm_session="#[fg=$tm_black,bg=$tm_green,bold]  #S "
-# tm_left_arrow="#[fg=$tm_green,bg=$tm_bg_highlight]"
-# tm_left_arrow="#[fg=$tm_green,bg=$tm_bg_highlight]"
+tm_session="#[fg=$tm_black,bg=$tm_fg,bold]  #S "
+tm_datetime="#[fg=$tm_fg,bg=$tm_bg] %A %D  %r  "
 
-# tm_clock_24="#[fg=$tm_bg,bg=$tm_bg_highlight]#[fg=$tm_green,bg=$tm_bg]  %H:%M"
-# tm_clock_12="#[fg=$tm_bg,bg=$tm_bg_highlight]#[fg=$tm_green,bg=$tm_bg]  %r"
-# tm_datetime="#[fg=$tm_bg,bg=$tm_bg_highlight]#[fg=$tm_green,bg=$tm_bg] %r %Y/%m/%d"
-tm_datetime="#[fg=$tm_bg,bg=$tm_bg_highlight]#[fg=$tm_green,bg=$tm_bg] %A %D  %r  "
-tm_host="#[fg=$tm_black,bg=$tm_green,bold] 󱩊  #h "
-# tm_right_green_to_grey_sep="#[fg=$tm_bg_highlight,bg=$tm_bg]#[fg=$tm_green,bg=$tm_bg_highlight]"
-tm_right_green_to_grey_sep="#[fg=$tm_bg_highlight,bg=$tm_bg] #[fg=$tm_green,bg=$tm_bg_highlight]"
 
-# set -g status-left "$tm_session $tm_left_arrow"
+tm_host="#[fg=$tm_black,bg=$tm_fg,nobold] 󱩊  #h "
+
 set -g status-left "$tm_session"
-# set -g status-right "$tm_datetime $tm_right_green_to_grey_sep$tm_host"
 set -g status-right "$tm_datetime$tm_host"
-# set -g status-right "$tm_clock_24 $tm_right_green_to_grey_sep$tm_host"
-# if-shell '[ "$(tmux show-option -gqv "clock-mode-style")" == "12" ]' {
-#     set -g status-right "$tm_clock_12 $tm_right_green_to_grey_sep$tm_host"
-# }
 
 setw -g window-status-activity-style "underscore,fg=$tm_fg,bg=$tm_bg_highlight"
 setw -g window-status-separator ""
 setw -g window-status-style "NONE,fg=$tm_fg,bg=$tm_bg_highlight"
 
-# tm_win_inact_sep="#[fg=$tm_bg_highlight,bg=$tm_bg_highlight]"
-tm_win_inact_sep="#[fg=$tm_bg_highlight,bg=$tm_bg_highlight] "
 tm_win_inactive="#[default]#I#W 󰧮"
 
-tm_win_active="#[fg=$tm_green,bg=$tm_bg,bold] #I#W 󰷉  "
-# tm_win_act_sep="#[fg=$tm_bg_highlight,bg=$tm_bg]"
-tm_win_act_sep="#[fg=$tm_bg_highlight,bg=$tm_bg]"
-# tm_win_act_sep_end="#[fg=$tm_bg,bg=$tm_bg_highlight,nobold]"
+tm_win_active="#[fg=$tm_green,bg=$tm_bg,bold]#I#W 󰷉 "
 tm_win_act_sep_end="#[fg=$tm_bg,bg=$tm_bg_highlight,nobold]"
 
-setw -g window-status-format "$tm_win_inact_sep$tm_win_inactive$tm_win_inact_sep"
-setw -g window-status-current-format "$tm_win_act_sep$tm_win_active$tm_win_act_sep_end"
+setw -g window-status-format "$tm_win_inactive "
+setw -g window-status-current-format "$tm_win_active"
