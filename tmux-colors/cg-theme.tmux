@@ -26,14 +26,15 @@ set -g status-left-style NONE
 set -g status-right-style NONE
 
 tm_session="#[fg=$tm_black,bg=$tm_fg,bold]  #S "
-# tm_datetime="#[fg=$tm_fg,bg=$tm_bg] %A %D  %r  "
-tm_datetime="#[fg=$tm_fg,bg=$tm_bg]%A %D  %r  "
-
+tm_datetime="%A %D  %r  "
+tm_battery='#(bash -c ~/bashrc-cg/shellscripts/battery.sh) 󰊘'
 tm_host="#[fg=$tm_black,bg=$tm_fg,nobold] 󱩊  #h "
 
-set -g status-left "$tm_session"
-# set -g status-right "$tm_datetime$tm_host"
-set -g status-right "$tm_datetime"
+tm_left_section="$tm_session"
+tm_right_section="#[fg=$tm_fg,bg=$tm_bg]$tm_battery$tm_datetime"
+
+set -g status-left "$tm_left_section"
+set -g status-right "$tm_right_section"
 
 setw -g window-status-activity-style "underscore,fg=$tm_fg,bg=$tm_bg_highlight"
 setw -g window-status-separator ""
