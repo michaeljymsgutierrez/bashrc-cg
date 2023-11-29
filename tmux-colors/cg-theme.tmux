@@ -1,5 +1,3 @@
-# Monokai NighTasty colors for Tmux
-
 tm_bg="#444444"
 tm_fg="#bcbcbc"
 tm_bg_highlight="#313131"

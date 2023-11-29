@@ -1,5 +1,5 @@
 # TMUX COLORS
-source ~/bashrc-cg/tmux-colors/monokai-nightasty_dark.tmux
+source ~/bashrc-cg/tmux-colors/cg-theme.tmux
 
 # TMUX CONFIG AND BINDINGS
 set -g prefix `
