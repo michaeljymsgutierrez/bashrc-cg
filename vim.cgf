@@ -118,6 +118,7 @@ au BufEnter *.cgf set ft=sh | set syntax=sh
 au BufEnter *.ts set ft=javascript | set syntax=javascript
 au BufEnter *.tsx set ft=javascript | set syntax=javascript
 au BufEnter *.svelte set ft=html | set syntax=html
+au BufEnter *.tmux set ft=conf | set syntax=conf
 
 "PRETTIER CONFIG"
 let g:prettier#config#semi = 'false'
