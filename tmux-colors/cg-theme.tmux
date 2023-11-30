@@ -27,7 +27,10 @@ set -g status-right-style NONE
 
 tm_session="#[fg=$tm_black,bg=$tm_fg,bold]  #S "
 tm_datetime="%A %D  %r  "
-tm_battery='#(bash -c ~/bashrc-cg/shellscripts/battery.sh) 󰊘'
+tm_battery_status='#(bash -c ~/bashrc-cg/shellscripts/battery.sh)'
+tm_battery_enabled="$tm_battery_status 󰊘"
+tm_battery_disabled="100% 󱐉"
+tm_battery='#{?$tm_battery_status,#{tm_battery_enabled},#{tm_battery_disabled}} '
 tm_host="#[fg=$tm_black,bg=$tm_fg,nobold] 󱩊  #h "
 
 tm_left_section="$tm_session"
