@@ -28,10 +28,11 @@ set -g status-right-style NONE
 tm_session="#[fg=$tm_black,bg=$tm_fg,bold]  #S "
 tm_datetime="%A %D  %r  "
 tm_battery_status='#(bash -c ~/bashrc-cg/shellscripts/battery.sh)'
+tm_network_status='#(bash -c ~/bashrc-cg/shellscripts/network.sh)'
 tm_host="#[fg=$tm_black,bg=$tm_fg,nobold] 󱩊  #h "
 
 tm_left_section="$tm_session"
-tm_right_section="#[fg=$tm_fg,bg=$tm_bg]$tm_battery_status $tm_datetime"
+tm_right_section="#[fg=$tm_fg,bg=$tm_bg]$tm_battery_status $tm_datetime$tm_network_status"
 
 set -g status-left "$tm_left_section"
 set -g status-right "$tm_right_section"
