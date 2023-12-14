@@ -10,7 +10,7 @@ else
 fi
 
 if [ -z "$battery_percentage" ]; then
-  echo "100% $battery_state_icon"
+  echo "$battery_state_icon 100%"
 else
-  echo "$battery_percentage% $battery_state_icon"
+  echo "$battery_state_icon $battery_percentage%"
 fi
