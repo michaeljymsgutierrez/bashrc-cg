@@ -42,7 +42,7 @@ setw -g window-status-separator ""
 setw -g window-status-style "NONE,fg=$tm_fg,bg=$tm_bg_highlight"
 
 tm_win_inactive="#[default]#I#W "
-tm_win_active="#[fg=$tm_green,bg=$tm_bg,bold]#I#W  "
+tm_win_active="#[fg=$tm_fg,bg=$tm_bg,bold]#I#W #[fg=$tm_green,bg=$tm_bg,bold] "
 
 setw -g window-status-format "$tm_win_inactive "
 setw -g window-status-current-format "$tm_win_active"
