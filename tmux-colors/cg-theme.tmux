@@ -26,9 +26,9 @@ set -g status-left-style NONE
 set -g status-right-style NONE
 
 tm_session="#[fg=$tm_black,bg=$tm_fg,bold]  #S "
-tm_datetime="%A %D  %r  "
-tm_battery_status='#(bash -c ~/bashrc-cg/shellscripts/battery.sh)'
-tm_network_status='#(bash -c ~/bashrc-cg/shellscripts/network.sh)'
+tm_datetime="󰤃 %A %D   󰤃 %r  "
+tm_battery_status=' #(bash -c ~/bashrc-cg/shellscripts/battery.sh) '
+tm_network_status='󰤃 #(bash -c ~/bashrc-cg/shellscripts/network.sh)'
 tm_host="#[fg=$tm_black,bg=$tm_fg,nobold] 󱩊  #h "
 
 tm_left_section="$tm_session"
@@ -40,7 +40,6 @@ set -g status-right "$tm_right_section"
 setw -g window-status-activity-style "underscore,fg=$tm_fg,bg=$tm_bg_highlight"
 setw -g window-status-separator ""
 setw -g window-status-style "NONE,fg=$tm_fg,bg=$tm_bg_highlight"
-
 
 tm_win_inactive="#[default] 󰞷 #W"
 tm_win_active="#[fg=$tm_fg,bg=$tm_bg,bold] 󰞷 #W #[fg=$tm_green,bg=$tm_bg,bold] "
