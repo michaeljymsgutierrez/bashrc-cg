@@ -26,13 +26,13 @@ set -g status-left-style NONE
 set -g status-right-style NONE
 
 tm_session="#[fg=$tm_black,bg=$tm_fg,bold]  #S "
-tm_datetime=" %D   %r "
+tm_datetime=" %r  %D  "
 tm_battery_status='#(bash -c ~/bashrc-cg/shellscripts/battery.sh)'
 tm_network_status='#(bash -c ~/bashrc-cg/shellscripts/network.sh)'
 tm_host="#[fg=$tm_black,bg=$tm_fg,nobold] 󱩊  #h "
 
 tm_left_section="$tm_session"
-tm_right_section="#[fg=$tm_fg,bg=$tm_bg]$tm_datetime #[fg=$tm_black,bg=$tm_fg,bold] $tm_battery_status $tm_network_status "
+tm_right_section="#[fg=$tm_fg,bg=$tm_bg,bold]$tm_datetime #[fg=$tm_black,bg=$tm_fg,bold] $tm_battery_status $tm_network_status "
 
 set -g status-left "$tm_left_section"
 set -g status-right "$tm_right_section"
