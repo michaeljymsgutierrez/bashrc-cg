@@ -28,7 +28,7 @@ set -g status-right-length "100"
 set -g status-left-style NONE
 set -g status-right-style NONE
 
-tm_session="#[fg=$tm_dark_green,bg=$tm_light_green,bold] $tm_network_status#h "
+tm_session="#[fg=$tm_dark_green,bg=$tm_light_green,bold] $tm_network_status "
 tm_datetime=" %H:%M  %a-%d-%b-%y"
 tm_battery_status='#(bash -c ~/bashrc-cg/shellscripts/battery.sh)'
 tm_network_status='#(bash -c ~/bashrc-cg/shellscripts/network.sh)'
