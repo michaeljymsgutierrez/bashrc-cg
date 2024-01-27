@@ -3,26 +3,72 @@
 battery_percentage=$(pmset -g batt | grep -Eo "\d+%" | cut -d% -f1)
 battery_state=$(pmset -g ps|sed -nE "s|.*'(.*) Power.*|\1|p")
 
-if [ "$battery_state" == "AC" ]; then
-  plug_state_icon="󰚥"
+if [ $battery_percentage -ge 1 ] && [ $battery_percentage -le 10 ]; then
+  if [ "$battery_state" == "AC" ]; then
+    battery_state_icon="󰢜"
+  else
+    battery_state_icon="󰁺"
+  fi
+elif [ $battery_percentage -ge 11 ] && [ $battery_percentage -le 20 ]; then
+  if [ "$battery_state" == "AC" ]; then
+    battery_state_icon="󰂆"
+  else
+    battery_state_icon="󰁻"
+  fi
+elif [ $battery_percentage -ge 21 ] && [  $battery_percentage -le 30 ]; then
+  if [ "$battery_state" == "AC" ]; then
+    battery_state_icon="󰂇"
+  else
+    battery_state_icon="󰁼"
+  fi
+elif [ $battery_percentage -ge 31 ] && [  $battery_percentage -le 40 ]; then
+  if [ "$battery_state" == "AC" ]; then
+    battery_state_icon="󰂈"
+  else
+    battery_state_icon="󰁽"
+  fi
+elif [ $battery_percentage -ge 41 ] && [  $battery_percentage -le 50 ]; then
+  if [ "$battery_state" == "AC" ]; then
+    battery_state_icon="󰢝"
+  else
+    battery_state_icon="󰁾"
+  fi
+elif [ $battery_percentage -ge 51 ] && [  $battery_percentage -le 60 ]; then
+  if [ "$battery_state" == "AC" ]; then
+    battery_state_icon="󰂉"
+  else
+    battery_state_icon="󰁿"
+  fi
+elif [ $battery_percentage -ge 61 ] && [  $battery_percentage -le 70 ]; then
+  if [ "$battery_state" == "AC" ]; then
+    battery_state_icon="󰢞"
+  else
+    battery_state_icon="󰂀"
+  fi
+elif [ $battery_percentage -ge 71 ] && [  $battery_percentage -le 80 ]; then
+  if [ "$battery_state" == "AC" ]; then
+    battery_state_icon="󰂊"
+  else
+    battery_state_icon="󰂁"
+  fi
+elif [ $battery_percentage -ge 81 ] && [  $battery_percentage -le 90 ]; then
+  if [ "$battery_state" == "AC" ]; then
+    battery_state_icon="󰂋"
+  else
+    battery_state_icon="󰂂"
+  fi
+elif [ $battery_percentage -ge 91 ] && [  $battery_percentage -le 100 ]; then
+  if [ "$battery_state" == "AC" ]; then
+    battery_state_icon="󰂅"
+  else
+    battery_state_icon="󰁹"
+  fi
 else
-  plug_state_icon="󰚦"
-fi
-
-if [ $battery_percentage -ge 1 ] && [ $battery_percentage -le 25 ]; then
-  battery_state_icon=" "
-elif [ $battery_percentage -ge 25 ] && [ $battery_percentage -le 50 ]; then
-  battery_state_icon=" "
-elif [ $battery_percentage -ge 51 ] && [ $battery_percentage -le 75 ]; then
-  battery_state_icon=" "
-elif [ $battery_percentage -ge 76 ] && [ $battery_percentage -le 100 ]; then
-  battery_state_icon=" "
-else
-  battery_state_icon=" "
+  battery_state_icon="󱃍"
 fi
 
 if [ -z "$battery_percentage" ]; then
-  echo "󰚥   100%"
+  echo "󰂄 100%"
 else
-  echo "$plug_state_icon $battery_state_icon $battery_percentage%"
+  echo "$battery_state_icon $battery_percentage%"
 fi
