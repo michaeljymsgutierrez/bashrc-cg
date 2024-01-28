@@ -29,7 +29,8 @@ set -g status-left-style NONE
 set -g status-right-style NONE
 
 tm_session="#[fg=$tm_dark_green,bg=$tm_light_green,bold] $tm_network_status "
-tm_datetime=" %H:%M  %a-%d-%b-%y"
+tm_time='#(bash -c ~/bashrc-cg/shellscripts/time.sh)'
+tm_datetime="$tm_time  %a-%d-%b-%y"
 tm_battery_status='#(bash -c ~/bashrc-cg/shellscripts/battery.sh)'
 tm_network_status='#(bash -c ~/bashrc-cg/shellscripts/network.sh)'
 tm_host="#[fg=$tm_black,bg=$tm_fg,nobold] 󱩊  #h "
