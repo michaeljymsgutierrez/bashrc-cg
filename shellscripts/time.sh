@@ -1,9 +1,5 @@
 #! /bin/bash
 
-time_hours=$(date +"%I")
-time_minutes=$(date +"%M")
-time_period=$(date +"%p")
-
 icons[0]="󰎡"
 icons[1]="󰎤"
 icons[2]="󰎧"
@@ -15,22 +11,27 @@ icons[7]="󰎶"
 icons[8]="󰎹"
 icons[9]="󰎼"
 
-transform_two_digit_string_number_to_icon() {
-  str="$1"
-  first_digit_number=${str:0:1}
-  second_digit_number=${str:1:1}
-  first_digit_icon=${icons[$first_digit_number]}
-  second_digit_icon=${icons[$second_digit_number]}
-  echo "$first_digit_icon$second_digit_icon"
-}
+time_hours=$(date +"%I")
+time_minutes=$(date +"%M")
+time_period=$(date +"%p")
+
+hours=""
+minutes=""
+
+for (( i=0; i<${#time_hours}; i++ )); do
+  hour_value="${time_hours:$i:1}"
+  hours+=${icons[$hour_value]}
+done
+
+for (( i=0; i<${#time_minutes}; i++ )); do
+  minute_value="${time_minutes:$i:1}"
+  minutes+=${icons[$minute_value]}
+done
 
 if [ "$time_period" == "AM" ]; then
   period="󰫮󱎥"
 else
   period="󰫽󱎥"
 fi
-
-hours=$(transform_two_digit_string_number_to_icon "$time_hours")
-minutes=$(transform_two_digit_string_number_to_icon "$time_minutes")
 
 echo "$hours $minutes $period"
