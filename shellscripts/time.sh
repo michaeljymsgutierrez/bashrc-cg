@@ -24,8 +24,7 @@ transform_two_digit_string_number_to_icon() {
   echo "$first_digit_icon$second_digit_icon"
 }
 
-
-if [ $time_period -eq "AM" ]; then
+if [ "$time_period" == "AM" ]; then
   period="󰫮󱎥"
 else
   period="󰫽󱎥"
