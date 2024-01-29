@@ -1,7 +1,9 @@
 #! /bin/bash
 
-battery_percentage=$(pmset -g batt | grep -Eo "\d+%" | cut -d% -f1)
+#battery_percentage=$(pmset -g batt | grep -Eo "\d+%" | cut -d% -f1)
+battery_percentage="90"
 battery_state=$(pmset -g ps|sed -nE "s|.*'(.*) Power.*|\1|p")
+battery_percentage_length=${#battery_percentage}
 
 if [ $battery_percentage -ge 1 ] && [ $battery_percentage -le 10 ]; then
   if [ "$battery_state" == "AC" ]; then
@@ -70,5 +72,5 @@ fi
 if [ -z "$battery_percentage" ]; then
   echo "󰂄 100%"
 else
-  echo "$battery_state_icon $battery_percentage%"
+  echo "$battery_state_icon $battery_percentage% $battery_percentage_length"
 fi
