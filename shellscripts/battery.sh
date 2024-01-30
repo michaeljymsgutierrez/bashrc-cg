@@ -15,37 +15,37 @@ elif [ $battery_percentage -ge 11 ] && [ $battery_percentage -le 20 ]; then
   else
     battery_state_icon="󰁻"
   fi
-elif [ $battery_percentage -ge 21 ] && [  $battery_percentage -le 30 ]; then
+elif [ $battery_percentage -ge 21 ] && [ $battery_percentage -le 30 ]; then
   if [ "$battery_state" == "AC" ]; then
     battery_state_icon="󰂇"
   else
     battery_state_icon="󰁼"
   fi
-elif [ $battery_percentage -ge 31 ] && [  $battery_percentage -le 40 ]; then
+elif [ $battery_percentage -ge 31 ] && [ $battery_percentage -le 40 ]; then
   if [ "$battery_state" == "AC" ]; then
     battery_state_icon="󰂈"
   else
     battery_state_icon="󰁽"
   fi
-elif [ $battery_percentage -ge 41 ] && [  $battery_percentage -le 50 ]; then
+elif [ $battery_percentage -ge 41 ] && [ $battery_percentage -le 50 ]; then
   if [ "$battery_state" == "AC" ]; then
     battery_state_icon="󰢝"
   else
     battery_state_icon="󰁾"
   fi
-elif [ $battery_percentage -ge 51 ] && [  $battery_percentage -le 60 ]; then
+elif [ $battery_percentage -ge 51 ] && [ $battery_percentage -le 60 ]; then
   if [ "$battery_state" == "AC" ]; then
     battery_state_icon="󰂉"
   else
     battery_state_icon="󰁿"
   fi
-elif [ $battery_percentage -ge 61 ] && [  $battery_percentage -le 70 ]; then
+elif [ $battery_percentage -ge 61 ] && [ $battery_percentage -le 70 ]; then
   if [ "$battery_state" == "AC" ]; then
     battery_state_icon="󰢞"
   else
     battery_state_icon="󰂀"
   fi
-elif [ $battery_percentage -ge 71 ] && [  $battery_percentage -le 80 ]; then
+elif [ $battery_percentage -ge 71 ] && [ $battery_percentage -le 80 ]; then
   if [ "$battery_state" == "AC" ]; then
     battery_state_icon="󰂊"
   else
