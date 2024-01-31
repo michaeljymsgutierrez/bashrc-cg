@@ -28,13 +28,13 @@ set -g status-right-length "100"
 set -g status-left-style NONE
 set -g status-right-style NONE
 
-tm_session="#[fg=$tm_dark_green,bg=$tm_light_green,bold] $tm_network_status "
 tm_time='#(bash -c ~/bashrc-cg/shellscripts/time.sh)'
 tm_date='#(bash -c ~/bashrc-cg/shellscripts/date.sh)'
 tm_datetime="$tm_time $tm_date"
 tm_battery_status='#(bash -c ~/bashrc-cg/shellscripts/battery.sh)'
 tm_network_status='#(bash -c ~/bashrc-cg/shellscripts/network.sh)'
-tm_host="#[fg=$tm_black,bg=$tm_fg,nobold] 󱩊  #h "
+tm_session="#[fg=$tm_dark_green,bg=$tm_light_green,bold] $tm_network_status "
+tm_win_name="#(bash -c '~/bashrc-cg/shellscripts/iconize-string.sh #W')"
 
 tm_left_section="$tm_session"
 tm_right_section="#[fg=$tm_fg,bg=$tm_light_black] $tm_datetime $tm_battery_status "
@@ -46,8 +46,8 @@ setw -g window-status-activity-style "underscore,fg=$tm_fg,bg=$tm_bg_highlight"
 setw -g window-status-separator ""
 setw -g window-status-style "NONE,fg=$tm_fg,bg=$tm_bg_highlight"
 
-tm_win_inactive="#[default] #W"
-tm_win_active="#[fg=$tm_white,bg=$tm_light_black] #W #[fg=$tm_light_green,bg=$tm_light_black] "
+tm_win_inactive="#[default] $tm_win_name  "
+tm_win_active="#[fg=$tm_white,bg=$tm_light_black,bold] $tm_win_name #[fg=$tm_light_green,bg=$tm_light_black,bold] "
 
 setw -g window-status-format "$tm_win_inactive "
 setw -g window-status-current-format "$tm_win_active"
