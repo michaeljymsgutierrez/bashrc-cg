@@ -22,7 +22,7 @@ set -g status-justify "left"
 
 set -g status-style "fg=$tm_light_green,bg=$tm_bg_highlight"
 
-set -g status-left-length "100"
+set -g status-left-length "190"
 set -g status-right-length "100"
 
 set -g status-left-style NONE
