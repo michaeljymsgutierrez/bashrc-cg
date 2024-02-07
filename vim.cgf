@@ -176,5 +176,7 @@ nnoremap <C-O> :w <CR>
 nnoremap <Bar> :vsplit <CR>
 nnoremap _ :split <CR>
 nnoremap <C-K> :Gist -l <CR>
-vnoremap <C-C> :s#_\(\l\)#\u\1#g <CR> :s#-\(\l\)#\u\1#g <CR>
-vnoremap <C-D> :s/\(\l\)\(\u\)/\1-\l\2/g <CR>
+vnoremap <C-U> :s#_\(\l\)#\u\1#g <CR>
+vnoremap <C-D> :s#-\(\l\)#\u\1#g <CR>
+vnoremap <S-U> :s/\(\l\)\(\u\)/\1_\l\2/g <CR>
+vnoremap <S-D> :s/\(\l\)\(\u\)/\1-\l\2/g <CR>
