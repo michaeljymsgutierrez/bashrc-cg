@@ -45,7 +45,7 @@ alias tmux_commands="cat -n ~/bashrc-cg/tmux-commands.cgf"
 alias e="exit"
 
 function remove_swap() {
-  echo "find . -type f -name "*.sw[klmnop]" -delete" | bash
+  echo 'find . -type f -name "*.sw[klmnop]" -delete' | bash
 }
 alias removeswap="remove_swap"
 
