@@ -59,6 +59,7 @@ Plugin 'mattn/vim-gist'
 Plugin 'fatih/vim-go'
 Plugin 'iamcco/markdown-preview.nvim'
 Plugin 'ryanoasis/vim-devicons'
+Plugin 'mhinz/vim-startify'
 "Plugin 'wakatime/vim-wakatime'"
 "Plugin 'xolox/vim-session'"
 "Plugin 'xolox/vim-misc'"
