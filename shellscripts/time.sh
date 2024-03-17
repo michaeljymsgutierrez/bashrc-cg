@@ -17,7 +17,7 @@ time_period=$(date +"%p")
 
 hours=""
 minutes=""
-time_string="󰢗"
+time_string=""
 
 for (( i=0; i<${#time_hours}; i++ )); do
   hour_value="${time_hours:$i:1}"
@@ -36,7 +36,7 @@ else
 fi
 
 time_string+=$hours
-time_string+="󰮷"
+time_string+="⋅"
 time_string+=$minutes
 time_string+="$period"
 

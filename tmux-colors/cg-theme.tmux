@@ -37,7 +37,7 @@ tm_network_status='#(bash -c ~/bashrc-cg/shellscripts/network.sh)'
 tm_session="#[fg=$tm_fg,bg=$tm_bg_highlight,bold] $tm_network_status "
 tm_win_name="#(bash -c '~/bashrc-cg/shellscripts/iconize-string.sh #W')"
 
-tm_left_section="$tm_session 󰁳 "
+tm_left_section="$tm_session "
 tm_right_section="#[fg=$tm_fg,bg=$tm_bg_highlight] $tm_datetime $tm_battery_status "
 
 set -g status-left "$tm_left_section"

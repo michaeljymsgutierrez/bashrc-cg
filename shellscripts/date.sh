@@ -18,7 +18,7 @@ current_date=$(date +"%d")
 year=""
 month=""
 day=""
-date_string=" "
+date_string=""
 
 for (( i=0; i<${#current_year}; i++ )); do
   year_value="${current_year:$i:1}"
@@ -36,9 +36,9 @@ for (( i=0; i<${#current_date}; i++ )); do
 done
 
 date_string+=$year
-date_string+="󰮷"
+date_string+="·"
 date_string+=$month
-date_string+="󰮷"
+date_string+="⋅"
 date_string+=$day
 
 echo "$date_string"
