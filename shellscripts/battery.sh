@@ -16,7 +16,7 @@ battery_state=$(pmset -g ps|sed -nE "s|.*'(.*) Power.*|\1|p")
 
 battery_percentage_icon=""
 battery_state_icon=""
-battery_status=""
+battery_status="󰫯󰫮󰬁⋅"
 
 if [ $battery_percentage -ge 1 ] && [ $battery_percentage -le 10 ]; then
   if [ "$battery_state" == "AC" ]; then
@@ -88,7 +88,10 @@ for (( i=0; i<${#battery_percentage}; i++ )); do
 done
 
 if [ -z "$battery_percentage" ]; then
-  echo "󰂄 󰬺󰬹󰬹"
+  echo "󰫯󰫮󰬁󰬁 󰬺󰬹󰬹"
+  # echo "󰂄 󰬺󰬹󰬹"
 else
-  echo "$battery_state_icon $battery_percentage_icon"
+  # echo "$battery_state_icon $battery_percentage_icon"
+  battery_status+="$battery_percentage_icon"
+  echo "$battery_status"
 fi
