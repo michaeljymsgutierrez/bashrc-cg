@@ -1,21 +1,22 @@
 #! /bin/bash
 
-icons[0]="󰎡"
-icons[1]="󰎤"
-icons[2]="󰎧"
-icons[3]="󰎪"
-icons[4]="󰎭"
-icons[5]="󰎱"
-icons[6]="󰎳"
-icons[7]="󰎶"
-icons[8]="󰎹"
-icons[9]="󰎼"
+icons[0]="󰬹"
+icons[1]="󰬺"
+icons[2]="󰬻"
+icons[3]="󰬼"
+icons[4]="󰬽"
+icons[5]="󰬾"
+icons[6]="󰬿"
+icons[7]="󰭀"
+icons[8]="󰭁"
+icons[9]="󰭂"
 
 battery_percentage=$(pmset -g batt | grep -Eo "\d+%" | cut -d% -f1)
 battery_state=$(pmset -g ps|sed -nE "s|.*'(.*) Power.*|\1|p")
 
 battery_percentage_icon=""
 battery_state_icon=""
+battery_status=""
 
 if [ $battery_percentage -ge 1 ] && [ $battery_percentage -le 10 ]; then
   if [ "$battery_state" == "AC" ]; then
@@ -87,8 +88,7 @@ for (( i=0; i<${#battery_percentage}; i++ )); do
 done
 
 if [ -z "$battery_percentage" ]; then
-  echo "󰂄 󰎤󰎡󰎡󱨂"
+  echo "󰂄 󰬺󰬹󰬹"
 else
-  battery_percentage_icon+="󱨂"
   echo "$battery_state_icon $battery_percentage_icon"
 fi
