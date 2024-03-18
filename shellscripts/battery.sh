@@ -88,7 +88,7 @@ for (( i=0; i<${#battery_percentage}; i++ )); do
 done
 
 if [ -z "$battery_percentage" ]; then
-  echo "󰫯󰫮󰬁󰬁 󰬺󰬹󰬹"
+  echo "󰫯󰫮󰬁⋅󰬺󰬹󰬹"
   # echo "󰂄 󰬺󰬹󰬹"
 else
   # echo "$battery_state_icon $battery_percentage_icon"
