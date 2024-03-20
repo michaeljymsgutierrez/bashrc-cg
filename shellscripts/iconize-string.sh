@@ -85,6 +85,34 @@ convert_string_to_icon() {
   fi
 }
 
+add_dev_icon() {
+  arg="$1"
+  lower_case_arg=$(echo "$arg" | tr '[:upper:]' '[:lower:]')
+  string="$lower_case_arg"
+
+  if [[ $string == *"node"* ]]; then
+    echo "󰎙 "
+  elif [[ $string == *"git"* ]] ; then
+    echo "󰊢 "
+  elif [[ $string == *"ember"* ]] ; then
+    echo "󰬰 "
+  elif [[ $string == *"javascript"* ]] ; then
+    echo "󰌞 "
+  elif [[ $string == *"note"* ]] ; then
+    echo " "
+  elif [[ $string == *"vim"* ]] ; then
+    echo " "
+  elif [[ $string == *"zsh"* ]] ; then
+    echo " "
+  elif [[ $string == *"src"* ]] ; then
+    echo " "
+  elif [[ $string == *"srv"* ]] ; then
+    echo " "
+  fi
+}
+
+# formatted_window_name=$(add_dev_icon $raw_window_name)
+
 for (( i=0; i<${#raw_window_name}; i++ )); do
   window_name_value="${raw_window_name:$i:1}"
   formatted_window_name+=$(convert_string_to_icon $window_name_value)
