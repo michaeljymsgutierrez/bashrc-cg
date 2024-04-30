@@ -165,6 +165,9 @@ endfunction
 let g:github_user = gh_user
 let g:gist_token = gh_token
 
+"VIM MARKDOWN CONFIG"
+let g:vim_markdown_folding_disabled = 1
+
 "KEYBOARD MAPPING CONFIG"
 nnoremap <C-Left> :tabprevious <CR>
 nnoremap <C-Right> :tabnext <CR>
