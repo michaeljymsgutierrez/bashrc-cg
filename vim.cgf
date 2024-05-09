@@ -27,7 +27,7 @@ set noshowmode
 "set encoding=UTF-8"
 
 syntax enable
-"colorscheme monokai"
+colorscheme monokai
 "colorscheme xcodedark"
 "colorscheme xcodedarkhc"
 "colorscheme xcodelight"
