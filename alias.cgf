@@ -84,6 +84,12 @@ function set_iterm_title {
 }
 alias iterm_title="set_iterm_title"
 
+function git_pull {
+  branch=$(git branch --show-current)
+  echo "git pull origin $branch" | bash
+}
+alias gpull="git_pull"
+
 function git_push {
   branch=$(git branch --show-current)
   echo "git push origin $branch" | bash
