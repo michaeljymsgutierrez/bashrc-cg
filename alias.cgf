@@ -14,8 +14,6 @@ alias grv="clear && git remote -v"
 alias gd="clear && git diff"
 alias gf="clear && git fetch origin --prune"
 alias grh="clear && git reset --hard"
-alias gp="git push"
-alias gm="git commit -m"
 alias gco="git checkout"
 alias apk="./gradlew assembleRelease"
 alias linode="ssh root@172.104.161.220"
@@ -88,11 +86,25 @@ function git_pull {
   branch=$(git branch --show-current)
   echo "git pull origin $branch" | bash
 }
-alias gpull="git_pull"
+alias gpl="git_pull"
 
 function git_push {
   branch=$(git branch --show-current)
   echo "git push origin $branch" | bash
 }
-alias gpush="git_push"
+alias gps="git_push"
+
+function clean_deleted_branch {
+  git fetch --all
+
+  local_branches=$(git for-each-ref --format='%(refname:short)' refs/heads/)
+
+  for branch in $local_branches; do
+    if ! git branch --list --remotes | grep -q "origin/$branch"; then
+      echo "Deleting local branch '$branch' (deleted from remote)"
+      git branch -d "$branch"
+    fi
+  done
+}
+alias gcdb="clean_deleted_branch"
 
