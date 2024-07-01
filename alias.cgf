@@ -78,6 +78,7 @@ alias gd="clear && git diff"
 alias gf="clear && git fetch origin --prune"
 alias grh="clear && git reset --hard"
 alias gco="git checkout"
+alias gbd="git branch -D"
 alias create_gitignore_global="cd && touch .gitignore_global && git config --global core.excludesfile ~/.gitignore_global"
 
 function generate_patch {
