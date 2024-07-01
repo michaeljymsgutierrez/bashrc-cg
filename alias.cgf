@@ -6,15 +6,6 @@ alias avd_list="avdmanager list avd | grep Name"
 alias avd_launch="cd $HOME/Library/Android/Sdk/emulator && ./emulator -avd "
 alias mip="ifconfig | grep Bcast"
 alias src="source ~/.zshrc && echo 'Shell was reloaded!'"
-alias gs="clear && git status"
-alias gb="clear && git branch"
-alias gwb="clear && git rev-parse --abbrev-ref HEAD"
-alias gbr="clear && git branch -r"
-alias grv="clear && git remote -v"
-alias gd="clear && git diff"
-alias gf="clear && git fetch origin --prune"
-alias grh="clear && git reset --hard"
-alias gco="git checkout"
 alias apk="./gradlew assembleRelease"
 alias linode="ssh root@172.104.161.220"
 alias die="killall node"
@@ -33,7 +24,6 @@ alias prj="cd ~/Projects"
 # alias uleft="gsettings set com.canonical.Unity.Launcher launcher-position Left"
 # alias showicon="gsettings set org.gnome.desktop.background show-desktop-icons true"
 # alias hideicon="gsettings set org.gnome.desktop.background show-desktop-icons false"
-alias create_gitignore_global="cd && touch .gitignore_global && git config --global core.excludesfile ~/.gitignore_global"
 # alias removelock="sudo rm /var/lib/apt/lists/lock"
 alias vg="vim -c 'colorscheme gruvbox' -c 'set background=light'"
 alias vs="vim -c 'colorscheme solarized8' -c 'set background=dark'"
@@ -42,6 +32,7 @@ alias cgshell="cd ~/bashrc-cg && vim"
 alias tmux_commands="cat -n ~/bashrc-cg/tmux-commands.cgf"
 alias e="exit"
 
+# UTILITY ALIASES
 function remove_swap() {
   echo 'find . -type f -name "*.sw[klmnop]" -delete' | bash
 }
@@ -62,11 +53,6 @@ function find_file_contain {
 }
 alias ffc="find_file_contain"
 
-function generate_patch {
-  echo "git diff > ~/Desktop/Patches/$@"| bash
-}
-alias gpatch="generate_patch"
-
 function vim_open_file {
   vim $(fzf)
 }
@@ -82,6 +68,23 @@ function set_iterm_title {
 }
 alias iterm_title="set_iterm_title"
 
+# GIT ALIASES
+alias gs="clear && git status"
+alias gb="clear && git branch"
+alias gwb="clear && git rev-parse --abbrev-ref HEAD"
+alias gbr="clear && git branch -r"
+alias grv="clear && git remote -v"
+alias gd="clear && git diff"
+alias gf="clear && git fetch origin --prune"
+alias grh="clear && git reset --hard"
+alias gco="git checkout"
+alias create_gitignore_global="cd && touch .gitignore_global && git config --global core.excludesfile ~/.gitignore_global"
+
+function generate_patch {
+  echo "git diff > ~/Desktop/Patches/$@"| bash
+}
+alias gpatch="generate_patch"
+
 function git_pull {
   branch=$(git branch --show-current)
   echo "git pull origin $branch" | bash
@@ -93,18 +96,3 @@ function git_push {
   echo "git push origin $branch" | bash
 }
 alias gps="git_push"
-
-function clean_deleted_branch {
-  git fetch --all
-
-  local_branches=$(git for-each-ref --format='%(refname:short)' refs/heads/)
-
-  for branch in $local_branches; do
-    if ! git branch --list --remotes | grep -q "origin/$branch"; then
-      echo "Deleting local branch '$branch' (deleted from remote)"
-      git branch -d "$branch"
-    fi
-  done
-}
-alias gcdb="clean_deleted_branch"
-
