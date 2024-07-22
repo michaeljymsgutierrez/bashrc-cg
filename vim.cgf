@@ -62,6 +62,9 @@ Plugin 'ryanoasis/vim-devicons'
 Plugin 'mhinz/vim-startify'
 Plugin 'godlygeek/tabular'
 Plugin 'preservim/vim-markdown'
+Plugin 'evanleck/vim-svelte'
+Plugin 'pangloss/vim-javascript'
+Plugin 'vim-html'
 "Plugin 'wakatime/vim-wakatime'"
 "Plugin 'xolox/vim-session'"
 "Plugin 'xolox/vim-misc'"
