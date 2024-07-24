@@ -60,6 +60,7 @@ Plugin 'ryanoasis/vim-devicons'
 Plugin 'mhinz/vim-startify'
 Plugin 'godlygeek/tabular'
 Plugin 'preservim/vim-markdown'
+Plugin 'sheerun/vim-polyglot'
 call vundle#end()
 
 "NERDTREE CONFIG"
