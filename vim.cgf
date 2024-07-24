@@ -16,7 +16,6 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-"set autoread | au CursorHold * checktime | call feedkeys("lh")"
 set wildignore+=*.swp
 set mouse=a
 set clipboard+=unnamed
@@ -24,7 +23,6 @@ set timeoutlen=1000
 set ttimeoutlen=0
 set backspace=indent,eol,start
 set noshowmode
-"set encoding=UTF-8"
 
 syntax enable
 colorscheme monokai
@@ -91,6 +89,9 @@ au BufReadPost *.cgf set syntax=sh
 au BufEnter *.cgf set syntax=sh
 au BufReadPost *.tmux set syntax=sh
 au BufEnter *.tmux set syntax=sh
+
+"VIM JSX PRETTY CONFIG"
+let g:vim_jsx_pretty_colorful_config = 1
 
 "PRETTIER CONFIG"
 let g:prettier#config#semi = 'false'
