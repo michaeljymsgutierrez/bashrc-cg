@@ -61,6 +61,9 @@ Plugin 'mhinz/vim-startify'
 Plugin 'godlygeek/tabular'
 Plugin 'preservim/vim-markdown'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'yuezk/vim-js'
+Plugin 'HerringtonDarkholme/yats.vim'
+Plugin 'maxmellon/vim-jsx-pretty'
 call vundle#end()
 
 "NERDTREE CONFIG"
