@@ -17,6 +17,7 @@
 
     ```bash
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    git clone https://github.com/sheerun/vim-polyglot ~/.vim/bundle/vim-polyglot
     git clone https://github.com/ryanoasis/nerd-fonts.git
     cd nerd-fonts && ./install.sh Meslo
 
@@ -25,6 +26,10 @@
     sudo apt install vim
     sudo apt install vim-gtk3
     sudo apt-get install fonts-powerline
+
+    # OSX specific only
+    brew install vim
+    btew install tmux
     ```
 4. Copy and paste these following lines on `~/.zshrc` file
 
