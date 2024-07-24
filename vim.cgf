@@ -62,31 +62,9 @@ Plugin 'ryanoasis/vim-devicons'
 Plugin 'mhinz/vim-startify'
 Plugin 'godlygeek/tabular'
 Plugin 'preservim/vim-markdown'
-Plugin 'sheerun/vim-polyglot'
-"Plugin 'evanleck/vim-svelte'"
-"Plugin 'pangloss/vim-javascript'"
-"Plugin 'vim-html'"
-"Plugin 'wakatime/vim-wakatime'"
-"Plugin 'xolox/vim-session'"
-"Plugin 'xolox/vim-misc'"
-"Plugin 'mattn/emmet-vim'"
-"Plugin 'morhetz/gruvbox'"
-"Plugin 'pangloss/vim-javascript'"
-"Plugin 'mxw/vim-jsx'"
 call vundle#end()
 
 "NERDTREE CONFIG"
-"function! IsNERDTreeOpen()"
-"  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)"
-"endfunction"
-
-"function! SyncTree()"
-"  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff"
-"    NERDTreeFind"
-"    wincmd p"
-"  endif"
-"endfunction"
-
 function! CloseHiddenBuffers()
     let open_buffers = []
 
@@ -101,31 +79,16 @@ function! CloseHiddenBuffers()
     endfor
 endfunction
 
-"au BufEnter * call SyncTree()"
-"au VimEnter * NERDTree"
-"au BufEnter * silent NERDTreeMirror"
 au BufEnter * call CloseHiddenBuffers()
 
 let NERDTreeShowHidden = 1
 let NERDTreeRespectWildIgnore = 1
 
-"JAVASCRIPT CONFIG"
-"let g:javascript_plugin_jsdoc = 1"
-"let g:xml_syntax_folding = 1"
-"let g:jsx_ext_required = 0"
-
 "FILE ASSOCIATION CONFIG"
-"au BufReadPost *.hbs set ft=mustache | set syntax=mustache"
-au BufEnter *.hbs set ft=mustache | set syntax=mustache
-"au BufReadPost *.jsx set ft=javascript.jsx | set syntax=javascript.jsx"
-"au BufReadPost *.styl set ft=stylus | set syntax=stylus"
-au BufEnter *.styl set ft=stylus | set syntax=stylus
-"au BufReadPost *.cgf set ft=sh | set syntax=sh"
-au BufEnter *.cgf set ft=sh | set syntax=sh
-au BufEnter *.ts set ft=javascript | set syntax=javascript
-au BufEnter *.tsx set ft=javascript | set syntax=javascript
-au BufEnter *.svelte set ft=svelte | set syntax=html
-au BufEnter *.tmux set ft=conf | set syntax=conf
+au BufReadPost *.cgf set syntax=sh
+au BufEnter *.cgf set syntax=sh
+au BufReadPost *.tmux set syntax=sh
+au BufEnter *.tmux set syntax=sh
 
 "PRETTIER CONFIG"
 let g:prettier#config#semi = 'false'
