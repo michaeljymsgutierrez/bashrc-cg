@@ -89,6 +89,10 @@ au BufReadPost *.cgf set syntax=sh
 au BufEnter *.cgf set syntax=sh
 au BufReadPost *.tmux set syntax=sh
 au BufEnter *.tmux set syntax=sh
+au BufReadPost *.ts set syntax=javascript
+au BufEnter *.ts set syntax=javascript
+au BufReadPost *.tsx set syntax=javascript
+au BufEnter *.tsx set syntax=javascript
 
 "VIM JSX PRETTY CONFIG"
 let g:vim_jsx_pretty_colorful_config = 1
