@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 raw_window_name="$1"
 formatted_window_name=""

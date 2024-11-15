@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 sudo service mysql stop &&
 sudo service teamviewerd stop &&

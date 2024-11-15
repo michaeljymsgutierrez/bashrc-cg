@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 # removing pavucontrol config
 cd ~/ && rm pavucontrol.ini && echo 'DONE: Removing pavucontrol.ini' || echo "FAILED: Removing pavucontrol.ini"

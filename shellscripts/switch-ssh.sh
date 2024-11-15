@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 # Shell script for switching ssh-id
 
 cd ~/.ssh && ls -d */

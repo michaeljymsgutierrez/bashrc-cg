@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 notation="$(date  +"%p")"
 current_time="`date "+%I:%M:%S"`"

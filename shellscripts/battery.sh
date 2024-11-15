@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 icons[0]="󰬹"
 icons[1]="󰬺"

@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 # @params $1: APP_NAME
 # @params $2: ICON_PATH
