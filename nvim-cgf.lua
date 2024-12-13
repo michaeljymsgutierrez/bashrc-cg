@@ -68,6 +68,9 @@ require('lazy').setup({
         vim.cmd('let NERDTreeRespectWildIgnore = 1')
       end
     },
+    {
+      'tomtom/tcomment_vim'
+    }
   },
   install = {
     colorscheme = {
