@@ -1,6 +1,6 @@
 -- SETUP
 -- Copy this lines to ~/.config/nvim/init.lua
--- local homeDir = os.getenv('HOME") .. "/bashrc-cg/nvim-cgf.lua"
+-- local homeDir = os.getenv('HOME') .. '/bashrc-cg/nvim-cgf.lua'
 -- local initNvimConfig = loadfile(homeDir)
 -- initNvimConfig()
 
@@ -53,13 +53,16 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   spec = {
     {
-      'loctvl842/monokai-pro.nvim'
+      'loctvl842/monokai-pro.nvim',
+      config = function()
+        vim.cmd('colorscheme monokai-pro')
+      end
     },
     {
-      "preservim/nerdtree",
+      'preservim/nerdtree',
       config = function()
-        vim.g.NERDTreeShowHidden = 1
-        vim.g.NERDTreeRespectWildIgnore = 1
+        vim.cmd('let NERDTreeShowHidden = 1')
+        vim.cmd('let NERDTreeRespectWildIgnore = 1')
       end
     },
   },
@@ -70,8 +73,6 @@ require('lazy').setup({
   },
   checker = { enabled = false },
 })
-
-vim.cmd('colorscheme monokai-pro')
 
 -- KEYBOARD MAPPING CONFIG
 vim.api.nvim_set_keymap('n', '<C-Left>', ':tabprevious<CR>', { noremap = true })
