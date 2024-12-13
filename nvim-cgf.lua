@@ -70,6 +70,12 @@ require('lazy').setup({
     },
     {
       'tomtom/tcomment_vim'
+    },
+    {
+      'Yggdroot/indentLine',
+      config = function()
+        vim.cmd("let g:indentLine_char = '│'")
+      end
     }
   },
   install = {
