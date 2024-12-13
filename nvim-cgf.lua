@@ -59,3 +59,25 @@ require("lazy").setup({
   -- automatically check for plugin updates
   checker = { enabled = true },
 })
+
+-- KEYBOARD MAPPING CONFIG
+vim.api.nvim_set_keymap('n', '<C-Left>', ':tabprevious<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-Right>', ':tabnext<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-T>', ':tabnew<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-F>', ':FZF<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-N>', ':NERDTreeToggle<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-L>', ':NERDTreeFind<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-P>', ':Prettier<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-E>', ':e!<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-X>', ':x<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-O>', ':w<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '|', ':vsplit<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '_', ':split<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-K>', ':Gist -l<CR>', { noremap = true })
+
+vim.api.nvim_set_keymap('v', '<C-U>', ':s/_\\(\\l\\)/\\u\\1/g<CR>', { noremap = true })
+vim.api.nvim_set_keymap('v', '<C-D>', ':s/-\\(\\l\\)/\\u\\1/g<CR>', { noremap = true })
+vim.api.nvim_set_keymap('v', '<S-U>', ':s/\\(\\l\\)\\(\\u\\)/\\1_\\l\\2/g<CR>', { noremap = true })
+vim.api.nvim_set_keymap('v', '<S-D>', ':s/\\(\\l\\)\\(\\u\\)/\\1-\\l\\2/g<CR>', { noremap = true })
+
+
