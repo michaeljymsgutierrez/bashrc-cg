@@ -52,10 +52,23 @@ vim.opt.rtp:prepend(lazypath)
 -- LAZY PLUGINS
 require('lazy').setup({
   spec = {
-    { 'loctvl842/monokai-pro.nvim' }
+    {
+      'loctvl842/monokai-pro.nvim'
+    },
+    {
+      "preservim/nerdtree",
+      config = function()
+        vim.g.NERDTreeShowHidden = 1
+        vim.g.NERDTreeRespectWildIgnore = 1
+      end
+    },
   },
-  install = { colorscheme = { 'monokai-pro' } },
-  checker = { enabled = true },
+  install = {
+    colorscheme = {
+      'monokai-pro'
+    }
+  },
+  checker = { enabled = false },
 })
 
 vim.cmd('colorscheme monokai-pro')
