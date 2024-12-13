@@ -26,6 +26,9 @@ vim.cmd('set ttimeoutlen=0')
 vim.cmd('set backspace=indent,eol,start')
 vim.cmd('set noshowmode')
 vim.cmd('set background=dark')
+vim.cmd('syntax enable')
+vim.cmd('filetype off')
+vim.cmd('filetype plugin indent on')
 
 -- PLUGIN MANAGER
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
