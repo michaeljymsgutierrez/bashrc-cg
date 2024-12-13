@@ -76,13 +76,29 @@ require('lazy').setup({
       config = function()
         vim.cmd("let g:indentLine_char = '│'")
       end
+    },
+    {
+      'nvim-treesitter/nvim-treesitter',
+      dependencies = {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        'nvim-treesitter/playground',
+        'nvim-treesitter/nvim-treesitter-context',
+        'nvim-treesitter/nvim-treesitter-refactor'
+      },
+      config = function()
+        require('nvim-treesitter.configs').setup({
+          ensure_installed = {
+            'css', 'scss', 'html', 'javascript', 'typescript', 'json', 'json5', 'jsdoc',
+            'markdown', 'vim', 'lua', 'bash', 'yaml', 'go'
+          },
+          highlight = { enable = true },
+          indent = { enable = true },
+          textobjects = { enable = true }
+        })
+      end
     }
   },
-  install = {
-    colorscheme = {
-      'monokai-pro'
-    }
-  },
+  install = {},
   checker = { enabled = false },
 })
 
