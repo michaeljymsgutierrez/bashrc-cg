@@ -89,7 +89,7 @@ require('lazy').setup({
         require('nvim-treesitter.configs').setup({
           ensure_installed = {
             'css', 'scss', 'html', 'javascript', 'typescript', 'json', 'json5', 'jsdoc',
-            'markdown', 'vim', 'lua', 'bash', 'yaml', 'go'
+            'markdown', 'vim', 'lua', 'bash', 'yaml', 'go', 'comment'
           },
           highlight = { enable = true },
           indent = { enable = true },
@@ -101,6 +101,30 @@ require('lazy').setup({
   install = {},
   checker = { enabled = false },
 })
+
+-- Plugin to install
+-- Plugin 'ntpeters/vim-better-whitespace'
+-- Plugin 'mustache/vim-mustache-handlebars'
+-- Plugin 'mhinz/vim-signify'
+-- Plugin 'itchyny/lightline.vim'
+-- Plugin 'junegunn/fzf'
+-- Plugin 'junegunn/fzf.vim'
+-- Plugin 'itchyny/vim-gitbranch'
+-- Plugin 'prettier/vim-prettier'
+-- Plugin 'wavded/vim-stylus'
+-- Plugin 'tpope/vim-fugitive'
+-- Plugin 'mattn/webapi-vim'
+-- Plugin 'mattn/vim-gist'
+-- Plugin 'fatih/vim-go'
+-- Plugin 'iamcco/markdown-preview.nvim'
+-- Plugin 'ryanoasis/vim-devicons'
+-- Plugin 'mhinz/vim-startify'
+-- Plugin 'godlygeek/tabular'
+-- Plugin 'preservim/vim-markdown'
+-- Plugin 'sheerun/vim-polyglot'
+-- Plugin 'yuezk/vim-js'
+-- Plugin 'HerringtonDarkholme/yats.vim'
+-- Plugin 'maxmellon/vim-jsx-pretty'
 
 -- KEYBOARD MAPPING CONFIG
 vim.api.nvim_set_keymap('n', '<C-Left>', ':tabprevious<CR>', { noremap = true })
