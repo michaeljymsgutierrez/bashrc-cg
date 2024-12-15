@@ -72,6 +72,15 @@ require('lazy').setup({
       'tomtom/tcomment_vim'
     },
     {
+      'ntpeters/vim-better-whitespace'
+    },
+    {
+      'mustache/vim-mustache-handlebars'
+    },
+    {
+      'mhinz/vim-signify'
+    },
+    {
       'Yggdroot/indentLine',
       config = function()
         vim.cmd("let g:indentLine_char = '│'")
@@ -103,9 +112,6 @@ require('lazy').setup({
 })
 
 -- Plugin to install
--- Plugin 'ntpeters/vim-better-whitespace'
--- Plugin 'mustache/vim-mustache-handlebars'
--- Plugin 'mhinz/vim-signify'
 -- Plugin 'itchyny/lightline.vim'
 -- Plugin 'junegunn/fzf'
 -- Plugin 'junegunn/fzf.vim'
@@ -121,10 +127,6 @@ require('lazy').setup({
 -- Plugin 'mhinz/vim-startify'
 -- Plugin 'godlygeek/tabular'
 -- Plugin 'preservim/vim-markdown'
--- Plugin 'sheerun/vim-polyglot'
--- Plugin 'yuezk/vim-js'
--- Plugin 'HerringtonDarkholme/yats.vim'
--- Plugin 'maxmellon/vim-jsx-pretty'
 
 -- KEYBOARD MAPPING CONFIG
 vim.api.nvim_set_keymap('n', '<C-Left>', ':tabprevious<CR>', { noremap = true })
