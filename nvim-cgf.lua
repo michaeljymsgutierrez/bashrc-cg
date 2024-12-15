@@ -1,7 +1,7 @@
 -- SETUP
 -- Copy this lines to ~/.config/nvim/init.lua
--- local homeDir = os.getenv('HOME') .. '/bashrc-cg/nvim-cgf.lua'
--- local initNvimConfig = loadfile(homeDir)
+-- local homeDirectory = os.getenv('HOME') .. '/bashrc-cg/nvim-cgf.lua'
+-- local initNvimConfig = loadfile(homeDirectory)
 -- initNvimConfig()
 
 -- INITIAL CONFIG
@@ -97,6 +97,30 @@ require('lazy').setup({
       'ryanoasis/vim-devicons'
     },
     {
+      'itchyny/vim-gitbranch',
+    },
+    {
+      'itchyny/lightline.vim',
+      config = function()
+        vim.g.lightline = {
+          active = {
+            left = {
+              { "mode", "paste" },
+              { "gitbranch", "readonly", "filename", "modified" }
+            }
+          },
+          component_function = {
+            gitbranch = "gitbranch#name",
+            filetype = "MyFiletype",
+            fileformat = "MyFileformat"
+          }
+        }
+      end
+    },
+    {
+      'tpope/vim-fugitive'
+    },
+    {
       'prettier/vim-prettier',
       config = function()
         vim.cmd("let g:prettier#config#semi = 'false'")
@@ -142,11 +166,9 @@ require('lazy').setup({
 })
 
 -- Plugin to install
--- Plugin 'itchyny/lightline.vim'
--- Plugin 'itchyny/vim-gitbranch'
--- Plugin 'tpope/vim-fugitive'
 -- Plugin 'mattn/webapi-vim'
 -- Plugin 'mattn/vim-gist'
+--
 
 
 -- FILE ASSOCIATION CONFIG
@@ -180,5 +202,3 @@ vim.api.nvim_set_keymap('v', '<C-U>', ':s/_\\(\\l\\)/\\u\\1/g<CR>', { noremap = 
 vim.api.nvim_set_keymap('v', '<C-D>', ':s/-\\(\\l\\)/\\u\\1/g<CR>', { noremap = true })
 vim.api.nvim_set_keymap('v', '<S-U>', ':s/\\(\\l\\)\\(\\u\\)/\\1_\\l\\2/g<CR>', { noremap = true })
 vim.api.nvim_set_keymap('v', '<S-D>', ':s/\\(\\l\\)\\(\\u\\)/\\1-\\l\\2/g<CR>', { noremap = true })
-
-
