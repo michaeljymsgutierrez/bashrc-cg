@@ -81,6 +81,10 @@ require('lazy').setup({
       'mhinz/vim-signify'
     },
     {
+      -- Check this plugin! its not working
+      'iamcco/markdown-preview.nvim'
+    },
+    {
       'Yggdroot/indentLine',
       config = function()
         vim.cmd("let g:indentLine_char = '│'")
@@ -126,7 +130,6 @@ require('lazy').setup({
 -- Plugin 'ryanoasis/vim-devicons'
 -- Plugin 'mhinz/vim-startify'
 -- Plugin 'godlygeek/tabular'
--- Plugin 'preservim/vim-markdown'
 
 -- KEYBOARD MAPPING CONFIG
 vim.api.nvim_set_keymap('n', '<C-Left>', ':tabprevious<CR>', { noremap = true })
