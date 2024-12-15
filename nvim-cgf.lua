@@ -85,6 +85,15 @@ require('lazy').setup({
       'iamcco/markdown-preview.nvim'
     },
     {
+      'junegunn/fzf'
+    },
+    {
+      'junegunn/fzf.vim'
+    },
+    {
+      'mhinz/vim-startify'
+    },
+    {
       'Yggdroot/indentLine',
       config = function()
         vim.cmd("let g:indentLine_char = '│'")
@@ -117,8 +126,6 @@ require('lazy').setup({
 
 -- Plugin to install
 -- Plugin 'itchyny/lightline.vim'
--- Plugin 'junegunn/fzf'
--- Plugin 'junegunn/fzf.vim'
 -- Plugin 'itchyny/vim-gitbranch'
 -- Plugin 'prettier/vim-prettier'
 -- Plugin 'wavded/vim-stylus'
@@ -126,10 +133,8 @@ require('lazy').setup({
 -- Plugin 'mattn/webapi-vim'
 -- Plugin 'mattn/vim-gist'
 -- Plugin 'fatih/vim-go'
--- Plugin 'iamcco/markdown-preview.nvim'
 -- Plugin 'ryanoasis/vim-devicons'
 -- Plugin 'mhinz/vim-startify'
--- Plugin 'godlygeek/tabular'
 
 -- KEYBOARD MAPPING CONFIG
 vim.api.nvim_set_keymap('n', '<C-Left>', ':tabprevious<CR>', { noremap = true })
