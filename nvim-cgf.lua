@@ -104,11 +104,7 @@ require('lazy').setup({
         'nvim-tree/nvim-web-devicons'
       },
       config = function()
-        require('lualine').setup {
-          options = {
-            theme = 'powerline'
-          }
-        }
+        require('lualine').setup {}
       end
     },
     {
