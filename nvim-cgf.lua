@@ -103,19 +103,14 @@ require('lazy').setup({
       'itchyny/vim-gitbranch',
     },
     {
-      'itchyny/lightline.vim',
+      'nvim-lualine/lualine.nvim',
+      dependencies = {
+        'nvim-tree/nvim-web-devicons'
+      },
       config = function()
-        vim.g.lightline = {
-          active = {
-            left = {
-              { "mode", "paste" },
-              { "gitbranch", "readonly", "filename", "modified" }
-            }
-          },
-          component_function = {
-            gitbranch = "gitbranch#name",
-            filetype = "MyFiletype",
-            fileformat = "MyFileformat"
+        require('lualine').setup {
+          options = {
+            theme = 'powerline'
           }
         }
       end
@@ -172,7 +167,6 @@ require('lazy').setup({
 -- Plugin 'mattn/webapi-vim'
 -- Plugin 'mattn/vim-gist'
 --
-
 
 -- FILE ASSOCIATION CONFIG
 vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufEnter' }, {
