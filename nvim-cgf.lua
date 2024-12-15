@@ -88,7 +88,10 @@ require('lazy').setup({
       'junegunn/fzf'
     },
     {
-      'junegunn/fzf.vim'
+      'junegunn/fzf.vim',
+      config = function()
+        vim.env.FZF_DEFAULT_COMMAND = "find . \\( -name node_modules -o -name bower_components -o -name tmp -o -name .git \\) -prune -o -print"
+      end
     },
     {
       'mhinz/vim-startify'
