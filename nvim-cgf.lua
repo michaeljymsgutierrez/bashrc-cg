@@ -101,6 +101,13 @@ require('lazy').setup({
       end
     },
     {
+      -- Check this plugin! if it still works or needed anymore!
+      'maxmellon/vim-jsx-pretty',
+      config = function()
+        vim.cmd('let g:vim_jsx_pretty_colorful_config = 1')
+      end
+    },
+    {
       'Yggdroot/indentLine',
       config = function()
         vim.cmd("let g:indentLine_char = '│'")
