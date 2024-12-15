@@ -94,6 +94,13 @@ require('lazy').setup({
       'mhinz/vim-startify'
     },
     {
+      'prettier/vim-prettier',
+      config = function()
+        vim.cmd("let g:prettier#config#semi = 'false'")
+        vim.cmd("let g:prettier#config#single_quote = 'true'")
+      end
+    },
+    {
       'Yggdroot/indentLine',
       config = function()
         vim.cmd("let g:indentLine_char = '│'")
@@ -127,14 +134,11 @@ require('lazy').setup({
 -- Plugin to install
 -- Plugin 'itchyny/lightline.vim'
 -- Plugin 'itchyny/vim-gitbranch'
--- Plugin 'prettier/vim-prettier'
 -- Plugin 'wavded/vim-stylus'
 -- Plugin 'tpope/vim-fugitive'
 -- Plugin 'mattn/webapi-vim'
 -- Plugin 'mattn/vim-gist'
--- Plugin 'fatih/vim-go'
 -- Plugin 'ryanoasis/vim-devicons'
--- Plugin 'mhinz/vim-startify'
 
 -- KEYBOARD MAPPING CONFIG
 vim.api.nvim_set_keymap('n', '<C-Left>', ':tabprevious<CR>', { noremap = true })
