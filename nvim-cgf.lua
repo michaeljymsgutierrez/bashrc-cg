@@ -56,6 +56,27 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   spec = {
     {
+      'tomtom/tcomment_vim'
+    },
+    {
+      'ntpeters/vim-better-whitespace'
+    },
+    {
+      'mustache/vim-mustache-handlebars'
+    },
+    {
+      'mhinz/vim-signify'
+    },
+    {
+      'mhinz/vim-startify'
+    },
+    {
+      'ryanoasis/vim-devicons'
+    },
+    {
+      'tpope/vim-fugitive'
+    },
+    {
       'loctvl842/monokai-pro.nvim',
       config = function()
         vim.cmd('colorscheme monokai-pro')
@@ -69,22 +90,6 @@ require('lazy').setup({
       end
     },
     {
-      'tomtom/tcomment_vim'
-    },
-    {
-      'ntpeters/vim-better-whitespace'
-    },
-    {
-      'mustache/vim-mustache-handlebars'
-    },
-    {
-      'mhinz/vim-signify'
-    },
-    {
-      -- Check this plugin! its not working
-      'iamcco/markdown-preview.nvim'
-    },
-    {
       'junegunn/fzf'
     },
     {
@@ -92,15 +97,6 @@ require('lazy').setup({
       config = function()
         vim.env.FZF_DEFAULT_COMMAND = "find . \\( -name node_modules -o -name bower_components -o -name tmp -o -name .git \\) -prune -o -print"
       end
-    },
-    {
-      'mhinz/vim-startify'
-    },
-    {
-      'ryanoasis/vim-devicons'
-    },
-    {
-      'itchyny/vim-gitbranch',
     },
     {
       'nvim-lualine/lualine.nvim',
@@ -116,20 +112,10 @@ require('lazy').setup({
       end
     },
     {
-      'tpope/vim-fugitive'
-    },
-    {
       'prettier/vim-prettier',
       config = function()
         vim.cmd("let g:prettier#config#semi = 'false'")
         vim.cmd("let g:prettier#config#single_quote = 'true'")
-      end
-    },
-    {
-      -- Check this plugin! if it still works or needed anymore!
-      'maxmellon/vim-jsx-pretty',
-      config = function()
-        vim.cmd('let g:vim_jsx_pretty_colorful_config = 1')
       end
     },
     {
@@ -158,6 +144,15 @@ require('lazy').setup({
         })
       end
     }
+    -- {
+    --   'maxmellon/vim-jsx-pretty',
+    --   config = function()
+    --     vim.cmd('let g:vim_jsx_pretty_colorful_config = 1')
+    --   end
+    -- },
+    -- {
+    --   'iamcco/markdown-preview.nvim'
+    -- },
   },
   install = {},
   checker = { enabled = false },
