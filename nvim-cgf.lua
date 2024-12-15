@@ -94,6 +94,9 @@ require('lazy').setup({
       'mhinz/vim-startify'
     },
     {
+      'ryanoasis/vim-devicons'
+    },
+    {
       'prettier/vim-prettier',
       config = function()
         vim.cmd("let g:prettier#config#semi = 'false'")
@@ -141,11 +144,22 @@ require('lazy').setup({
 -- Plugin to install
 -- Plugin 'itchyny/lightline.vim'
 -- Plugin 'itchyny/vim-gitbranch'
--- Plugin 'wavded/vim-stylus'
 -- Plugin 'tpope/vim-fugitive'
 -- Plugin 'mattn/webapi-vim'
 -- Plugin 'mattn/vim-gist'
--- Plugin 'ryanoasis/vim-devicons'
+
+
+-- FILE ASSOCIATION CONFIG
+vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufEnter' }, {
+  pattern = { '*.cgf', '*.tmux' },
+  command = 'set syntax=sh'
+})
+
+-- Check this autocmd if working
+-- vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufEnter' }, {
+--   pattern = { '*.ts', '*.tsx' },
+--   command = 'set syntax=javascript'
+-- })
 
 -- KEYBOARD MAPPING CONFIG
 vim.api.nvim_set_keymap('n', '<C-Left>', ':tabprevious<CR>', { noremap = true })
