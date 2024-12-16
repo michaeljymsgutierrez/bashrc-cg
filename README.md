@@ -29,7 +29,9 @@
 
     # OSX specific only
     brew install vim
-    btew install tmux
+    brew install nvim
+    brew install tmux
+    brew install ripgrep
     ```
 4. Copy and paste these following lines on `~/.zshrc` file
 
