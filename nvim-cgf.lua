@@ -1,9 +1,3 @@
--- SETUP
--- Copy this lines to ~/.config/nvim/init.lua
--- local homeDirectory = os.getenv('HOME') .. '/bashrc-cg/nvim-cgf.lua'
--- local initNvimConfig = loadfile(homeDirectory)
--- initNvimConfig()
-
 -- INITIAL CONFIG
 vim.cmd('set number')
 vim.cmd('set number')

@@ -13,7 +13,7 @@
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     ~/.fzf/install
     ```
-3. Install latest `vim`, `vundle`, `tmux` `nerd-fonts` and  `powerline-fonts`
+3. Install latest `vim/nvim`, `vundle`, `tmux` `nerd-fonts` and  `powerline-fonts`
 
     ```bash
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -45,12 +45,19 @@
     ```bash
     source ~/bashrc-cg/vim.cgf
     ```
-6. Copy and paste these following lines on `~/.tmux.conf` file
+6. Copy and paste these following lines on `~/.config/nvim/init.lua` file
+
+    ```bash
+    local homeDirectory = os.getenv('HOME') .. '/bashrc-cg/nvim-cgf.lua'
+    local initNvimConfig = loadfile(homeDirectory)
+    initNvimConfig()
+    ```
+7. Copy and paste these following lines on `~/.tmux.conf` file
 
     ```bash
     source ~/bashrc-cg/tmux.cgf
     ```
-7. Restart your `terminal/terminal-emulator` by closing and reopening it or
+8. Restart your `terminal/terminal-emulator` by closing and reopening it or
     run these commands on your terminal
 
     ```bash
