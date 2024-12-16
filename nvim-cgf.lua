@@ -79,26 +79,25 @@ require('lazy').setup({
       end
     },
     {
-      "goolord/alpha-nvim",
+      'goolord/alpha-nvim',
       dependencies = {
         'nvim-tree/nvim-web-devicons'
       },
       config = function()
-        local startify = require("alpha.themes.startify")
-        startify.file_icons.provider = "devicons"
-        require("alpha").setup(
+        local startify = require('alpha.themes.startify')
+        startify.file_icons.provider = 'devicons'
+        require('alpha').setup(
           startify.config
         )
-      end,
+      end
     },
     {
-      'loctvl842/monokai-pro.nvim',
+      'navarasu/onedark.nvim',
       config = function()
-        require("monokai-pro").setup({
-          transparent_background = false,
-          filter = 'pro', -- classic | octagon | pro | machine | ristretto | spectrum
-        })
-        vim.cmd('colorscheme monokai-pro')
+        require('onedark').setup {
+          style = 'warmer' -- dark, darker, cool, deep, warm, warmer, light
+        }
+        require('onedark').load()
       end
     },
     {
@@ -126,7 +125,6 @@ require('lazy').setup({
       config = function()
         require('lualine').setup {
           options = {
-            theme = 'monokai-pro',
             section_separators = '',
             component_separators = ''
           }
@@ -166,12 +164,6 @@ require('lazy').setup({
         })
       end
     },
-    -- {
-    --   'maxmellon/vim-jsx-pretty',
-    --   config = function()
-    --     vim.cmd('let g:vim_jsx_pretty_colorful_config = 1')
-    --   end
-    -- },
   },
   install = {},
   checker = { enabled = false },
