@@ -74,6 +74,17 @@ require('lazy').setup({
       'tpope/vim-fugitive'
     },
     {
+      'mattn/webapi-vim'
+    },
+    {
+      'mattn/vim-gist',
+      config = function()
+       vim.cmd('source ~/.vim/.gh-credentials')
+       vim.g.gist_username = vim.g.gh_user
+       vim.g.gist_token = vim.g.gh_token
+      end
+    },
+    {
       "goolord/alpha-nvim",
       dependencies = {
         'nvim-tree/nvim-web-devicons'
@@ -173,8 +184,6 @@ require('lazy').setup({
 })
 
 -- Plugin to install
--- Plugin 'mattn/webapi-vim'
--- Plugin 'mattn/vim-gist'
 --
 
 -- FILE ASSOCIATION CONFIG
