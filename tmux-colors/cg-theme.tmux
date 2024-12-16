@@ -1,6 +1,6 @@
 tm_bg="#444444"
 tm_fg="#bcbcbc"
-tm_bg_highlight="#38383d"
+tm_bg_highlight="#16161e"
 tm_light_yellow="#e6db73"
 tm_light_green="#afdf00"
 tm_teal="#65d8ee"

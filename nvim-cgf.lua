@@ -92,12 +92,9 @@ require('lazy').setup({
       end
     },
     {
-      'navarasu/onedark.nvim',
+      'folke/tokyonight.nvim',
       config = function()
-        require('onedark').setup {
-          style = 'warmer' -- dark, darker, cool, deep, warm, warmer, light
-        }
-        require('onedark').load()
+        vim.cmd('colorscheme tokyonight-night')
       end
     },
     {
