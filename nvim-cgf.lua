@@ -182,8 +182,16 @@ require('lazy').setup({
 
 -- FILE ASSOCIATION CONFIG
 vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufEnter' }, {
-  pattern = { '*.cgf', '*.tmux' },
+  pattern = { '*.tmux' },
   command = 'set syntax=sh'
+})
+
+vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufEnter' }, {
+  pattern = { '*.cgf' },
+  callback = function()
+    vim.cmd('set syntax=sh')
+    vim.cmd('set ft=sh')
+  end
 })
 
 -- Check this autocmd if working
