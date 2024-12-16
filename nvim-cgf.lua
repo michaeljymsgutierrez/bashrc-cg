@@ -71,6 +71,15 @@ require('lazy').setup({
       'mattn/webapi-vim'
     },
     {
+      'alvarosevilla95/luatab.nvim',
+      dependencies = {
+        'nvim-tree/nvim-web-devicons'
+      },
+      config = function()
+        require('luatab').setup{}
+      end
+    },
+    {
       'mattn/vim-gist',
       config = function()
        vim.cmd('source ~/.vim/.gh-credentials')
