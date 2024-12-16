@@ -39,7 +39,6 @@
     source ~/bashrc-cg/path.cgf
     source ~/bashrc-cg/powerline.cgf
     source ~/bashrc-cg/alias.cgf
-    source ~/bashrc-cg/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     ```
 5. Copy and paste these following lines on `~/.vimrc` file
 
@@ -63,5 +62,9 @@
 
     ```bash
     src
+    # For vim
     vim -c "PluginInstall"
+
+    # For nvim
+    nvim
     ```
