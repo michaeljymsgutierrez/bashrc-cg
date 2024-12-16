@@ -86,12 +86,16 @@ require('lazy').setup({
     --     )
     --   end,
     -- },
-    -- {
-    --   'loctvl842/monokai-pro.nvim',
-    --   config = function()
-    --     vim.cmd('colorscheme monokai-pro')
-    --   end
-    -- },
+    {
+      'loctvl842/monokai-pro.nvim',
+      config = function()
+        require("monokai-pro").setup({
+          transparent_background = false,
+          filter = 'classic', -- classic | octagon | pro | machine | ristretto | spectrum
+        })
+        vim.cmd('colorscheme monokai-pro')
+      end
+    },
     {
       'preservim/nerdtree',
       config = function()
@@ -108,15 +112,19 @@ require('lazy').setup({
         vim.env.FZF_DEFAULT_COMMAND = "find . \\( -name node_modules -o -name bower_components -o -name tmp -o -name .git \\) -prune -o -print"
       end
     },
-    -- {
-    --   'nvim-lualine/lualine.nvim',
-    --   dependencies = {
-    --     'nvim-tree/nvim-web-devicons'
-    --   },
-    --   config = function()
-    --     require('lualine').setup {}
-    --   end
-    -- },
+    {
+      'nvim-lualine/lualine.nvim',
+      dependencies = {
+        'nvim-tree/nvim-web-devicons'
+      },
+      config = function()
+        require('lualine').setup {
+          options = {
+            theme = 'monokai-pro'
+          }
+        }
+      end
+    },
     -- {
     --   'akinsho/bufferline.nvim',
     --   version = "*",
