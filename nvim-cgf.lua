@@ -96,7 +96,7 @@ require('lazy').setup({
       config = function()
         require("monokai-pro").setup({
           transparent_background = false,
-          filter = 'classic', -- classic | octagon | pro | machine | ristretto | spectrum
+          filter = 'pro', -- classic | octagon | pro | machine | ristretto | spectrum
         })
         vim.cmd('colorscheme monokai-pro')
       end
