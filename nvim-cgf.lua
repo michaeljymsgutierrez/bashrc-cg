@@ -68,7 +68,7 @@ require('lazy').setup({
       'mhinz/vim-signify'
     },
     {
-      'ryanoasis/vim-devicons'
+      'nvim-web-devicons'
     },
     {
       'tpope/vim-fugitive'
@@ -97,11 +97,15 @@ require('lazy').setup({
       end
     },
     {
-      'preservim/nerdtree',
+      'nvim-tree/nvim-tree.lua',
+      version = "*",
+      lazy = false,
+      dependencies = {
+        'nvim-tree/nvim-web-devicons',
+      },
       config = function()
-        vim.cmd('let NERDTreeShowHidden = 1')
-        vim.cmd('let NERDTreeRespectWildIgnore = 1')
-      end
+        require('nvim-tree').setup {}
+      end,
     },
     {
       'junegunn/fzf'
@@ -209,8 +213,8 @@ vim.api.nvim_set_keymap('n', '<C-Left>', ':tabprevious<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-Right>', ':tabnext<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-T>', ':tabnew<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-F>', ':FZF<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-N>', ':NERDTreeToggle<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-L>', ':NERDTreeFind<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-N>', ':NvimTreeToggle<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-L>', ':NvimTreeFindFileToggle<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-P>', ':Prettier<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-E>', ':e!<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-X>', ':x<CR>', { noremap = true })
