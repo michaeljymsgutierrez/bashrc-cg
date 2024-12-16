@@ -25,7 +25,6 @@ vim.cmd('set timeoutlen=1000')
 vim.cmd('set ttimeoutlen=0')
 vim.cmd('set backspace=indent,eol,start')
 vim.cmd('set noshowmode')
-vim.cmd('set background=dark')
 vim.cmd('syntax enable')
 vim.cmd('filetype off')
 vim.cmd('filetype plugin indent on')
@@ -52,6 +51,7 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+
 -- LAZY PLUGINS
 require('lazy').setup({
   spec = {
@@ -73,25 +73,25 @@ require('lazy').setup({
     {
       'tpope/vim-fugitive'
     },
-    {
-      "goolord/alpha-nvim",
-      dependencies = {
-        'nvim-tree/nvim-web-devicons'
-      },
-      config = function()
-        local startify = require("alpha.themes.startify")
-        startify.file_icons.provider = "devicons"
-        require("alpha").setup(
-          startify.config
-        )
-      end,
-    },
-    {
-      'loctvl842/monokai-pro.nvim',
-      config = function()
-        vim.cmd('colorscheme monokai-pro')
-      end
-    },
+    -- {
+    --   "goolord/alpha-nvim",
+    --   dependencies = {
+    --     'nvim-tree/nvim-web-devicons'
+    --   },
+    --   config = function()
+    --     local startify = require("alpha.themes.startify")
+    --     startify.file_icons.provider = "devicons"
+    --     require("alpha").setup(
+    --       startify.config
+    --     )
+    --   end,
+    -- },
+    -- {
+    --   'loctvl842/monokai-pro.nvim',
+    --   config = function()
+    --     vim.cmd('colorscheme monokai-pro')
+    --   end
+    -- },
     {
       'preservim/nerdtree',
       config = function()
@@ -108,23 +108,30 @@ require('lazy').setup({
         vim.env.FZF_DEFAULT_COMMAND = "find . \\( -name node_modules -o -name bower_components -o -name tmp -o -name .git \\) -prune -o -print"
       end
     },
-    {
-      'nvim-lualine/lualine.nvim',
-      dependencies = {
-        'nvim-tree/nvim-web-devicons'
-      },
-      config = function()
-        require('lualine').setup {}
-      end
-    },
-    {
-      'akinsho/bufferline.nvim',
-      version = "*",
-      dependencies = 'nvim-tree/nvim-web-devicons',
-      config = function()
-        require("bufferline").setup {}
-      end
-    },
+    -- {
+    --   'nvim-lualine/lualine.nvim',
+    --   dependencies = {
+    --     'nvim-tree/nvim-web-devicons'
+    --   },
+    --   config = function()
+    --     require('lualine').setup {}
+    --   end
+    -- },
+    -- {
+    --   'akinsho/bufferline.nvim',
+    --   version = "*",
+    --   dependencies = 'nvim-tree/nvim-web-devicons',
+    --   config = function()
+    --     require("bufferline").setup {}
+    --   end
+    -- },
+    -- {
+    --   'vim-airline/vim-airline',
+    --   config = function()
+    --     vim.cmd("let g:airline_theme='default'")
+    --     vim.cmd('let g:airline_powerline_fonts=1')
+    --   end
+    -- },
     {
       'prettier/vim-prettier',
       config = function()
