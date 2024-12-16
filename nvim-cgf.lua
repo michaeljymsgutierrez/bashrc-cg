@@ -108,13 +108,10 @@ require('lazy').setup({
       end,
     },
     {
-      'junegunn/fzf'
-    },
-    {
-      'junegunn/fzf.vim',
-      config = function()
-        vim.env.FZF_DEFAULT_COMMAND = "find . \\( -name node_modules -o -name bower_components -o -name tmp -o -name .git \\) -prune -o -print"
-      end
+    'nvim-telescope/telescope.nvim', tag = '0.1.8',
+      dependencies = {
+        'nvim-lua/plenary.nvim'
+      }
     },
     {
       'nvim-lualine/lualine.nvim',
@@ -199,7 +196,7 @@ vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufEnter' }, {
 vim.api.nvim_set_keymap('n', '<C-Left>', ':tabprevious<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-Right>', ':tabnext<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-T>', ':tabnew<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-F>', ':FZF<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-F>', ':Telescope find_files<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-N>', ':NvimTreeToggle<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-L>', ':NvimTreeFindFileToggle<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-P>', ':Prettier<CR>', { noremap = true })
