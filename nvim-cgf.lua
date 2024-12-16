@@ -138,12 +138,6 @@ require('lazy').setup({
     --   end
     -- },
     -- {
-    --   'vim-airline/vim-airline',
-    --   config = function()
-    --     vim.cmd("let g:airline_theme='default'")
-    --     vim.cmd('let g:airline_powerline_fonts=1')
-    --   end
-    -- },
     {
       'prettier/vim-prettier',
       config = function()
