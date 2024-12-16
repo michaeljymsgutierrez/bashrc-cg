@@ -183,9 +183,6 @@ require('lazy').setup({
   checker = { enabled = false },
 })
 
--- Plugin to install
---
-
 -- FILE ASSOCIATION CONFIG
 vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufEnter' }, {
   pattern = { '*.tmux' },
