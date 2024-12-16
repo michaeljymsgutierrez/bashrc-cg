@@ -124,7 +124,9 @@ require('lazy').setup({
       config = function()
         require('lualine').setup {
           options = {
-            theme = 'monokai-pro'
+            theme = 'monokai-pro',
+            section_separators = '',
+            component_separators = ''
           }
         }
       end
