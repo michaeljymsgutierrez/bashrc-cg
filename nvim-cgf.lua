@@ -71,6 +71,12 @@ require('lazy').setup({
       'mattn/webapi-vim'
     },
     {
+      'supermaven-inc/supermaven-nvim',
+      config = function()
+        require('supermaven-nvim').setup({})
+      end
+    },
+    {
       'alvarosevilla95/luatab.nvim',
       dependencies = {
         'nvim-tree/nvim-web-devicons'
