@@ -161,7 +161,7 @@ require('lazy').setup({
       config = function()
         require('nvim-treesitter.configs').setup({
           ensure_installed = {
-            'css', 'scss', 'html', 'javascript', 'typescript', 'json', 'json5', 'jsdoc',
+            'css', 'scss', 'html', 'javascript', 'typescript', 'tsx', 'json', 'json5', 'jsdoc',
             'markdown', 'vim', 'lua', 'bash', 'yaml', 'go', 'comment'
           },
           highlight = { enable = true },
