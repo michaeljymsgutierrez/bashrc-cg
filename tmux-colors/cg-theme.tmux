@@ -1,5 +1,5 @@
 tm_bg="#444444"
-tm_fg="#ffffff"
+tm_fg="#a7b0d5"
 tm_bg_highlight="#1a1b26"
 tm_active_tab_pointer_bg="#7aa1f7"
 tm_border="#62d8f1"
