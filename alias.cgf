@@ -81,7 +81,7 @@ alias grh="clear && git reset --hard"
 alias gco="git checkout"
 alias gbd="git branch -D"
 alias gcm="git commit -m"
-alias v="nvim"
+alias vi="nvim"
 alias create_gitignore_global="cd && touch .gitignore_global && git config --global core.excludesfile ~/.gitignore_global"
 
 function generate_patch {
