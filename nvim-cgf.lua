@@ -195,12 +195,6 @@ vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufEnter' }, {
   end
 })
 
--- Check this autocmd if working
--- vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufEnter' }, {
---   pattern = { '*.ts', '*.tsx' },
---   command = 'set syntax=javascript'
--- })
-
 -- KEYBOARD MAPPING CONFIG
 vim.api.nvim_set_keymap('n', '<C-Left>', ':tabprevious<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-Right>', ':tabnext<CR>', { noremap = true })
