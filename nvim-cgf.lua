@@ -23,6 +23,14 @@ vim.cmd('syntax enable')
 vim.cmd('filetype off')
 vim.cmd('filetype plugin indent on')
 
+if vim.fn.has('nvim') == 1 then
+  vim.env.NVIM_TUI_ENABLE_TRUE_COLOR = '1'
+end
+
+if vim.fn.has('termguicolors') == 1 then
+  vim.opt.termguicolors = true
+end
+
 -- PLUGIN MANAGER
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
@@ -78,6 +86,12 @@ require('lazy').setup({
             accept_suggestion = '<C-Space>'
           },
         })
+      end
+    },
+    {
+      'norcalli/nvim-colorizer.lua',
+      config = function()
+        require('colorizer').setup()
       end
     },
     {
