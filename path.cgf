@@ -1,7 +1,5 @@
 # JAVA HOME
-# export JAVA_HOME=/home/chaelgutierrez/jdk1.8.0_91/
-# export PATH=$JAVA_HOME/bin:$PATH
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.0.1.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home
 export PATH=$JAVA_HOME/bin:$PATH
 
 # ANDROID HOME
