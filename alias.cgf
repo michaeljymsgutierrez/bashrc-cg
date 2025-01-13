@@ -31,6 +31,7 @@ alias vs="vim -c 'colorscheme solarized8' -c 'set background=dark'"
 alias cgshell="cd ~/bashrc-cg && vi"
 # alias aptinstall="sudo apt-get install"
 alias tmux_commands="cat -n ~/bashrc-cg/tmux-commands.cgf"
+alias myname="echo 'ASTRID:YN7N2Y3PJ6:12-18-2021:MBP14'"
 alias e="exit"
 
 # UTILITY ALIASES
