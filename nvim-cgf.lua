@@ -221,6 +221,7 @@ vim.api.nvim_set_keymap('n', '<C-F>', ':Telescope find_files<CR>', { noremap = t
 vim.api.nvim_set_keymap('n', '<C-N>', ':NvimTreeToggle<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-L>', ':NvimTreeFindFileToggle<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-P>', ':Prettier<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-S>', ':w<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-E>', ':e!<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-X>', ':x!<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-O>', ':w<CR>', { noremap = true })
