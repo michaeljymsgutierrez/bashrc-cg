@@ -1,4 +1,4 @@
--- INITIAL CONFIG
+-- INITIAL CONFIGnvi
 vim.cmd('set number')
 vim.cmd('set number')
 vim.cmd('set nocompatible')
@@ -125,9 +125,14 @@ require('lazy').setup({
       end
     },
     {
-      'folke/tokyonight.nvim',
+      'loctvl842/monokai-pro.nvim',
+      -- 'folke/tokyonight.nvim',
       config = function()
-        vim.cmd('colorscheme tokyonight-night')
+        require('monokai-pro').setup({
+          filter = 'spectrum', -- classic | octagon | pro | machine | ristretto | spectrum
+        })
+        vim.cmd('colorscheme monokai-pro')
+        -- vim.cmd('colorscheme tokyonight-night')
       end
     },
     {
@@ -155,6 +160,7 @@ require('lazy').setup({
       config = function()
         require('lualine').setup {
           options = {
+            theme = 'monokai-pro',
             section_separators = '',
             component_separators = ''
           }
