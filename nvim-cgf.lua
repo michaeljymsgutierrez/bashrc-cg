@@ -100,7 +100,9 @@ require('lazy').setup({
         'nvim-tree/nvim-web-devicons'
       },
       config = function()
-        require('luatab').setup{}
+        require('luatab').setup({
+          separator = function() return '' end
+        })
       end
     },
     {
