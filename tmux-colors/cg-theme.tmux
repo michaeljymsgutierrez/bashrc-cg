@@ -1,8 +1,8 @@
 tm_bg="#444444"
 tm_fg="#f8f1ff"
 tm_bg_highlight="#222222"
-tm_active_tab_pointer_bg="#fde466"
-tm_border="#62d8f1"
+active_tab_pointer_bg="#fde466"
+pane_border_bg="#fde466"
 
 set -g mode-style "fg=$tm_fg,bg=$tm_bg"
 
@@ -10,7 +10,7 @@ set -g message-style "fg=$tm_fg,bg=$tm_bg_highlight"
 set -g message-command-style "fg=$tm_fg,bg=$tm_bg"
 
 set -g pane-border-style "fg=$tm_bg"
-set -g pane-active-border-style "fg=$tm_border"
+set -g pane-active-border-style "fg=$pane_border_bg"
 
 set -g status "on"
 set -g status-justify "left"
@@ -42,7 +42,7 @@ setw -g window-status-separator ""
 setw -g window-status-style "NONE,fg=$tm_fg,bg=$tm_bg_highlight"
 
 tm_win_inactive="#[default]$tm_win_name "
-tm_win_active="#[fg=$tm_fg,bg=$tm_bg_highlight,bold]$tm_win_name #[fg=$tm_active_tab_pointer_bg,bg=$tm_bg_highlight]󰩔 "
+tm_win_active="#[fg=$tm_fg,bg=$tm_bg_highlight,bold]$tm_win_name #[fg=$active_tab_pointer_bg,bg=$tm_bg_highlight]󰩔 "
 
 setw -g window-status-format "$tm_win_inactive "
 setw -g window-status-current-format "$tm_win_active"
