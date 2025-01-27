@@ -44,7 +44,7 @@ Add the following lines to your `~/.zshrc` file:
 
 ```
 source ~/bashrc-cg/path.cgf
-source ~/bashrc-cg/powerline.cgf
+source ~/bashrc-cg/prompt.cgf
 source ~/bashrc-cg/alias.cgf
 ```
 
