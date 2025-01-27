@@ -16,16 +16,8 @@ export NVM_DIR="$HOME/.nvm"
 # GO
 #export PATH=$PATH:/usr/local/go/bin
 
-# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-#export SDKMAN_DIR="/home/chaelgutierrez/.sdkman"
-#[[ -s "/home/chaelgutierrez/.sdkman/bin/sdkman-init.sh" ]] && source "/home/chaelgutierrez/.sdkman/bin/sdkman-init.sh"
-
 # DRUSH PATH
 # export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 
 # FZF HOME
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# DENO
-# export DENO_INSTALL="/home/chaelgutierrez/.deno"
-# export PATH="$DENO_INSTALL/bin:$PATH"
