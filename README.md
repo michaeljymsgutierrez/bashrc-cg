@@ -1,86 +1,64 @@
-# Installation
-
 ## Prerequisites
 
-- Git installed on your system
-- Zsh, Vim, and Tmux installed on your system (installation instructions below)
+- **Git:** Git is a version control system used for managing code changes. You can find installation instructions for your specific operating system on the official Git website: https://git-scm.com/downloads
+- **Terminal Shell:** Most Linux distributions come pre-installed with a terminal shell like Bash. You can also install Zsh as an alternative. Refer to your distribution's documentation for installation instructions.
 
----
+## Installation (Choose your OS)
 
-## Step 1: Clone `bashrc-cg` Repository
+**Linux:**
 
-### Bash
+```
+sudo apt install tmux vim vim-gtk3 fonts-powerline
+```
+
+**macOS (using Homebrew):**
+
+```
+brew install vim nvim tmux ripgrep
+```
+
+**Alternative Shell Installation:**
+
+If you'd like to use Zsh, you can follow the installation instructions from the official Zsh website: https://ohmyz.sh/
+
+## Configuration
+
+The following steps will guide you through configuring Zsh, Vim/Neovim, and Tmux.
+
+### Step 1: Clone `bashrc-cg` Repository
 
 ```bash
 cd ~/ && git clone git@github.com:michaeljymsgutierrez/bashrc-cg.git
 ```
 
-````
-
----
-
-## Step 2: Install `fzf`
-
-### Bash
+### Step 2: Install fzf (Optional but recommended for Zsh)
 
 ```bash
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+git clone --depth 1 [https://github.com/junegunn/fzf.git](https://github.com/junegunn/fzf.git) ~/.fzf
 ~/.fzf/install
 ```
 
----
-
-## Step 3: Install Required Software
-
-### Linux
-
-#### Bash
-
-```bash
-sudo apt install tmux vim vim-gtk3 fonts-powerline
-```
-
-### macOS (using Homebrew)
-
-#### Bash
-
-```bash
-brew install vim nvim tmux ripgrep
-```
-
----
-
-## Step 4: Configure Zsh
+### Step 3: Configure Zsh
 
 Add the following lines to your `~/.zshrc` file:
 
-#### Bash
-
-```bash
+```
 source ~/bashrc-cg/path.cgf
-source ~/bashrc-cg/prompt.cgf
+source ~/bashrc-cg/powerline.cgf
 source ~/bashrc-cg/alias.cgf
 ```
 
----
-
-## Step 5: Configure Vim
+### Step 4: Configure Vim
 
 Add the following line to your `~/.vimrc` file:
 
-#### Bash
-
-```bash
+```
 source ~/bashrc-cg/vim.cgf
 ```
 
----
-
-## Step 6: Configure Neovim
+### Step 5: Configure Neovim
 
 Add the following lines to your `~/.config/nvim/init.lua` file:
-
-#### Lua
 
 ```lua
 local homeDirectory = os.getenv('HOME') .. '/bashrc-cg/nvim-cgf.lua'
@@ -88,37 +66,20 @@ local initNvimConfig = loadfile(homeDirectory)
 initNvimConfig()
 ```
 
----
-
-## Step 7: Configure Tmux
+### Step 6: Configure Tmux
 
 Add the following line to your `~/.tmux.conf` file:
 
-#### Bash
-
-```bash
+```
 source ~/bashrc-cg/tmux.cgf
 ```
 
----
-
-## Step 8: Restart and Finalize
+### Step 7: Restart and Finalize
 
 Restart your terminal or run the following commands:
 
-#### Bash
-
 ```bash
-src
-# For vim
-vim -c "PluginInstall"
+source ~/.zshrc  # For Zsh users
+vim -c "PluginInstall"  # For Vim users
+nvim  # For Neovim users
 
-# For nvim
-nvim
-```
-
-```
-
-Let me know if you’d like to add or adjust anything!
-```
-````
