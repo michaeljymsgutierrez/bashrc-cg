@@ -28,11 +28,12 @@ tm_date='#(bash -c ~/bashrc-cg/shellscripts/date.sh)'
 tm_datetime="$tm_time $tm_date"
 tm_battery_status='#(bash -c ~/bashrc-cg/shellscripts/battery.sh)'
 tm_network_status='#(bash -c ~/bashrc-cg/shellscripts/network.sh)'
-tm_session="#[fg=$pane_text_color,bg=$pane_background_color,bold] $tm_network_status "
+left_section_content="#[fg=$pane_text_color,bg=$pane_background_color,bold] $tm_network_status "
+right_section_content="#[fg=$pane_text_color,bg=$pane_background_color] $tm_datetime $tm_battery_status "
 window_name="#(bash -c '~/bashrc-cg/shellscripts/iconize-string.sh #W')"
 
-left_section="$tm_session "
-right_section="#[fg=$pane_text_color,bg=$pane_background_color] $tm_datetime $tm_battery_status "
+left_section="$left_section_content "
+right_section="$right_section_content"
 
 set -g status-left "$left_section"
 set -g status-right "$right_section"
