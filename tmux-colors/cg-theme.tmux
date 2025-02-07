@@ -31,11 +31,11 @@ tm_network_status='#(bash -c ~/bashrc-cg/shellscripts/network.sh)'
 tm_session="#[fg=$pane_text_color,bg=$pane_background_color,bold] $tm_network_status "
 window_name="#(bash -c '~/bashrc-cg/shellscripts/iconize-string.sh #W')"
 
-tm_left_section="$tm_session "
-tm_right_section="#[fg=$pane_text_color,bg=$pane_background_color] $tm_datetime $tm_battery_status "
+left_section="$tm_session "
+right_section="#[fg=$pane_text_color,bg=$pane_background_color] $tm_datetime $tm_battery_status "
 
-set -g status-left "$tm_left_section"
-set -g status-right "$tm_right_section"
+set -g status-left "$left_section"
+set -g status-right "$right_section"
 
 setw -g window-status-activity-style "underscore,fg=$pane_text_color,bg=$pane_background_color"
 setw -g window-status-separator ""
