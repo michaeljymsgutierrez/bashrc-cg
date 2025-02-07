@@ -29,7 +29,7 @@ tm_datetime="$tm_time $tm_date"
 tm_battery_status='#(bash -c ~/bashrc-cg/shellscripts/battery.sh)'
 tm_network_status='#(bash -c ~/bashrc-cg/shellscripts/network.sh)'
 tm_session="#[fg=$pane_text_color,bg=$pane_background_color,bold] $tm_network_status "
-tm_win_name="#(bash -c '~/bashrc-cg/shellscripts/iconize-string.sh #W')"
+window_name="#(bash -c '~/bashrc-cg/shellscripts/iconize-string.sh #W')"
 
 tm_left_section="$tm_session "
 tm_right_section="#[fg=$pane_text_color,bg=$pane_background_color] $tm_datetime $tm_battery_status "
@@ -41,8 +41,8 @@ setw -g window-status-activity-style "underscore,fg=$pane_text_color,bg=$pane_ba
 setw -g window-status-separator ""
 setw -g window-status-style "NONE,fg=$pane_text_color,bg=$pane_background_color"
 
-tm_win_inactive="#[default]$tm_win_name "
-tm_win_active="#[fg=$pane_text_color,bg=$pane_background_color,bold]$tm_win_name #[fg=$tab_pointer_background_color,bg=$pane_background_color]󰩔 "
+tm_win_inactive="#[default]$window_name "
+tm_win_active="#[fg=$pane_text_color,bg=$pane_background_color,bold]$window_name #[fg=$tab_pointer_background_color,bg=$pane_background_color]󰩔 "
 
 setw -g window-status-format "$tm_win_inactive "
 setw -g window-status-current-format "$tm_win_active"
