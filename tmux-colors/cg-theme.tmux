@@ -25,7 +25,7 @@ display_datetime="$display_time $display_date"
 display_battery_status='#(bash -c ~/bashrc-cg/shellscripts/battery.sh)'
 display_network_status='#(bash -c ~/bashrc-cg/shellscripts/network.sh)'
 
-display_left_section_content="#[fg=$pane_text_color,bg=$pane_background_color,bold] $display_network_status "
+display_left_section_content="$display_network_status "
 display_right_section_content="#[fg=$pane_text_color,bg=$pane_background_color] $display_datetime $display_battery_status "
 
 window_name="#(bash -c '~/bashrc-cg/shellscripts/iconize-string.sh #W')"

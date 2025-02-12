@@ -1,10 +1,9 @@
 #!/bin/bash
 
-echo "󰲝 󰬊󰬕"
+echo "#[fg=#f8f1ff,bg=#222222,bold] 󰲝 󰬊󰬕"
 
 if ping -c 2 google.com > /dev/null ; then
-  echo "󰱔 󰬊󰬕"
+  echo "#[fg=#fde466,bg=#222222,bold] 󰱔 󰬊󰬕"
 else
-  echo "󰱟 󰬋󰬊󰬕"
+  echo "#[fg=#fa618d,bg=#222222,bold] 󰱟 󰬋󰬊󰬕"
 fi
-# if ping -c 2 google.com > /dev/null ; then echo "󰱔 󰫰󰫻" ; else echo "󰱟 󰫱󰫰󰫻" ; fi
