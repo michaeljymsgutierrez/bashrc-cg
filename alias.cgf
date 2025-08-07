@@ -87,7 +87,7 @@ alias vi="nvim"
 alias create_gitignore_global="cd && touch .gitignore_global && git config --global core.excludesfile ~/.gitignore_global"
 
 function generate_patch {
-  echo "git diff > ~/Desktop/Patches/$@"| bash
+  echo "git diff > ~/Google\ Drive/My\ Drive/Patches/$@"| bash
 }
 alias gpatch="generate_patch"
 
