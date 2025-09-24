@@ -1,6 +1,7 @@
 ## Prerequisites
 
 - **Git:** Git is a version control system used for managing code changes. You can find installation instructions for your specific operating system on the official Git website: https://git-scm.com/downloads
+
 - **Terminal Shell:** Most Linux distributions come pre-installed with a terminal shell like Bash. You can also install Zsh as an alternative. Refer to your distribution's documentation for installation instructions.
 
 ## Installation (Choose your OS)
@@ -8,22 +9,19 @@
 **Linux:**
 
 ```
-sudo apt install tmux vim vim-gtk3 fonts-powerline
+sudo apt install tmux vim vim-gtk3
+sudo snap install ghostty --classic
 ```
 
-**macOS (using Homebrew):**
+**MacOS (using Homebrew):**
 
 ```
-brew install vim nvim tmux ripgrep
+brew install vim nvim tmux ripgrep ghostty
 ```
-
-**Alternative Shell Installation:**
-
-If you'd like to use Zsh, you can follow the installation instructions from the official Zsh website: https://ohmyz.sh/
 
 ## Configuration
 
-The following steps will guide you through configuring Zsh, Vim/Neovim, and Tmux.
+The following steps will guide you through configuring Zsh, Ghostty, Vim/Neovim, and Tmux.
 
 ### Step 1: Clone `bashrc-cg` Repository
 
@@ -42,7 +40,7 @@ git clone --depth 1 [https://github.com/junegunn/fzf.git](https://github.com/jun
 
 Add the following lines to your `~/.zshrc` file:
 
-```
+```bash
 source ~/bashrc-cg/path.cgf
 source ~/bashrc-cg/prompt.cgf
 source ~/bashrc-cg/alias.cgf
@@ -52,11 +50,19 @@ source ~/bashrc-cg/alias.cgf
 
 Add the following line to your `~/.vimrc` file:
 
-```
+```bash
 source ~/bashrc-cg/vim.cgf
 ```
 
-### Step 5: Configure Neovim
+### Step 5: Configure Ghostty
+
+Add the following line to your `~/.config/ghostty/config` file:
+
+```bash
+config-file = "~/bashrc-cg/ghostty.cgf"
+```
+
+### Step 6: Configure Neovim
 
 Add the following lines to your `~/.config/nvim/init.lua` file:
 
@@ -66,7 +72,7 @@ local initNvimConfig = loadfile(homeDirectory)
 initNvimConfig()
 ```
 
-### Step 6: Configure Tmux
+### Step 7: Configure Tmux
 
 Add the following line to your `~/.tmux.conf` file:
 
@@ -74,7 +80,7 @@ Add the following line to your `~/.tmux.conf` file:
 source ~/bashrc-cg/tmux.cgf
 ```
 
-### Step 7: Restart and Finalize
+### Step 8: Restart and Finalize
 
 Restart your terminal or run the following commands:
 
@@ -82,4 +88,4 @@ Restart your terminal or run the following commands:
 source ~/.zshrc  # For Zsh users
 vim -c "PluginInstall"  # For Vim users
 nvim  # For Neovim users
-
+```
