@@ -3,6 +3,5 @@ font-size = 20
 font-style = regular
 bold-is-bright = true
 font-family = MesloLGS Nerd Font
-cursor-style = block
 window-padding-balance = false
 mouse-hide-while-typing = true
