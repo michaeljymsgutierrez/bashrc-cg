@@ -1,44 +1,45 @@
 ## Prerequisites
 
-- **Git:** Git is a version control system used for managing code changes. You can find installation instructions for your specific operating system on the official Git website: https://git-scm.com/downloads
+- **Git:** You'll need Git for version control. You can find installation instructions on the official Git website: [https://git-scm.com/downloads](https://git-scm.com/downloads)
+- **Terminal Shell:** This guide uses **Zsh**, which is the default shell on macOS.
+- **Homebrew:** This is the package manager for macOS. If you don't have it installed, you can get it from the official Homebrew website: [https://brew.sh/](https://brew.sh/)
 
-- **Terminal Shell:** Most Linux distributions come pre-installed with a terminal shell like Bash. You can also install Zsh as an alternative. Refer to your distribution's documentation for installation instructions.
+---
 
-## Installation (Choose your OS)
+## Installation
 
-**Linux:**
+First, use Homebrew to install the necessary command-line tools:
 
+```bash
+brew install nvim tmux ripgrep ghostty
 ```
-sudo apt install tmux vim vim-gtk3
-sudo snap install ghostty --classic
-```
 
-**MacOS (using Homebrew):**
-
-```
-brew install vim nvim tmux ripgrep ghostty
-```
+---
 
 ## Configuration
 
-The following steps will guide you through configuring Zsh, Ghostty, Vim/Neovim, and Tmux.
+These steps will configure your Zsh, Ghostty, Neovim, and Tmux environments.
 
-### Step 1: Clone `bashrc-cg` Repository
+### 1\. Clone the Configuration Repository
+
+Navigate to your home directory and clone the configuration repository:
 
 ```bash
 cd ~/ && git clone git@github.com:michaeljymsgutierrez/bashrc-cg.git
 ```
 
-### Step 2: Install fzf (Optional but recommended for Zsh)
+### 2\. Install fzf (Optional but Recommended)
+
+**fzf** is a fuzzy finder that helps you quickly search for files and commands. Install it with the following commands:
 
 ```bash
-git clone --depth 1 [https://github.com/junegunn/fzf.git](https://github.com/junegunn/fzf.git) ~/.fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 ```
 
-### Step 3: Configure Zsh
+### 3\. Configure Zsh
 
-Add the following lines to your `~/.zshrc` file:
+Add the following lines to your `~/.zshrc` file to load the custom configurations for your command-line environment:
 
 ```bash
 source ~/bashrc-cg/path.cgf
@@ -46,25 +47,17 @@ source ~/bashrc-cg/prompt.cgf
 source ~/bashrc-cg/alias.cgf
 ```
 
-### Step 4: Configure Ghostty
+### 4\. Configure Ghostty
 
-Add the following line to your `~/.config/ghostty/config` file:
+Add this line to your `~/.config/ghostty/config` file to load the custom Ghostty configuration:
 
 ```bash
 config-file = "~/bashrc-cg/ghostty.cgf"
 ```
 
-### Step 5: Configure Vim
+### 5\. Configure Neovim
 
-Add the following line to your `~/.vimrc` file:
-
-```bash
-source ~/bashrc-cg/vim.cgf
-```
-
-### Step 6: Configure Neovim
-
-Add the following lines to your `~/.config/nvim/init.lua` file:
+Add the following lines to your `~/.config/nvim/init.lua` file to set up Neovim:
 
 ```lua
 local homeDirectory = os.getenv('HOME') .. '/bashrc-cg/nvim-cgf.lua'
@@ -72,20 +65,21 @@ local initNvimConfig = loadfile(homeDirectory)
 initNvimConfig()
 ```
 
-### Step 7: Configure Tmux
+### 6\. Configure Tmux
 
-Add the following line to your `~/.tmux.conf` file:
+Add this line to your `~/.tmux.conf` file to load the custom Tmux configuration:
 
 ```bash
 source ~/bashrc-cg/tmux.cgf
 ```
 
-### Step 8: Restart and Finalize
+---
 
-Restart your terminal or run the following commands:
+## Finalize and Restart
+
+After making all these changes, restart your terminal or run the commands below to apply the new configurations:
 
 ```bash
-source ~/.zshrc  # For Zsh users
-vim -c "PluginInstall"  # For Vim users
-nvim  # For Neovim users
+source ~/.zshrc # Applies Zsh configuration
+nvim # Starts Neovim
 ```
