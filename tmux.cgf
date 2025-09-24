@@ -17,6 +17,11 @@ bind-key C-T new-window -a -c "#{pane_current_path}"
 bind-key | split-window -h -c "#{pane_current_path}"
 bind-key _ split-window -v -c "#{pane_current_path}"
 
-bind-key C-Left previous-window
-bind-key C-Right next-window
+bind-key -r C-Left previous-window
+bind-key -r C-Right next-window
 bind-key / copy-mode
+
+bind-key -r C-M-Left resize-pane -L 5
+bind-key -r C-M-Right resize-pane -R 5
+bind-key -r C-M-Up resize-pane -U 5
+bind-key -r C-M-Down resize-pane -D 5
