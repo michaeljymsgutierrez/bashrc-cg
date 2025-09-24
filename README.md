@@ -76,7 +76,7 @@ initNvimConfig()
 
 Add the following line to your `~/.tmux.conf` file:
 
-```
+```bash
 source ~/bashrc-cg/tmux.cgf
 ```
 
