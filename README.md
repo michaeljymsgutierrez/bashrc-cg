@@ -46,20 +46,20 @@ source ~/bashrc-cg/prompt.cgf
 source ~/bashrc-cg/alias.cgf
 ```
 
-### Step 4: Configure Vim
-
-Add the following line to your `~/.vimrc` file:
-
-```bash
-source ~/bashrc-cg/vim.cgf
-```
-
-### Step 5: Configure Ghostty
+### Step 4: Configure Ghostty
 
 Add the following line to your `~/.config/ghostty/config` file:
 
 ```bash
 config-file = "~/bashrc-cg/ghostty.cgf"
+```
+
+### Step 5: Configure Vim
+
+Add the following line to your `~/.vimrc` file:
+
+```bash
+source ~/bashrc-cg/vim.cgf
 ```
 
 ### Step 6: Configure Neovim
