@@ -41,4 +41,4 @@ date_string+=$month
 date_string+="⋅"
 date_string+=$day
 
-echo "$date_string"
+echo " $date_string"

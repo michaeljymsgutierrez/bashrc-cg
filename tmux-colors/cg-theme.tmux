@@ -26,7 +26,7 @@ display_battery_status='#(bash -c ~/bashrc-cg/shellscripts/battery.sh)'
 display_network_status='#(bash -c ~/bashrc-cg/shellscripts/network.sh)'
 
 display_left_section_content="$display_network_status "
-display_right_section_content="#[fg=$pane_text_color,bg=$pane_background_color] $display_datetime $display_battery_status "
+display_right_section_content="#[fg=$pane_text_color,bg=$pane_background_color] $display_datetime $display_battery_status"
 
 window_name="#(bash -c '~/bashrc-cg/shellscripts/iconize-string.sh #W')"
 
@@ -44,5 +44,5 @@ setw -g window-status-style "NONE,fg=$pane_text_color,bg=$pane_background_color"
 inactive_window_format="#[default]$window_name "
 active_window_format="#[fg=$pane_text_color,bg=$pane_background_color,bold]$window_name #[fg=$tab_pointer_background_color,bg=$pane_background_color]󰩔  "
 
-setw -g window-status-format "$inactive_window_format "
+setw -g window-status-format "$inactive_window_format"
 setw -g window-status-current-format "$active_window_format"
