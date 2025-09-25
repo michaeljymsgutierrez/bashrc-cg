@@ -40,6 +40,6 @@ time_string+="⋅"
 time_string+=$minutes
 time_string+="$period"
 
-echo " $time_string"
+echo "$time_string"
 
 # echo "$hours $minutes $period"
