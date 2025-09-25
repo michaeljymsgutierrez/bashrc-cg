@@ -30,7 +30,7 @@ display_right_section_content="#[fg=$pane_text_color,bg=$pane_background_color] 
 
 window_name="#(bash -c '~/bashrc-cg/shellscripts/iconize-string.sh #W')"
 
-display_left_section="$display_left_section_content "
+display_left_section="$display_left_section_content"
 display_right_section="$display_right_section_content"
 
 set -g status-left "$display_left_section"
