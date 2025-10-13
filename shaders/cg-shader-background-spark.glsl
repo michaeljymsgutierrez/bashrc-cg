@@ -99,6 +99,11 @@ const float STATIC_TIME = 0.0;
 // Define loading effect speed
 const float LOADING_SPEED = 2.0;
 
+// --- NEW CONSTANTS FOR MULTI-LINE EFFECT ---
+const float LINE_SPACING = 0.005; // Spacing between lines (normalized by yResolution)
+const float LINE_FLICKER_SPEED = 10.0; // Speed of the random line activation
+const float LINE_THRESHOLD = 0.5; // Probability threshold for a line being 'on' (lower=more lines)
+
 void mainImage(out vec4 fragColor, in vec2 fragCoord)
 {
     // Start with the background color
@@ -179,46 +184,58 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     
     vec4 newColor = vec4(finalColor);
     
-    // ----------------------------------------------------------------------
-    // --- PERMANENT MOVING BOTTOM GLOWING LINE EFFECT (Loading Bar Style) ---
-    // ----------------------------------------------------------------------
+    // --------------------------------------------------------------------------------
+    // --- PERMANENT MULTI-LINE, MOVING BOTTOM GLOWING LINE EFFECT (Random 1-3 Lines) ---
+    // --------------------------------------------------------------------------------
     
-    // 1. Calculate Vertical Tightness
-    float distFromBottom = max(0.0, 1.0 - vu.y); 
-    const float BASE_GLOW_SPREAD = 200.0; // Original tightness
+    // Base parameters
+    const float BASE_GLOW_SPREAD = 200.0;
     const float GLOW_INTENSITY = 1.0;
+    const float WAVE_SCALE = 15.0; 
+    
+    // 1. Calculate Horizontal Movement Mask
+    float loadingMovement = sin(vu.x * WAVE_SCALE + iTime * LOADING_SPEED) * 0.5 + 0.5; 
 
-    // --- START: RANDOM WIDTH MODULATION ---
-    // Generate noise to vary the width
-    const float WIDTH_NOISE_SCALE = 10.0; // How "jagged" the width is (smaller = smoother, larger = more jagged)
-    const float WIDTH_NOISE_SPEED = 0.5; // How fast the width changes
-    
-    // Use lightningNoise based on horizontal position and time for animated width
-    float widthNoise = lightningNoise(vec2(vu.x * WIDTH_NOISE_SCALE, iTime * WIDTH_NOISE_SPEED), 456.0); // 456.0 for a distinct seed
-    
-    // Map noise from [0, 1] to a spread factor
-    // Here, noise = 0 will result in BASE_GLOW_SPREAD * 0.5 (thicker line)
-    // and noise = 1 will result in BASE_GLOW_SPREAD * 1.5 (thinner line)
-    // Adjust 0.5 and 1.5 to control the min/max width.
+    // 2. Calculate Dynamic Width (Random thickness variation)
+    const float WIDTH_NOISE_SCALE = 10.0;
+    const float WIDTH_NOISE_SPEED = 0.5;
+    float widthNoise = lightningNoise(vec2(vu.x * WIDTH_NOISE_SCALE, iTime * WIDTH_NOISE_SPEED), 456.0);
     float dynamicGlowSpread = BASE_GLOW_SPREAD * mix(0.5, 1.5, widthNoise); 
-    // --- END: RANDOM WIDTH MODULATION ---
 
-    // Vertical falloff (creates the sharp line), now with dynamic spread
-    float bottomGlowVertical = exp(-distFromBottom * dynamicGlowSpread) * GLOW_INTENSITY;
-
-    // 2. Calculate Horizontal Movement Mask
-    const float WAVE_SCALE = 15.0; // Controls the number of bright pulses visible
+    // 3. Generate Vertical Glow for Multiple Lines
+    float totalBottomGlow = 0.0;
     
-    // Sine wave creates a smooth, repeating bright/dark cycle that scrolls left/right
-    float loadingMovement = sin(vu.x * WAVE_SCALE + iTime * LOADING_SPEED) * 0.5 + 0.5; // Range [0, 1]
+    // Loop (or manually define) 3 distinct lines: 0 (bottommost), 1, and 2
+    for(int i = 0; i < 3; i++) {
+        // Line Nudge: Move the line up by an amount proportional to its index
+        float lineNudge = float(i) * norm(vec2(LINE_SPACING, 0.0), 0.0).x;
+        
+        // Vertical Distance: Distance from the nudge position (1.0 - nudge)
+        float distFromLine = max(0.0, (1.0 - lineNudge) - vu.y); 
+        
+        // Vertical Falloff (creates the sharp line)
+        float lineGlow = exp(-distFromLine * dynamicGlowSpread) * GLOW_INTENSITY;
+        
+        // Random Activation/Flicker for this line
+        // We hash the line index (i) and time to get a random value between 0 and 1
+        float flickerValue = hash(vec2(float(i), iTime * LINE_FLICKER_SPEED));
+        
+        // Activation Mask: Line is 'on' if flickerValue is below the threshold
+        float activationMask = smoothstep(LINE_THRESHOLD - 0.1, LINE_THRESHOLD + 0.1, flickerValue);
 
-    // 3. Combine Vertical Glow with Horizontal Movement
-    float finalBottomGlow = bottomGlowVertical * loadingMovement;
+        // Ensure the absolute bottom line (i=0) is always on, or at least a minimum is applied
+        if (i == 0) {
+            activationMask = max(activationMask, 0.5); // Ensure the base line is usually visible
+        }
+
+        // Modulate line glow by horizontal movement AND random activation
+        totalBottomGlow += lineGlow * loadingMovement * activationMask;
+    }
     
-    // Apply the combined glow to the final color
-    finalColor.rgb += lightningColor * finalBottomGlow; 
+    // 4. Apply the Total Glow
+    finalColor.rgb += lightningColor * totalBottomGlow; 
 
-    // --- END: MOVING BOTTOM GLOW ---
+    // --- END: MULTI-LINE GLOW ---
     
     // Apply lightning to trail
     float trailMask = 1.0 - smoothstep(0.0, 0.02, sdfTrail);
