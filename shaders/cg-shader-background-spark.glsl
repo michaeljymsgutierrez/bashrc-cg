@@ -96,7 +96,7 @@ const float BRANCH_SCALE = 8.0;
 
 // Use a static time value for cursor-related effects
 const float STATIC_TIME = 0.0; 
-// Define loading effect speed (No longer needed for particles)
+// Define loading effect speed
 const float LOADING_SPEED = 2.0;
 
 void mainImage(out vec4 fragColor, in vec2 fragCoord)
@@ -185,11 +185,26 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     
     // 1. Calculate Vertical Tightness
     float distFromBottom = max(0.0, 1.0 - vu.y); 
-    const float GLOW_SPREAD = 200.0;
+    const float BASE_GLOW_SPREAD = 200.0; // Original tightness
     const float GLOW_INTENSITY = 1.0;
+
+    // --- START: RANDOM WIDTH MODULATION ---
+    // Generate noise to vary the width
+    const float WIDTH_NOISE_SCALE = 10.0; // How "jagged" the width is (smaller = smoother, larger = more jagged)
+    const float WIDTH_NOISE_SPEED = 0.5; // How fast the width changes
     
-    // Vertical falloff (creates the sharp line)
-    float bottomGlowVertical = exp(-distFromBottom * GLOW_SPREAD) * GLOW_INTENSITY;
+    // Use lightningNoise based on horizontal position and time for animated width
+    float widthNoise = lightningNoise(vec2(vu.x * WIDTH_NOISE_SCALE, iTime * WIDTH_NOISE_SPEED), 456.0); // 456.0 for a distinct seed
+    
+    // Map noise from [0, 1] to a spread factor
+    // Here, noise = 0 will result in BASE_GLOW_SPREAD * 0.5 (thicker line)
+    // and noise = 1 will result in BASE_GLOW_SPREAD * 1.5 (thinner line)
+    // Adjust 0.5 and 1.5 to control the min/max width.
+    float dynamicGlowSpread = BASE_GLOW_SPREAD * mix(0.5, 1.5, widthNoise); 
+    // --- END: RANDOM WIDTH MODULATION ---
+
+    // Vertical falloff (creates the sharp line), now with dynamic spread
+    float bottomGlowVertical = exp(-distFromBottom * dynamicGlowSpread) * GLOW_INTENSITY;
 
     // 2. Calculate Horizontal Movement Mask
     const float WAVE_SCALE = 15.0; // Controls the number of bright pulses visible
