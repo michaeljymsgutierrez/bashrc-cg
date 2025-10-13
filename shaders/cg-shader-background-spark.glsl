@@ -73,7 +73,7 @@ float hash(vec2 p) {
     return fract(p.x * p.y);
 }
 
-// Generate lightning branches
+// Generate lightning branches (Perlin-like noise)
 float lightningNoise(vec2 p, float seed) {
     vec2 i = floor(p);
     vec2 f = fract(p);
@@ -102,9 +102,9 @@ const float LOADING_SPEED = 0.5;
 
 // --- NEW CONSTANTS FOR MULTI-LINE EFFECT ---
 const float LINE_SPACING = 0.005; // Spacing between lines (normalized by yResolution)
-// CHANGED: Decreased speed for slower random flickering
-const float LINE_FLICKER_SPEED = 2.0; // Speed of the random line activation
-const float LINE_THRESHOLD = 0.5; // Probability threshold for a line being 'on' (lower=more lines)
+// MODIFIED: Further decreased speed for a gentler, slower random pulsing
+const float LINE_FLICKER_SPEED = 1.0; // Speed of the random line activation
+const float LINE_THRESHOLD = 0.5; // Probability threshold for a line being 'on' (no longer used as a hard threshold)
 
 void mainImage(out vec4 fragColor, in vec2 fragCoord)
 {
@@ -157,7 +157,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     // 3. Generate Vertical Glow for Multiple Lines
     float totalBottomGlow = 0.0;
     
-    // Loop (or manually define) 3 distinct lines: 0 (bottommost), 1, and 2
+    // Loop 3 distinct lines: 0 (bottommost), 1, and 2
     for(int i = 0; i < 3; i++) {
         // Line Nudge: Move the line up by an amount proportional to its index
         float lineNudge = float(i) * norm(vec2(LINE_SPACING, 0.0), 0.0).x;
@@ -168,18 +168,22 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
         // Vertical Falloff (creates the sharp line)
         float lineGlow = exp(-distFromLine * dynamicGlowSpread) * GLOW_INTENSITY;
         
-        // Random Activation/Flicker for this line
-        float flickerValue = hash(vec2(float(i), iTime * LINE_FLICKER_SPEED));
+        // --- FIX FOR SMOOTH ACTIVATION (Eliminates Flicker) ---
+        // 1. Generate smooth, time-varying noise (Perlin-like)
+        float noiseSeed = float(i) * 10.0 + 456.0; // Unique seed for each line
+        float flickerValue = lightningNoise(vec2(vu.x * 0.1, iTime * LINE_FLICKER_SPEED * 0.5), noiseSeed);
         
-        // Activation Mask: Line is 'on' if flickerValue is below the threshold
-        float activationMask = smoothstep(LINE_THRESHOLD - 0.1, LINE_THRESHOLD + 0.1, flickerValue);
+        // 2. Modulate line intensity smoothly
+        // Clamp and scale the noise so lines are mostly dim and only smoothly peak to 1.0
+        float activationMask = clamp(flickerValue * 2.0 - 1.0, 0.0, 1.0); 
 
-        // Ensure the absolute bottom line (i=0) is always on, or at least a minimum is applied
+        // 3. Ensure the absolute bottom line (i=0) has a constant minimum glow
         if (i == 0) {
-            activationMask = max(activationMask, 0.5); 
+            activationMask = max(activationMask, 0.2); // Constant base glow of 0.2
         }
+        // --- END OF FIX ---
 
-        // Modulate line glow by horizontal movement AND random activation
+        // Modulate line glow by horizontal movement AND smooth activation
         totalBottomGlow += lineGlow * loadingMovement * activationMask;
     }
     
