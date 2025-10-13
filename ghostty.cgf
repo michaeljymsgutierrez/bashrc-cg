@@ -7,6 +7,7 @@ window-padding-balance = false
 mouse-hide-while-typing = true
 
 # CUSTOM SHADERS
+# custom-shader = shaders/cg-shader-original.glsl
 custom-shader = shaders/cg-shader-laser-vertical.glsl
 # custom-shader = shaders/cg-shader-spark-vertical.glsl
 # custom-shader = shaders/blaze_sparks.glsl
