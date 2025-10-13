@@ -120,10 +120,16 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     
     vec4 newColor = vec4(finalColor);
     
+    // ============================================
+    // EDGE GLOW EFFECTS CONFIGURATION
+    // ============================================
     const float BASE_GLOW_SPREAD = 200.0;
     const float GLOW_INTENSITY = 1.0;
     const float WAVE_SCALE = 15.0; 
     
+    // ============================================
+    // BOTTOM EDGE GLOW EFFECT (Horizontal Lines)
+    // ============================================
     float loadingMovement = sin(vu.x * WAVE_SCALE + iTime * LOADING_SPEED) * 0.5 + 0.5; 
 
     const float WIDTH_NOISE_SCALE = 10.0;
@@ -131,16 +137,19 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     float widthNoise = lightningNoise(vec2(vu.x * WIDTH_NOISE_SCALE, iTime * WIDTH_NOISE_SPEED), 456.0);
     float dynamicGlowSpread = BASE_GLOW_SPREAD * mix(0.5, 1.5, widthNoise); 
 
-    float totalTopGlow = 0.0;
+    float totalBottomGlow = 0.0;
     
+    // Create 3 horizontal glowing lines at the bottom edge
     for(int i = 0; i < 3; i++) {
         float lineNudge = float(i) * norm(vec2(LINE_SPACING, 0.0), 0.0).x;
         
+        // Distance from bottom edge (y = -1.0 is bottom in normalized coords)
         float distFromLine = max(0.0, vu.y - (-1.0 + lineNudge));
         
         float lineGlow = exp(-distFromLine * dynamicGlowSpread) * GLOW_INTENSITY;
         
         float noiseSeed = float(i) * 10.0 + 456.0;
+        // Flicker along horizontal (x) axis
         float flickerValue = lightningNoise(vec2(vu.x * 0.1, iTime * LINE_FLICKER_SPEED * 0.5), noiseSeed);
         
         float activationMask = clamp(flickerValue * 2.0 - 1.0, 0.0, 1.0); 
@@ -149,10 +158,83 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
             activationMask = max(activationMask, 0.2);
         }
 
-        totalTopGlow += lineGlow * loadingMovement * activationMask;
+        totalBottomGlow += lineGlow * loadingMovement * activationMask;
     }
     
-    finalColor.rgb += lightningColor * totalTopGlow; 
+    // ============================================
+    // RIGHT EDGE GLOW EFFECT (Vertical Lines)
+    // ============================================
+    float aspectRatio = iResolution.x / iResolution.y;
+    // Wave moves vertically (y) along the right edge
+    float loadingMovementRight = sin(vu.y * WAVE_SCALE + iTime * LOADING_SPEED) * 0.5 + 0.5;
+    float widthNoiseRight = lightningNoise(vec2(vu.y * WIDTH_NOISE_SCALE, iTime * WIDTH_NOISE_SPEED), 789.0);
+    float dynamicGlowSpreadRight = BASE_GLOW_SPREAD * mix(0.5, 1.5, widthNoiseRight);
+    
+    float totalRightGlow = 0.0;
+    
+    // Create 3 vertical glowing lines at the right edge
+    for(int i = 0; i < 3; i++) {
+        float lineNudge = float(i) * norm(vec2(LINE_SPACING, 0.0), 0.0).x;
+        
+        // Right edge position based on aspect ratio
+        float rightEdge = aspectRatio;
+        // Distance from right edge
+        float distFromLine = max(0.0, (rightEdge - lineNudge) - vu.x);
+        
+        float lineGlow = exp(-distFromLine * dynamicGlowSpreadRight) * GLOW_INTENSITY;
+        
+        float noiseSeed = float(i) * 10.0 + 789.0;
+        // Flicker along vertical (y) axis
+        float flickerValue = lightningNoise(vec2(vu.y * 0.1, iTime * LINE_FLICKER_SPEED * 0.5), noiseSeed);
+        
+        float activationMask = clamp(flickerValue * 2.0 - 1.0, 0.0, 1.0); 
+
+        if (i == 0) {
+            activationMask = max(activationMask, 0.2);
+        }
+
+        totalRightGlow += lineGlow * loadingMovementRight * activationMask;
+    }
+    
+    // ============================================
+    // LEFT EDGE GLOW EFFECT (Vertical Lines)
+    // ============================================
+    // Wave moves vertically (y) along the left edge
+    // Wave moves vertically (y) along the left edge
+    float loadingMovementLeft = sin(vu.y * WAVE_SCALE + iTime * LOADING_SPEED) * 0.5 + 0.5;
+    float widthNoiseLeft = lightningNoise(vec2(vu.y * WIDTH_NOISE_SCALE, iTime * WIDTH_NOISE_SPEED), 123.0);
+    float dynamicGlowSpreadLeft = BASE_GLOW_SPREAD * mix(0.5, 1.5, widthNoiseLeft);
+    
+    float totalLeftGlow = 0.0;
+    
+    // Create 3 vertical glowing lines at the left edge
+    for(int i = 0; i < 3; i++) {
+        float lineNudge = float(i) * norm(vec2(LINE_SPACING, 0.0), 0.0).x;
+        
+        // Left edge position (negative aspect ratio)
+        float leftEdge = -aspectRatio;
+        // Distance from left edge
+        float distFromLine = max(0.0, vu.x - (leftEdge + lineNudge));
+        
+        float lineGlow = exp(-distFromLine * dynamicGlowSpreadLeft) * GLOW_INTENSITY;
+        
+        float noiseSeed = float(i) * 10.0 + 123.0;
+        // Flicker along vertical (y) axis
+        float flickerValue = lightningNoise(vec2(vu.y * 0.1, iTime * LINE_FLICKER_SPEED * 0.5), noiseSeed);
+        
+        float activationMask = clamp(flickerValue * 2.0 - 1.0, 0.0, 1.0); 
+
+        if (i == 0) {
+            activationMask = max(activationMask, 0.2);
+        }
+
+        totalLeftGlow += lineGlow * loadingMovementLeft * activationMask;
+    }
+    
+    // ============================================
+    // COMBINE ALL EDGE GLOWS
+    // ============================================
+    finalColor.rgb += lightningColor * (totalBottomGlow + totalRightGlow + totalLeftGlow); 
 
     vec4 trail = iCurrentCursorColor;
     trail = saturate(trail, 2.5);

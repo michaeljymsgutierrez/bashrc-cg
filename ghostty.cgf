@@ -11,8 +11,8 @@ mouse-hide-while-typing = true
 # custom-shader = shaders/cg-shader-laser-no-spark.glsl
 custom-shader = shaders/cg-shader-laser-spark.glsl
 # custom-shader = shaders/cg-shader-background-spark.glsl
-# custom-shader = shaders/cg-shader-background-glow-y-axis.glsl
-custom-shader = shaders/cg-shader-background-glow-bottom-and-cursor-axis.glsl
+custom-shader = shaders/cg-shader-background-glow-xy-axis.glsl
+# custom-shader = shaders/cg-shader-background-glow-bottom-and-cursor-axis.glsl
 
 # CUSTOM SHADERS
 # custom-shader = shaders/blaze_sparks.glsl
