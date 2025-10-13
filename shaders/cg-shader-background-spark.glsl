@@ -94,8 +94,10 @@ const float LIGHTNING_INTENSITY = 1.5;
 const float GLOW_SIZE = 5.0;
 const float BRANCH_SCALE = 8.0;
 
-// Use a static time value to prevent all time-based animation
+// Use a static time value for cursor-related effects
 const float STATIC_TIME = 0.0; 
+// Define loading effect speed (No longer needed for particles)
+const float LOADING_SPEED = 2.0;
 
 void mainImage(out vec4 fragColor, in vec2 fragCoord)
 {
@@ -119,7 +121,6 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
 
     float sdfCurrentCursor = getSdfRectangle(vu, currentCursor.xy - (currentCursor.zw * offsetFactor), currentCursor.zw * 0.5);
 
-    // iTimeCursorChange is left as is, as it controls the cursor transition progression.
     float progress = clamp((iTime - iTimeCursorChange) / DURATION, 0.0, 1.0); 
     float easedProgress = ease(progress);
     float lineLength = distance(centerCC, centerCP);
@@ -132,8 +133,6 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     // Create jagged lightning pattern - Use STATIC_TIME
     float noise = lightningNoise(vec2(distAlongLine * BRANCH_SCALE, STATIC_TIME * 10.0), STATIC_TIME);
     noise += lightningNoise(vec2(distAlongLine * BRANCH_SCALE * 2.0, STATIC_TIME * 5.0), STATIC_TIME + 100.0) * 0.5;
-    
-    // ... (All other trail effect calculations remain static as before)
     
     // Add branches
     float branches = step(0.7, noise) * (1.0 - smoothstep(0.0, 0.02, distFromLine));
@@ -155,15 +154,14 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     vec3 glowColor = vec3(1.0, 0.9, 0.2);
     vec3 lightningColor = mix(glowColor, coreColor, lightningCore);
     
-    // Flickering effect - Remove iTime dependence
+    // Flickering effect - Static
     float flicker = 1.0; 
     lightning *= flicker;
 
-    // Minimal sparks
+    // Minimal sparks - Static
     float sparkNoise = hash(vec2(distAlongLine * 15.0, 0.0));
     float sparkChance = step(0.85, sparkNoise);
     
-    // Create small lightning branches shooting off
     vec2 sparkDirection = vec2(
         hash(vec2(distAlongLine * 10.0, 0.0)) - 0.5,
         hash(vec2(distAlongLine * 12.0, 50.0)) - 0.5
@@ -174,7 +172,6 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     vec2 sparkPos = (ba * h) + sparkDirection * sparkProgress * 0.03;
     float sparkDist = length(pa - sparkPos);
     
-    // Jagged spark line
     float sparkPattern = lightningNoise(vec2(length(pa - sparkPos) * 100.0, 0.0), 0.0 + distAlongLine);
     float sparkLine = smoothstep(0.003, 0.0, sparkDist + (sparkPattern - 0.5) * 0.002);
     
@@ -182,21 +179,31 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     
     vec4 newColor = vec4(finalColor);
     
-    // --- PERMANENT STATIC BOTTOM GLOWING LINE EFFECT (FIXED) ---
+    // ----------------------------------------------------------------------
+    // --- PERMANENT MOVING BOTTOM GLOWING LINE EFFECT (Loading Bar Style) ---
+    // ----------------------------------------------------------------------
     
-    // We calculate the glow and apply it to the final color immediately, outside of the conditional cursor logic.
+    // 1. Calculate Vertical Tightness
     float distFromBottom = max(0.0, 1.0 - vu.y); 
-
-    // Adjust glowSpread for desired thickness. Higher number = thinner line.
     const float GLOW_SPREAD = 200.0;
     const float GLOW_INTENSITY = 1.0;
     
-    float bottomGlow = exp(-distFromBottom * GLOW_SPREAD) * GLOW_INTENSITY;
-    
-    // Apply the glow to the base color
-    finalColor.rgb += lightningColor * bottomGlow; 
+    // Vertical falloff (creates the sharp line)
+    float bottomGlowVertical = exp(-distFromBottom * GLOW_SPREAD) * GLOW_INTENSITY;
 
-    // --- END PERMANENT GLOW FIX ---
+    // 2. Calculate Horizontal Movement Mask
+    const float WAVE_SCALE = 15.0; // Controls the number of bright pulses visible
+    
+    // Sine wave creates a smooth, repeating bright/dark cycle that scrolls left/right
+    float loadingMovement = sin(vu.x * WAVE_SCALE + iTime * LOADING_SPEED) * 0.5 + 0.5; // Range [0, 1]
+
+    // 3. Combine Vertical Glow with Horizontal Movement
+    float finalBottomGlow = bottomGlowVertical * loadingMovement;
+    
+    // Apply the combined glow to the final color
+    finalColor.rgb += lightningColor * finalBottomGlow; 
+
+    // --- END: MOVING BOTTOM GLOW ---
     
     // Apply lightning to trail
     float trailMask = 1.0 - smoothstep(0.0, 0.02, sdfTrail);
@@ -217,8 +224,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     newColor = mix(newColor, trail, antialising(sdfCurrentCursor));
     newColor = mix(newColor, finalColor, step(sdfCurrentCursor, 0.));
     
-    // The final blend now only controls the *cursor trail and cursor effects*.
-    // The permanent bottom glow is already in `finalColor` and is preserved.
+    // The final blend ensures cursor effects are drawn over the background and permanent glow.
     finalColor = mix(finalColor, newColor, step(sdfCurrentCursor, easedProgress * lineLength));
     
     fragColor = finalColor;
