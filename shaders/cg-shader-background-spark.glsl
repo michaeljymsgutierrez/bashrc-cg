@@ -113,74 +113,24 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     vec2 offsetFactor = vec2(-.5, 0.5);
 
     vec4 currentCursor = vec4(norm(iCurrentCursor.xy, 1.), norm(iCurrentCursor.zw, 0.));
-    vec4 previousCursor = vec4(norm(iPreviousCursor.xy, 1.), norm(iPreviousCursor.zw, 0.));
+    // Previous cursor (trail) variables removed
 
     vec2 centerCC = getRectangleCenter(currentCursor);
-    vec2 centerCP = getRectangleCenter(previousCursor);
+    // Center of previous cursor (trail) removed
 
-    // Line segment distance calculation
-    vec2 pa = vu - centerCP;
-    vec2 ba = centerCC - centerCP;
-    float h = clamp(dot(pa, ba) / dot(ba, ba), 0.0, 1.0);
-    float sdfTrail = length(pa - ba * h) - norm(vec2(LINE_THICKNESS, LINE_THICKNESS), 0.).x;
-
+    // The entire trail distance and lightning calculation block is REMOVED.
     float sdfCurrentCursor = getSdfRectangle(vu, currentCursor.xy - (currentCursor.zw * offsetFactor), currentCursor.zw * 0.5);
 
     float progress = clamp((iTime - iTimeCursorChange) / DURATION, 0.0, 1.0); 
     float easedProgress = ease(progress);
-    float lineLength = distance(centerCC, centerCP);
 
-    // Lightning effect
-    vec2 perpendicular = normalize(vec2(-ba.y, ba.x));
-    float distAlongLine = dot(pa, ba) / length(ba);
-    float distFromLine = abs(dot(pa, perpendicular));
-    
-    // Create jagged lightning pattern - Use STATIC_TIME
-    float noise = lightningNoise(vec2(distAlongLine * BRANCH_SCALE, STATIC_TIME * 10.0), STATIC_TIME);
-    noise += lightningNoise(vec2(distAlongLine * BRANCH_SCALE * 2.0, STATIC_TIME * 5.0), STATIC_TIME + 100.0) * 0.5;
-    
-    // Add branches
-    float branches = step(0.7, noise) * (1.0 - smoothstep(0.0, 0.02, distFromLine));
-    
-    // Main lightning bolt with noise displacement
-    float displacement = (noise - 0.5) * 0.003;
-    float lightningCore = smoothstep(0.002, 0.0, distFromLine + displacement);
-    
-    // Electric glow
-    float glowSize = norm(vec2(GLOW_SIZE, GLOW_SIZE), 0.).x;
-    float glow = exp(-distFromLine / glowSize) * 0.6;
-    
-    // Combine lightning effects
-    float lightning = max(lightningCore, branches * 0.5);
-    lightning += glow;
-    
-    // Lightning colors - bright electric yellow
+    // Lightning colors (needed for the bottom glow and cursor)
     vec3 coreColor = vec3(1.0, 1.0, 0.7);
     vec3 glowColor = vec3(1.0, 0.9, 0.2);
-    vec3 lightningColor = mix(glowColor, coreColor, lightningCore);
+    vec3 lightningColor = mix(glowColor, coreColor, 1.0); 
     
-    // Flickering effect - Static
-    float flicker = 1.0; 
-    lightning *= flicker;
-
-    // Minimal sparks - Static
-    float sparkNoise = hash(vec2(distAlongLine * 15.0, 0.0));
-    float sparkChance = step(0.85, sparkNoise);
-    
-    vec2 sparkDirection = vec2(
-        hash(vec2(distAlongLine * 10.0, 0.0)) - 0.5,
-        hash(vec2(distAlongLine * 12.0, 50.0)) - 0.5
-    );
-    sparkDirection = normalize(sparkDirection);
-    
-    float sparkProgress = 0.5; 
-    vec2 sparkPos = (ba * h) + sparkDirection * sparkProgress * 0.03;
-    float sparkDist = length(pa - sparkPos);
-    
-    float sparkPattern = lightningNoise(vec2(length(pa - sparkPos) * 100.0, 0.0), 0.0 + distAlongLine);
-    float sparkLine = smoothstep(0.003, 0.0, sparkDist + (sparkPattern - 0.5) * 0.002);
-    
-    float spark = sparkChance * sparkLine * (1.0 - sparkProgress) * 0.8;
+    // Electric glow size (needed for the cursor glow)
+    float glowSize = norm(vec2(GLOW_SIZE, GLOW_SIZE), 0.).x;
     
     vec4 newColor = vec4(finalColor);
     
@@ -217,7 +167,6 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
         float lineGlow = exp(-distFromLine * dynamicGlowSpread) * GLOW_INTENSITY;
         
         // Random Activation/Flicker for this line
-        // We hash the line index (i) and time to get a random value between 0 and 1
         float flickerValue = hash(vec2(float(i), iTime * LINE_FLICKER_SPEED));
         
         // Activation Mask: Line is 'on' if flickerValue is below the threshold
@@ -225,7 +174,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
 
         // Ensure the absolute bottom line (i=0) is always on, or at least a minimum is applied
         if (i == 0) {
-            activationMask = max(activationMask, 0.5); // Ensure the base line is usually visible
+            activationMask = max(activationMask, 0.5); 
         }
 
         // Modulate line glow by horizontal movement AND random activation
@@ -237,18 +186,8 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
 
     // --- END: MULTI-LINE GLOW ---
     
-    // Apply lightning to trail
-    float trailMask = 1.0 - smoothstep(0.0, 0.02, sdfTrail);
-    newColor.rgb += lightningColor * lightning * LIGHTNING_INTENSITY * trailMask;
-    
-    // Add spark lightning bolts
-    newColor.rgb += lightningColor * spark * 3.0;
-
     vec4 trail = iCurrentCursorColor;
     trail = saturate(trail, 2.5);
-    
-    // Draw trail base
-    newColor = mix(newColor, trail, antialising(sdfTrail) * 0.3);
     
     // Draw current cursor with glow
     float cursorGlow = exp(-abs(sdfCurrentCursor) / glowSize) * 0.8;
@@ -256,8 +195,8 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     newColor = mix(newColor, trail, antialising(sdfCurrentCursor));
     newColor = mix(newColor, finalColor, step(sdfCurrentCursor, 0.));
     
-    // The final blend ensures cursor effects are drawn over the background and permanent glow.
-    finalColor = mix(finalColor, newColor, step(sdfCurrentCursor, easedProgress * lineLength));
+    // The final blend ensures the cursor is drawn over the background and permanent glow.
+    finalColor = mix(finalColor, newColor, antialising(sdfCurrentCursor)); 
     
     fragColor = finalColor;
 }
