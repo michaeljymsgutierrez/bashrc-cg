@@ -56,6 +56,41 @@ float getLightningDistance(vec2 p, vec2 start, vec2 end, float time, float seed)
     return minDist;
 }
 
+// Generate sparks along the lightning
+float getSparks(vec2 p, vec2 start, vec2 end, float time, float seed) {
+    float sparkIntensity = 0.0;
+    int numSparks = 12;
+    
+    for (int i = 0; i < numSparks; i++) {
+        float t = float(i) / float(numSparks);
+        float sparkTime = time * 60.0 + float(i) * 0.5;
+        
+        // Position along the main bolt
+        vec2 sparkPos = mix(start, end, t);
+        sparkPos += getLightningOffset(t, seed + sparkTime);
+        
+        // Random direction for spark
+        float angle = hash(vec2(float(i), seed)) * 6.28318;
+        float sparkLength = hash(vec2(float(i) + 0.5, seed)) * 0.03 + 0.01;
+        
+        // Animate spark length
+        float sparkAnim = fract(sparkTime);
+        sparkLength *= smoothstep(0.0, 0.3, sparkAnim) * (1.0 - smoothstep(0.3, 1.0, sparkAnim));
+        
+        vec2 sparkEnd = sparkPos + vec2(cos(angle), sin(angle)) * sparkLength;
+        
+        // Distance to spark
+        vec2 pa = p - sparkPos;
+        vec2 ba = sparkEnd - sparkPos;
+        float h = clamp(dot(pa, ba) / dot(ba, ba), 0.0, 1.0);
+        float dist = length(pa - ba * h);
+        
+        sparkIntensity += exp(-dist * 300.0) * (1.0 - sparkAnim);
+    }
+    
+    return sparkIntensity;
+}
+
 const vec4 TRAIL_COLOR = vec4(1.0, 1.0, 0.0, 1.0); // Yellow
 const vec4 GLOW_COLOR = vec4(1.0, 1.0, 0.8, 1.0); // Light yellow core
 const float DURATION = 0.5;
@@ -83,11 +118,14 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     float seed = floor(iTimeCursorChange * 10.0);
     
     // Main bolt
-    lightningDist = min(lightningDist, getLightningDistance(vu, centerCP, centerCC, iTime * 20.0, seed));
+    lightningDist = min(lightningDist, getLightningDistance(vu, centerCP, centerCC, iTime * 80.0, seed));
     
     // Secondary bolts
-    lightningDist = min(lightningDist, getLightningDistance(vu, centerCP, centerCC, iTime * 25.0, seed + 10.0) + 0.001);
-    lightningDist = min(lightningDist, getLightningDistance(vu, centerCP, centerCC, iTime * 30.0, seed + 20.0) + 0.002);
+    lightningDist = min(lightningDist, getLightningDistance(vu, centerCP, centerCC, iTime * 100.0, seed + 10.0) + 0.001);
+    lightningDist = min(lightningDist, getLightningDistance(vu, centerCP, centerCC, iTime * 120.0, seed + 20.0) + 0.002);
+    
+    // Add sparks
+    float sparkIntensity = getSparks(vu, centerCP, centerCC, iTime, seed);
 
     float sdfCurrentCursor = getSdfRectangle(vu, currentCursor.xy - (currentCursor.zw * offsetFactor), currentCursor.zw * 0.5);
 
@@ -96,7 +134,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     float coreIntensity = smoothstep(LINE_THICKNESS, 0.0, lightningDist);
     
     // Flickering effect
-    float flicker = 0.7 + 0.3 * sin(iTime * 60.0 + seed);
+    float flicker = 0.7 + 0.3 * sin(iTime * 200.0 + seed);
     
     // Fade along the bolt
     vec2 pa = vu - centerCP;
@@ -112,6 +150,9 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     
     newColor = mix(newColor, lightningColor, glowIntensity);
     newColor += GLOW_COLOR * coreIntensity * fadeFactor * flicker;
+    
+    // Add sparks
+    newColor += GLOW_COLOR * sparkIntensity * fadeFactor;
     
     // Draw current cursor with glow
     newColor = mix(newColor, TRAIL_COLOR * 1.5, antialising(sdfCurrentCursor) * 0.7);
