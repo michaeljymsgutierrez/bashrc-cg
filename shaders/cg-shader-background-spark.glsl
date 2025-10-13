@@ -88,7 +88,8 @@ float lightningNoise(vec2 p, float seed) {
 }
 
 const float OPACITY = 0.6;
-const float DURATION = 0.3; //IN SECONDS
+// CHANGED: Increased duration for slower cursor transition
+const float DURATION = 1.0; //IN SECONDS
 const float LINE_THICKNESS = 0.5;
 const float LIGHTNING_INTENSITY = 1.5;
 const float GLOW_SIZE = 5.0;
@@ -96,12 +97,13 @@ const float BRANCH_SCALE = 8.0;
 
 // Use a static time value for cursor-related effects
 const float STATIC_TIME = 0.0; 
-// Define loading effect speed
-const float LOADING_SPEED = 2.0;
+// CHANGED: Decreased speed for slower horizontal wave
+const float LOADING_SPEED = 0.5;
 
 // --- NEW CONSTANTS FOR MULTI-LINE EFFECT ---
 const float LINE_SPACING = 0.005; // Spacing between lines (normalized by yResolution)
-const float LINE_FLICKER_SPEED = 10.0; // Speed of the random line activation
+// CHANGED: Decreased speed for slower random flickering
+const float LINE_FLICKER_SPEED = 2.0; // Speed of the random line activation
 const float LINE_THRESHOLD = 0.5; // Probability threshold for a line being 'on' (lower=more lines)
 
 void mainImage(out vec4 fragColor, in vec2 fragCoord)
