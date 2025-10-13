@@ -124,8 +124,6 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     const float GLOW_INTENSITY = 1.0;
     const float WAVE_SCALE = 15.0; 
     
-    float loadingMovement = sin(vu.x * WAVE_SCALE + iTime * LOADING_SPEED) * 0.5 + 0.5; 
-
     const float WIDTH_NOISE_SCALE = 10.0;
     const float WIDTH_NOISE_SPEED = 0.5;
     float widthNoise = lightningNoise(vec2(vu.x * WIDTH_NOISE_SCALE, iTime * WIDTH_NOISE_SPEED), 456.0);
@@ -136,15 +134,18 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     for(int i = 0; i < 3; i++) {
         float lineNudge = float(i) * norm(vec2(LINE_SPACING, 0.0), 0.0).x;
         
-        // MODIFIED LINE: Use the center of the cursor for the glow line's Y position
+        // Use the center of the cursor for the glow line's Y position
         float lineY = centerCC.y; 
         // Use absolute distance for symmetric glow around the line
         float distFromLine = abs(vu.y - (lineY + lineNudge));
         
         float lineGlow = exp(-distFromLine * dynamicGlowSpread) * GLOW_INTENSITY;
         
+        // Wave movement based on y position for horizontal line
+        float loadingMovement = sin(vu.y * WAVE_SCALE + iTime * LOADING_SPEED) * 0.5 + 0.5;
+        
         float noiseSeed = float(i) * 10.0 + 456.0;
-        float flickerValue = lightningNoise(vec2(vu.x * 0.1, iTime * LINE_FLICKER_SPEED * 0.5), noiseSeed);
+        float flickerValue = lightningNoise(vec2(vu.y * 0.1, iTime * LINE_FLICKER_SPEED * 0.5), noiseSeed);
         
         float activationMask = clamp(flickerValue * 2.0 - 1.0, 0.0, 1.0); 
 
@@ -170,8 +171,11 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
         
         float lineGlow = exp(-distFromLine * dynamicGlowSpread) * GLOW_INTENSITY;
         
+        // Wave movement based on x position for vertical line
+        float loadingMovement = sin(vu.x * WAVE_SCALE + iTime * LOADING_SPEED) * 0.5 + 0.5;
+        
         float noiseSeed = float(i) * 10.0 + 789.0;
-        float flickerValue = lightningNoise(vec2(vu.y * 0.1, iTime * LINE_FLICKER_SPEED * 0.5), noiseSeed);
+        float flickerValue = lightningNoise(vec2(vu.x * 0.1, iTime * LINE_FLICKER_SPEED * 0.5), noiseSeed);
         
         float activationMask = clamp(flickerValue * 2.0 - 1.0, 0.0, 1.0);
 
