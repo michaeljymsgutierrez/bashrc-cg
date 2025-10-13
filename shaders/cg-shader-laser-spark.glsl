@@ -1,11 +1,10 @@
+// Author: Michael Jyms Gutierrez
+
 float getSdfRectangle(in vec2 p, in vec2 xy, in vec2 b)
 {
     vec2 d = abs(p - xy) - b;
     return length(max(d, 0.0)) + min(max(d.x, d.y), 0.0);
 }
-
-// Based on Inigo Quilez's 2D distance functions article: https://iquilezles.org/articles/distfunctions2d/
-// Potencially optimized by eliminating conditionals and loops to enhance performance and reduce branching
 
 float seg(in vec2 p, in vec2 a, in vec2 b, inout float s, float d) {
     vec2 e = b - a;
@@ -45,11 +44,9 @@ float antialising(float distance) {
 }
 
 float determineStartVertexFactor(vec2 a, vec2 b) {
-    // Conditions using step
-    float condition1 = step(b.x, a.x) * step(a.y, b.y); // a.x < b.x && a.y > b.y
-    float condition2 = step(a.x, b.x) * step(b.y, a.y); // a.x > b.x && a.y < b.y
+    float condition1 = step(b.x, a.x) * step(a.y, b.y);
+    float condition2 = step(a.x, b.x) * step(b.y, a.y);
 
-    // If neither condition is met, return 1 (else case)
     return 1.0 - max(condition1, condition2);
 }
 
@@ -62,18 +59,16 @@ float ease(float x) {
 }
 
 vec4 saturate(vec4 color, float factor) {
-    float gray = dot(color, vec4(0.299, 0.587, 0.114, 0.)); // luminance
+    float gray = dot(color, vec4(0.299, 0.587, 0.114, 0.));
     return mix(vec4(gray), color, factor);
 }
 
-// Hash function for noise
 float hash(vec2 p) {
     p = fract(p * vec2(123.34, 456.21));
     p += dot(p, p + 45.32);
     return fract(p.x * p.y);
 }
 
-// Generate lightning branches (Perlin-like noise)
 float lightningNoise(vec2 p, float seed) {
     vec2 i = floor(p);
     vec2 f = fract(p);
@@ -88,24 +83,21 @@ float lightningNoise(vec2 p, float seed) {
 }
 
 const float OPACITY = 0.6;
-const float DURATION = 0.3; // IN SECONDS (Cursor transition time)
+const float DURATION = 0.3;
 const float LINE_THICKNESS = 0.5;
 const float LIGHTNING_INTENSITY = 1.5;
 const float GLOW_SIZE = 5.0;
 const float BRANCH_SCALE = 8.0;
 
-// --- BG GLOW CONSTANTS ---
-const float STATIC_TIME = 0.0; // Not used, but kept for context
-const float LOADING_SPEED = 0.5; // Horizontal wave speed
+const float STATIC_TIME = 0.0;
+const float LOADING_SPEED = 0.5;
 const float LINE_SPACING = 0.005; 
-const float LINE_FLICKER_SPEED = 1.0; // Smoother pulse speed
-const float LINE_THRESHOLD = 0.5; // Not used as hard threshold
-// -------------------------
+const float LINE_FLICKER_SPEED = 1.0;
+const float LINE_THRESHOLD = 0.5;
 
 void mainImage(out vec4 fragColor, in vec2 fragCoord)
 {
     // 1. Initial Setup
-    // Use the raw background texture as the starting color
     vec4 rawBgColor = texture(iChannel0, fragCoord.xy / iResolution.xy);
     
     vec2 vu = norm(fragCoord, 1.);
@@ -129,17 +121,16 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     float sdfTrail = length(pa - ba * h) - norm(vec2(LINE_THICKNESS, LINE_THICKNESS), 0.).x;
     float sdfCurrentCursor = getSdfRectangle(vu, currentCursor.xy - (currentCursor.zw * offsetFactor), currentCursor.zw * 0.5);
 
-    // Lightning colors - bright electric yellow
+    // Lightning colors
     vec3 coreColor = vec3(1.0, 1.0, 0.7);
     vec3 glowColor = vec3(1.0, 0.9, 0.2);
-    // Base lightning color (used for the background glow and cursor glow)
     vec3 lightningColor = mix(glowColor, coreColor, 1.0); 
     float glowSize = norm(vec2(GLOW_SIZE, GLOW_SIZE), 0.).x;
     
     // --------------------------------------------------------------------------------
-    // --- INTEGRATED BG GLOW EFFECT (from Background Shader) ---
+    // --- INTEGRATED BG GLOW EFFECT (Bottom Edge) ---
     // --------------------------------------------------------------------------------
-    vec4 finalColor = rawBgColor; // Start with raw background
+    vec4 finalColor = rawBgColor;
 
     const float BASE_GLOW_SPREAD = 200.0;
     const float GLOW_INTENSITY = 1.0;
@@ -162,7 +153,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
         float distFromLine = max(0.0, (1.0 - lineNudge) - vu.y); 
         float lineGlow = exp(-distFromLine * dynamicGlowSpread) * GLOW_INTENSITY;
         
-        // Smoothed Activation (Eliminates Flicker)
+        // Smoothed Activation
         float noiseSeed = float(i) * 10.0 + 456.0;
         float flickerValue = lightningNoise(vec2(vu.x * 0.1, iTime * LINE_FLICKER_SPEED * 0.5), noiseSeed);
         float activationMask = clamp(flickerValue * 2.0 - 1.0, 0.0, 1.0); 
@@ -174,12 +165,12 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
         totalBottomGlow += lineGlow * loadingMovement * activationMask;
     }
     
-    // 4. Apply the Total Glow to the background color
+    // 4. Apply the Total Glow
     finalColor.rgb += lightningColor * totalBottomGlow; 
     // --- END INTEGRATED BG GLOW EFFECT ---
     
     // --------------------------------------------------------------------------------
-    // --- ORIGINAL CURSOR/TRAIL LOGIC (Applied on top of finalColor) ---
+    // --- ORIGINAL CURSOR/TRAIL LOGIC ---
     // --------------------------------------------------------------------------------
 
     // Lightning effect setup
@@ -233,7 +224,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     
     float spark = sparkChance * sparkLine * (1.0 - sparkProgress) * 0.8;
     
-    vec4 newColor = vec4(finalColor); // Start blending from the GLOWING BACKGROUND
+    vec4 newColor = vec4(finalColor);
     
     // Apply lightning to trail
     float trailMask = 1.0 - smoothstep(0.0, 0.02, sdfTrail);
@@ -250,10 +241,9 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     
     // Draw current cursor with glow
     float cursorGlow = exp(-abs(sdfCurrentCursor) / glowSize) * 0.8;
-    // Note: The cursor glow uses the base 'lightningColor' from the BG section.
     newColor.rgb += lightningColor * cursorGlow; 
     newColor = mix(newColor, trail, antialising(sdfCurrentCursor));
-    newColor = mix(newColor, finalColor, step(sdfCurrentCursor, 0.)); // Blend back to GLOWING BACKGROUND
+    newColor = mix(newColor, finalColor, step(sdfCurrentCursor, 0.)); 
     
     // Final blend - Draw the cursor over the GLOWING BACKGROUND
     fragColor = mix(finalColor, newColor, step(sdfCurrentCursor, easedProgress * lineLength));

@@ -1,11 +1,10 @@
+// Author: Michael Jyms Gutierrez
+
 float getSdfRectangle(in vec2 p, in vec2 xy, in vec2 b)
 {
     vec2 d = abs(p - xy) - b;
     return length(max(d, 0.0)) + min(max(d.x, d.y), 0.0);
 }
-
-// Based on Inigo Quilez's 2D distance functions article: https://iquilezles.org/articles/distfunctions2d/
-// Potencially optimized by eliminating conditionals and loops to enhance performance and reduce branching
 
 float seg(in vec2 p, in vec2 a, in vec2 b, inout float s, float d) {
     vec2 e = b - a;
@@ -45,11 +44,9 @@ float antialising(float distance) {
 }
 
 float determineStartVertexFactor(vec2 a, vec2 b) {
-    // Conditions using step
-    float condition1 = step(b.x, a.x) * step(a.y, b.y); // a.x < b.x && a.y > b.y
-    float condition2 = step(a.x, b.x) * step(b.y, a.y); // a.x > b.x && a.y < b.y
+    float condition1 = step(b.x, a.x) * step(a.y, b.y);
+    float condition2 = step(a.x, b.x) * step(b.y, a.y);
 
-    // If neither condition is met, return 1 (else case)
     return 1.0 - max(condition1, condition2);
 }
 
@@ -62,18 +59,16 @@ float ease(float x) {
 }
 
 vec4 saturate(vec4 color, float factor) {
-    float gray = dot(color, vec4(0.299, 0.587, 0.114, 0.)); // luminance
+    float gray = dot(color, vec4(0.299, 0.587, 0.114, 0.));
     return mix(vec4(gray), color, factor);
 }
 
-// Hash function for noise
 float hash(vec2 p) {
     p = fract(p * vec2(123.34, 456.21));
     p += dot(p, p + 45.32);
     return fract(p.x * p.y);
 }
 
-// Generate lightning branches (Perlin-like noise)
 float lightningNoise(vec2 p, float seed) {
     vec2 i = floor(p);
     vec2 f = fract(p);
@@ -88,123 +83,85 @@ float lightningNoise(vec2 p, float seed) {
 }
 
 const float OPACITY = 0.6;
-// CHANGED: Increased duration for slower cursor transition
-const float DURATION = 1.0; //IN SECONDS
+const float DURATION = 1.0;
 const float LINE_THICKNESS = 0.5;
 const float LIGHTNING_INTENSITY = 1.5;
 const float GLOW_SIZE = 5.0;
 const float BRANCH_SCALE = 8.0;
 
-// Use a static time value for cursor-related effects
 const float STATIC_TIME = 0.0; 
-// CHANGED: Decreased speed for slower horizontal wave
 const float LOADING_SPEED = 0.5;
 
-// --- NEW CONSTANTS FOR MULTI-LINE EFFECT ---
-const float LINE_SPACING = 0.005; // Spacing between lines (normalized by yResolution)
-// MODIFIED: Further decreased speed for a gentler, slower random pulsing
-const float LINE_FLICKER_SPEED = 1.0; // Speed of the random line activation
-const float LINE_THRESHOLD = 0.5; // Probability threshold for a line being 'on' (no longer used as a hard threshold)
+const float LINE_SPACING = 0.005; 
+const float LINE_FLICKER_SPEED = 1.0;
+const float LINE_THRESHOLD = 0.5;
 
 void mainImage(out vec4 fragColor, in vec2 fragCoord)
 {
-    // Start with the background color
     vec4 finalColor = texture(iChannel0, fragCoord.xy / iResolution.xy);
     
     vec2 vu = norm(fragCoord, 1.);
     vec2 offsetFactor = vec2(-.5, 0.5);
 
     vec4 currentCursor = vec4(norm(iCurrentCursor.xy, 1.), norm(iCurrentCursor.zw, 0.));
-    // Previous cursor (trail) variables removed
 
     vec2 centerCC = getRectangleCenter(currentCursor);
-    // Center of previous cursor (trail) removed
 
-    // The entire trail distance and lightning calculation block is REMOVED.
     float sdfCurrentCursor = getSdfRectangle(vu, currentCursor.xy - (currentCursor.zw * offsetFactor), currentCursor.zw * 0.5);
 
     float progress = clamp((iTime - iTimeCursorChange) / DURATION, 0.0, 1.0); 
     float easedProgress = ease(progress);
 
-    // Lightning colors (needed for the top glow and cursor)
     vec3 coreColor = vec3(1.0, 1.0, 0.7);
     vec3 glowColor = vec3(1.0, 0.9, 0.2);
     vec3 lightningColor = mix(glowColor, coreColor, 1.0); 
     
-    // Electric glow size (needed for the cursor glow)
     float glowSize = norm(vec2(GLOW_SIZE, GLOW_SIZE), 0.).x;
     
     vec4 newColor = vec4(finalColor);
     
-    // --------------------------------------------------------------------------------
-    // --- PERMANENT MULTI-LINE, MOVING TOP GLOWING LINE EFFECT (Random 1-3 Lines) ---
-    // --------------------------------------------------------------------------------
-    
-    // Base parameters
     const float BASE_GLOW_SPREAD = 200.0;
     const float GLOW_INTENSITY = 1.0;
     const float WAVE_SCALE = 15.0; 
     
-    // 1. Calculate Horizontal Movement Mask
     float loadingMovement = sin(vu.x * WAVE_SCALE + iTime * LOADING_SPEED) * 0.5 + 0.5; 
 
-    // 2. Calculate Dynamic Width (Random thickness variation)
     const float WIDTH_NOISE_SCALE = 10.0;
     const float WIDTH_NOISE_SPEED = 0.5;
     float widthNoise = lightningNoise(vec2(vu.x * WIDTH_NOISE_SCALE, iTime * WIDTH_NOISE_SPEED), 456.0);
     float dynamicGlowSpread = BASE_GLOW_SPREAD * mix(0.5, 1.5, widthNoise); 
 
-    // 3. Generate Vertical Glow for Multiple Lines
     float totalTopGlow = 0.0;
     
-    // Loop 3 distinct lines: 0 (topmost), 1, and 2
     for(int i = 0; i < 3; i++) {
-        // Line Nudge: Move the line down from the top edge by an amount proportional to its index
         float lineNudge = float(i) * norm(vec2(LINE_SPACING, 0.0), 0.0).x;
         
-        // Vertical Distance: Distance from the nudge position (Top edge at vu.y = -1.0)
-        // Distance from a line at -1.0 + lineNudge is: vu.y - (-1.0 + lineNudge)
         float distFromLine = max(0.0, vu.y - (-1.0 + lineNudge));
-        // Equivalent and clearer: 
-        // float distFromLine = max(0.0, vu.y + 1.0 - lineNudge);
         
-        // Vertical Falloff (creates the sharp line)
         float lineGlow = exp(-distFromLine * dynamicGlowSpread) * GLOW_INTENSITY;
         
-        // --- FIX FOR SMOOTH ACTIVATION (Eliminates Flicker) ---
-        // 1. Generate smooth, time-varying noise (Perlin-like)
-        float noiseSeed = float(i) * 10.0 + 456.0; // Unique seed for each line
+        float noiseSeed = float(i) * 10.0 + 456.0;
         float flickerValue = lightningNoise(vec2(vu.x * 0.1, iTime * LINE_FLICKER_SPEED * 0.5), noiseSeed);
         
-        // 2. Modulate line intensity smoothly
-        // Clamp and scale the noise so lines are mostly dim and only smoothly peak to 1.0
         float activationMask = clamp(flickerValue * 2.0 - 1.0, 0.0, 1.0); 
 
-        // 3. Ensure the absolute top line (i=0) has a constant minimum glow
         if (i == 0) {
-            activationMask = max(activationMask, 0.2); // Constant base glow of 0.2
+            activationMask = max(activationMask, 0.2);
         }
-        // --- END OF FIX ---
 
-        // Modulate line glow by horizontal movement AND smooth activation
         totalTopGlow += lineGlow * loadingMovement * activationMask;
     }
     
-    // 4. Apply the Total Glow
     finalColor.rgb += lightningColor * totalTopGlow; 
 
-    // --- END: MULTI-LINE GLOW ---
-    
     vec4 trail = iCurrentCursorColor;
     trail = saturate(trail, 2.5);
     
-    // Draw current cursor with glow
     float cursorGlow = exp(-abs(sdfCurrentCursor) / glowSize) * 0.8;
     newColor.rgb += lightningColor * cursorGlow;
     newColor = mix(newColor, trail, antialising(sdfCurrentCursor));
     newColor = mix(newColor, finalColor, step(sdfCurrentCursor, 0.));
     
-    // The final blend ensures the cursor is drawn over the background and permanent glow.
     finalColor = mix(finalColor, newColor, antialising(sdfCurrentCursor)); 
     
     fragColor = finalColor;
