@@ -3,7 +3,7 @@ pane_text_color="#f8f1ff"
 pane_background_color="#222222"
 active_pane_border_color="#fde466"
 inactive_pane_border_color="#444444"
-tab_pointer_background_color="#fde466"
+tab_pointer_background_color="#fde465"
 
 set -g mode-style "fg=$pane_text_color,bg=$inactive_pane_border_color"
 set -g message-style "fg=$pane_text_color,bg=$pane_background_color"
