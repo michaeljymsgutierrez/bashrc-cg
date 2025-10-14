@@ -132,8 +132,8 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     // --------------------------------------------------------------------------------
     vec4 finalColor = rawBgColor;
 
-    const float BASE_GLOW_SPREAD = 200.0;
-    const float GLOW_INTENSITY = 1.0;
+    const float BASE_GLOW_SPREAD = 150.0;
+    const float GLOW_INTENSITY = 2.5;
     const float WAVE_SCALE = 15.0; 
 
     // 1. Horizontal Movement Mask
