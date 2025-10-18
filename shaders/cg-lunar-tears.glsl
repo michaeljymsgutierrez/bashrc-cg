@@ -53,8 +53,8 @@ float lightningNoise(vec2 p, float seed) {
 const float OPACITY = 0.6;
 const float DURATION = 0.3;
 const float LINE_THICKNESS = 0.5;
-const float LIGHTNING_INTENSITY = 1.5;
-const float GLOW_SIZE = 5.0;
+const float LIGHTNING_INTENSITY = 0.8;
+const float GLOW_SIZE = 8.0;
 const float BRANCH_SCALE = 8.0;
 
 const float LOADING_SPEED = 0.5;
@@ -92,10 +92,10 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     vec2 cursorOffset = currentCursor.zw * offsetFactor;
     float sdfCurrentCursor = getSdfRectangle(vu, currentCursor.xy - cursorOffset, currentCursor.zw * 0.5);
 
-    // Lightning colors - pre-calculated
-    vec3 coreColor = vec3(1.0, 1.0, 0.7);
-    vec3 glowColor = vec3(1.0, 0.9, 0.2);
-    vec3 lightningColor = mix(glowColor, coreColor, 1.0);
+    // Lunar Tear colors - soft ethereal white with subtle blue tint
+    vec3 coreColor = vec3(0.95, 0.97, 1.0);
+    vec3 glowColor = vec3(0.85, 0.90, 1.0);
+    vec3 lightningColor = mix(glowColor, coreColor, 0.7);
     float glowSize = norm(vec2(GLOW_SIZE, GLOW_SIZE), 0.0).x;
     
     // --------------------------------------------------------------------------------
@@ -103,8 +103,8 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     // --------------------------------------------------------------------------------
     vec4 finalColor = rawBgColor;
 
-    const float BASE_GLOW_SPREAD = 150.0;
-    const float GLOW_INTENSITY = 2.5;
+    const float BASE_GLOW_SPREAD = 80.0;
+    const float GLOW_INTENSITY = 1.8;
     const float WAVE_SCALE = 15.0;
 
     // Pre-calculate time-based values
@@ -160,8 +160,8 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     float displacement = (noise - 0.5) * 0.003;
     float lightningCore = smoothstep(0.002, 0.0, distFromLine + displacement);
     
-    // Electric glow
-    float glow = exp(-distFromLine / glowSize) * 0.6;
+    // Electric glow - softer, more diffused
+    float glow = exp(-distFromLine / glowSize) * 0.3;
     
     // Combine lightning effects
     float lightning = max(lightningCore, branches * 0.5) + glow;

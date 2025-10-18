@@ -1,4 +1,5 @@
 // Author: Michael Jyms Gutierrez
+// Title: Solar Flare
 
 float getSdfRectangle(in vec2 p, in vec2 xy, in vec2 b)
 {
