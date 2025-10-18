@@ -1,4 +1,5 @@
 // Author: Michael Jyms Gutierrez
+// Title: Lunar Tears
 
 float getSdfRectangle(in vec2 p, in vec2 xy, in vec2 b)
 {
@@ -98,44 +99,41 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     float glowSize = norm(vec2(GLOW_SIZE, GLOW_SIZE), 0.0).x;
     
     // --------------------------------------------------------------------------------
-    // Background Glow Effect (Bottom Edge) - Smooth Moving Line
+    // Background Glow Effect (Bottom Edge) - Optimized
     // --------------------------------------------------------------------------------
     vec4 finalColor = rawBgColor;
 
-    const float LINE_WIDTH = 0.08;
+    const float BASE_GLOW_SPREAD = 150.0;
     const float GLOW_INTENSITY = 2.5;
-    const float LINE_SPEED = 0.02;
-    const float FADE_EDGE = 0.15; // Edge fade distance for smooth transition
+    const float WAVE_SCALE = 15.0;
 
-    // Linear continuous movement
-    float lineProgress = fract(iTime * LINE_SPEED);
-    
-    // Calculate screen bounds in normalized coordinates
-    float aspectRatio = iResolution.x / iResolution.y;
-    float rightEdge = aspectRatio;
-    float leftEdge = -aspectRatio;
-    float screenWidth = rightEdge - leftEdge;
-    
-    // Map from rightEdge to leftEdge (full screen coverage)
-    float lineXPos = rightEdge - lineProgress * screenWidth;
-    
-    // Optimized distance calculations
-    float distFromMovingLine = abs(vu.x - lineXPos);
-    float distFromBottom = 1.0 - vu.y;
-    
-    // Smooth fade in/out at edges for seamless transition
-    float fadeIn = smoothstep(0.0, FADE_EDGE, lineProgress);
-    float fadeOut = smoothstep(1.0, 1.0 - FADE_EDGE, lineProgress);
-    float edgeFade = fadeIn * fadeOut;
-    
-    // More aggressive early exit for optimization
+    // Pre-calculate time-based values
+    float timeSpeed = iTime * LOADING_SPEED;
+    float loadingMovement = sin(vu.x * WAVE_SCALE + timeSpeed) * 0.5 + 0.5;
+
+    // Dynamic width calculation
+    const float WIDTH_NOISE_SCALE = 10.0;
+    const float WIDTH_NOISE_SPEED = 0.5;
+    float widthNoise = lightningNoise(vec2(vu.x * WIDTH_NOISE_SCALE, iTime * WIDTH_NOISE_SPEED), 456.0);
+    float dynamicGlowSpread = BASE_GLOW_SPREAD * mix(0.5, 1.5, widthNoise);
+
+    // Generate vertical glow for multiple lines
     float totalBottomGlow = 0.0;
-    if (distFromBottom > 0.0 && distFromBottom < 0.04 && distFromMovingLine < 0.5) {
-        // Optimized glow calculations using faster approximations
-        float horizontalGlow = exp(-distFromMovingLine * 12.5);
-        float verticalGlow = exp(-distFromBottom * 150.0);
+    float lineSpacing = norm(vec2(LINE_SPACING, 0.0), 0.0).x;
+    float flickerTime = iTime * LINE_FLICKER_SPEED * 0.5;
+    
+    for(int i = 0; i < 3; i++) {
+        float lineNudge = float(i) * lineSpacing;
+        float distFromLine = max(0.0, 1.0 - lineNudge - vu.y);
+        float lineGlow = exp(-distFromLine * dynamicGlowSpread) * GLOW_INTENSITY;
         
-        totalBottomGlow = horizontalGlow * verticalGlow * GLOW_INTENSITY * edgeFade;
+        float noiseSeed = float(i) * 10.0 + 456.0;
+        float flickerValue = lightningNoise(vec2(vu.x * 0.1, flickerTime), noiseSeed);
+        float activationMask = clamp(flickerValue * 2.0 - 1.0, 0.0, 1.0);
+        
+        if (i == 0) activationMask = max(activationMask, 0.2);
+
+        totalBottomGlow += lineGlow * loadingMovement * activationMask;
     }
     
     finalColor.rgb += lightningColor * totalBottomGlow;
