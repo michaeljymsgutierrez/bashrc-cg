@@ -7,7 +7,7 @@ window-padding-balance = false
 mouse-hide-while-typing = true
 
 # MY BUILT-IN SHADERS
-custom-shader = shaders/cg-shader-original.glsl
+# custom-shader = shaders/cg-shader-original.glsl
 # custom-shader = shaders/cg-shader-laser-no-spark.glsl
 # custom-shader = shaders/cg-solar-flare.glsl
 # custom-shader = shaders/cg-lunar-tears.glsl
