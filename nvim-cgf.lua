@@ -1,4 +1,4 @@
--- INITIAL CONFIGnvi
+-- INITIAL CONFIG
 vim.cmd('set number')
 vim.cmd('set number')
 vim.cmd('set nocompatible')
@@ -77,6 +77,12 @@ require('lazy').setup({
     },
     {
       'mattn/webapi-vim'
+    },
+    {
+      'hat0uma/csvview.nvim',
+      config = function()
+        require('csvview').setup()
+      end
     },
     {
       'MeanderingProgrammer/render-markdown.nvim',
