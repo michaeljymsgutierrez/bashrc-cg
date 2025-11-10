@@ -36,10 +36,10 @@ function find_file_contain {
 }
 alias ffc="find_file_contain"
 
-function vim_open_file {
-  vim $(fzf)
+function nvim_open_file {
+  nvim $(fzf)
 }
-alias vf="vim_open_file"
+alias vf="nvim_open_file"
 
 function set_title {
   printf "\e]2;$*\a"
