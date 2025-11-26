@@ -79,6 +79,13 @@ require('lazy').setup({
       'mattn/webapi-vim'
     },
     {
+      'gruvw/strudel.nvim',
+      build = 'npm ci',
+      config = function()
+        require('strudel').setup()
+      end
+    },
+    {
       'hat0uma/csvview.nvim',
       config = function()
         require('csvview').setup()
