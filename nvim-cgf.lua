@@ -79,10 +79,20 @@ require('lazy').setup({
       'mattn/webapi-vim'
     },
     {
-      'gruvw/strudel.nvim',
-      build = 'npm ci',
+      'ya2s/nvim-cursorline',
       config = function()
-        require('strudel').setup()
+        require('nvim-cursorline').setup {
+          cursorline = {
+            enable = true,
+            timeout = 1000,
+            number = false,
+          },
+          cursorword = {
+            enable = true,
+            min_length = 3,
+            hl = { underline = true },
+          }
+        }
       end
     },
     {
