@@ -22,11 +22,13 @@ set -g status-right-style NONE
 display_time='#(bash -c ~/bashrc-cg/shellscripts/time.sh)'
 display_date='#(bash -c ~/bashrc-cg/shellscripts/date.sh)'
 display_datetime="$display_time $display_date"
+display_system_notification_count='#(bash -c ~/bashrc-cg/shellscripts/system-notification-count.sh)'
+display_mail_notification_count='#(bash -c ~/bashrc-cg/shellscripts/mail-notification-count.sh)'
 display_battery_status='#(bash -c ~/bashrc-cg/shellscripts/battery.sh)'
 display_network_status='#(bash -c ~/bashrc-cg/shellscripts/network.sh)'
 
 display_left_section_content="$display_network_status "
-display_right_section_content="#[fg=$pane_text_color,bg=$pane_background_color] $display_datetime $display_battery_status"
+display_right_section_content="#[fg=$pane_text_color,bg=$pane_background_color] $display_datetime $display_battery_status $display_mail_notification_count $display_system_notification_count"
 
 window_name="#(bash -c '~/bashrc-cg/shellscripts/iconize-string.sh #W')"
 
