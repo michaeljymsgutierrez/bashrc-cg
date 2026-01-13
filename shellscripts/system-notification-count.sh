@@ -40,7 +40,16 @@ unread_system_notification=$(osascript <<'EOT'
 EOT
 )
 
-unread_notification="󰂟"
+
+unread_notification=""
+
+if [ $unread_system_notification -eq 0 ]; then
+  unread_notification="#[fg=#f8f1ff,bg=#222222,bold]"
+fi
+
+if [ $unread_system_notification -gt 0 ]; then
+  unread_notification="#[fg=#fde466,bg=#222222,bold]"
+fi
 
 for (( i=0; i<${#unread_system_notification}; i++ )); do
   notification_value="${unread_system_notification:$i:1}"
