@@ -16,11 +16,11 @@ unread_mail_notification=$(osascript -e 'tell application "Mail" to get unread c
 unread_notification=""
 
 if [ $unread_mail_notification -eq 0 ]; then
-  unread_notification="#[fg=#f8f1ff,bg=#222222,bold]"
+  unread_notification="#[fg=#f8f1ff,bg=#222222,bold]󰛮"
 fi
 
 if [ $unread_mail_notification -gt 0 ]; then
-  unread_notification="#[fg=#fde466,bg=#222222,bold]"
+  unread_notification="#[fg=#fde466,bg=#222222,bold]󰶍"
 fi
 
 for (( i=0; i<${#unread_mail_notification}; i++ )); do
