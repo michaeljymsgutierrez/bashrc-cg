@@ -84,7 +84,7 @@ require('lazy').setup({
         require('nvim-cursorline').setup {
           cursorline = {
             enable = true,
-            timeout = 1000,
+            timeout = 0,
             number = false,
           },
           cursorword = {
