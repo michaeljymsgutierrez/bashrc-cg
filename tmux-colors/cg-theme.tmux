@@ -1,4 +1,4 @@
-# Constant colors
+# Monokai Pro Theme
 pane_text_color="#f8f1ff"
 pane_background_color="#222222"
 active_pane_border_color="#fde466"
