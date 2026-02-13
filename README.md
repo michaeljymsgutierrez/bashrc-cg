@@ -73,6 +73,14 @@ Add this line to your `~/.tmux.conf` file to load the custom Tmux configuration:
 source ~/bashrc-cg/tmux.cgf
 ```
 
+### 7\. Configure Prettier
+
+Execute the following command to install the Prettier configuration:
+
+```bash
+cat ~/bashrc-cg/prettier.cgf > ~/.prettierrc
+```
+
 ---
 
 ## Finalize and Restart
