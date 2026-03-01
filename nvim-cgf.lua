@@ -272,7 +272,7 @@ vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufEnter' }, {
 vim.api.nvim_set_keymap('n', '<C-Left>', ':tabprevious<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-Right>', ':tabnext<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-T>', ':tabnew<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-F>', ':Telescope find_files<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-F>', ':Telescope find_files previewer=false<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-N>', ':NvimTreeToggle<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-L>', ':NvimTreeFindFileToggle<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-P>', ':Prettier<CR>', { noremap = true })
