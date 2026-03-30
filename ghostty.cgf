@@ -5,6 +5,7 @@ bold-is-bright = true
 font-family = MesloLGS Nerd Font
 window-padding-balance = false
 mouse-hide-while-typing = true
+auto-update = off
 
 # MY BUILT-IN SHADERS
 # custom-shader = shaders/cg-shader-original.glsl
