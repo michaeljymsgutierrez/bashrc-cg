@@ -29,9 +29,10 @@ display_discord_notification_count='#(bash -c ~/bashrc-cg/shellscripts/discord-n
 display_slack_notification_count='#(bash -c ~/bashrc-cg/shellscripts/slack-notification-count.sh)'
 display_battery_status='#(bash -c ~/bashrc-cg/shellscripts/battery.sh)'
 display_network_status='#(bash -c ~/bashrc-cg/shellscripts/network.sh)'
+display_earth_status='#(bash -c ~/bashrc-cg/shellscripts/earth.sh)'
 
 display_left_section_content="$display_network_status "
-display_right_section_content="#[fg=$pane_text_color,bg=$pane_background_color] $display_datetime $display_battery_status 󰎟  $display_mail_notification_count $display_calendar_notification_count $display_slack_notification_count $display_discord_notification_count $display_system_notification_count"
+display_right_section_content="#[fg=$pane_text_color,bg=$pane_background_color] $display_earth_status$display_datetime $display_battery_status $display_mail_notification_count $display_calendar_notification_count $display_slack_notification_count $display_discord_notification_count $display_system_notification_count"
 
 window_name="#(bash -c '~/bashrc-cg/shellscripts/iconize-string.sh #W')"
 
