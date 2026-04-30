@@ -77,7 +77,9 @@ done
 
 if [ -z "$battery_percentage" ]; then
   # echo "󰫯󰫮󰬁⋅󰬺󰬹󰬹"
-  echo "󰪥 󰬺󰬹󰬹"
+  battery_state_icon="󰪥"
+  battery_percentage_icon="󰬺󰬹󰬹"
+  echo "$battery_state_icon$battery_percentage_icon"
 else
   # battery_status+="$battery_percentage_icon"
   # echo "$battery_status"
