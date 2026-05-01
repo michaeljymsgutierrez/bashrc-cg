@@ -77,7 +77,7 @@ done
 if [ -z "$battery_percentage" ]; then
   battery_state_icon="#[fg=#fde466,bg=#222222,bold]󰪥#[fg=#f8f1ff,bg=#222222,bold]"
   battery_percentage_icon="󰬺󰬹󰬹"
-  echo "$battery_state_icon$battery_percentage_icon"
+  echo "$battery_state_icon $battery_percentage_icon"
 else
-  echo "$battery_state_icon$battery_percentage_icon"
+  echo "$battery_state_icon $battery_percentage_icon"
 fi

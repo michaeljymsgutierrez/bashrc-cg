@@ -38,7 +38,7 @@ fi
 time_string+=$hours
 time_string+="⋅"
 time_string+=$minutes
-time_string+="$period"
+time_string+="$period"
 
 echo "$time_string"
 

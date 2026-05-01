@@ -40,7 +40,6 @@ unread_system_notification=$(osascript <<'EOT'
 EOT
 )
 
-
 unread_notification=""
 
 if [ $unread_system_notification -eq 0 ]; then
