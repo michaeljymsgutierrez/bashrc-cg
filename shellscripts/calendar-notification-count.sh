@@ -1,6 +1,6 @@
 #!/bin/bash
 
-icons[0]=""
+icons[0]="󰬹"
 icons[1]="󰬺"
 icons[2]="󰬻"
 icons[3]="󰬼"
