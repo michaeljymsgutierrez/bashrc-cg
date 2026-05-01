@@ -49,5 +49,4 @@ for (( i=0; i<${#unread_calendar_notification}; i++ )); do
   unread_notification+=${icons[$notification_value]}
 done
 
-
 echo "$unread_notification"
