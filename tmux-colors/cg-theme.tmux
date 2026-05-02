@@ -49,7 +49,7 @@ setw -g window-status-style "NONE,fg=$pane_text_color,bg=$pane_background_color"
 
 # Window Format
 inactive_window_format="#[default]$window_name "
-active_window_format="#[fg=$pane_text_color,bg=$pane_background_color,bold]$window_name #[fg=$tab_pointer_background_color,bg=$pane_background_color]󰩔  "
+active_window_format="#[fg=$pane_text_color,bg=$pane_background_color,bold]$window_name#[fg=$tab_pointer_background_color,bg=$pane_background_color]󰛓"
 
 setw -g window-status-format "$inactive_window_format"
 setw -g window-status-current-format "$active_window_format"
