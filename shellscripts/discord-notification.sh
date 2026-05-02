@@ -33,7 +33,6 @@ unread_discord_notification=$(osascript <<'EOT'
 EOT
 )
 
-
 unread_notification=""
 
 if [ $unread_discord_notification -eq 0 ]; then

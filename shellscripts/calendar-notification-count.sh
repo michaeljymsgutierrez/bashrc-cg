@@ -33,7 +33,6 @@ unread_calendar_notification=$(osascript <<'EOT'
 EOT
 )
 
-
 unread_notification=""
 
 if [ $unread_calendar_notification -eq 0 ]; then
