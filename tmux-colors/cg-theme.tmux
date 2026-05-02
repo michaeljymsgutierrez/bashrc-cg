@@ -15,6 +15,7 @@ set -g status-justify "left"
 set -g status-style "fg=$pane_text_color,bg=$pane_background_color"
 set -g status-left-length "190"
 set -g status-right-length "100"
+set -g status-interval 3
 set -g status-left-style NONE
 set -g status-right-style NONE
 
