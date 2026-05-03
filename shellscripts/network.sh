@@ -1,13 +1,23 @@
 #! /bin/bash
 
-connecting_icon=$(shuf -e 󰤟  󰤢  󰤥  -n 1)
-connected_icon=$(shuf -e  󰤡  󰤤  󰤧  -n 1)
-disconnected_icon=$(shuf -e 󰤠  󰤣  󰤦  -n 1)
+connecting_icons=("󰤟" "󰤢" "󰤥")
+connected_icons=("󰤡" "󰤤" "󰤧")
+disconnected_icons=("󰤠" "󰤣" "󰤦")
 
-echo "#[fg=#f8f1ff,bg=#222222,bold]$connecting_icon #[fg=#f8f1ff,bg=#222222,bold]󰫶󰫻"
+STATE_FILE="/tmp/net_progress_index"
+
+index=$(cat "$STATE_FILE" 2>/dev/null || echo 0)
 
 if ping -c 2 google.com > /dev/null ; then
-  echo "#[fg=#fde466,bg=#222222,bold]$connected_icon #[fg=#f8f1ff,bg=#222222,bold]󰫰󰫻"
+  current_icon="${connected_icons[$index]}"
+  output="#[fg=#fde466,bg=#222222,bold]$current_icon #[fg=#f8f1ff,bg=#222222,bold]󰫰󰫻"
 else
-  echo "#[fg=#fa618d,bg=#222222,bold]$disconnected_icon #[fg=#f8f1ff,bg=#222222,bold]󰫱󰫰"
+  current_icon="${disconnected_icons[$index]}"
+  output="#[fg=#fa618d,bg=#222222,bold]$current_icon #[fg=#f8f1ff,bg=#222222,bold]󰫱󰫰"
 fi
+
+next_index=$(( (index + 1) % 3 ))
+echo "$next_index" > "$STATE_FILE"
+
+echo "$output"
+
