@@ -17,6 +17,7 @@ else
 fi
 
 next_index=$(( (index + 1) % 4 ))
+
 echo "$next_index" > "$STATE_FILE"
 
 echo "$output"

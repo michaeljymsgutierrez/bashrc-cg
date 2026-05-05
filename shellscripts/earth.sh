@@ -12,6 +12,7 @@ fi
 current_icon="${progress_icons[$index]}"
 
 next_index=$(( (index + 1) % ${#progress_icons[@]} ))
+
 echo "$next_index" > "$STATE_FILE"
 
 echo "#[fg=#fde466,bg=#222222,bold]$current_icon#[fg=#f8f1ff,bg=#222222,bold]"
