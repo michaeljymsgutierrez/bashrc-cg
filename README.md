@@ -1,28 +1,22 @@
 ## Prerequisites
 
-- **Git** | _Version Control_
-  The industry standard for tracking code changes. It acts as a safety net, allowing you to save snapshots of your work and collaborate with others without losing progress.
-  [**Download Git**](https://git-scm.com/downloads)
-
+- **[Git](https://git-scm.com/downloads)** | _Version Control_
+  The industry standard for tracking code changes and collaborating.
 - **Zsh** | _Terminal Shell_
-  The default command-line interface for macOS. It acts as the bridge between you and your operating system, used to execute scripts and manage files via text commands.
-
-- **NVM** | _Node Version Manager_
-  A specialized tool used to install and switch between different versions of Node.js. It ensures that older projects and brand-new ones can coexist on the same machine without conflict.
-  [**Install NVM**](https://github.com/nvm-sh/nvm)
-
-- **Homebrew** | _Package Manager_
-  The "App Store for developers." It automates the installation of software and utilities directly from your terminal, keeping your tools updated and organized.
-  [**Install Homebrew**](https://brew.sh/)
+  The default command-line interface for macOS; manages file execution and scripts.
+- **[NVM](https://github.com/nvm-sh/nvm)** | _Node Version Manager_
+  Enables seamless switching between different Node.js versions for various projects.
+- **[Homebrew](https://brew.sh/)** | _Package Manager_
+  Simplifies the installation and management of software and utilities from the terminal.
 
 ---
 
 ## Installation
 
-List of tools and packages needed:
+List of required tools and packages:
 
 | NAME                 | VERSION  |
-| :------------------- | :------- |
+| -------------------- | -------- |
 | ghostty              | 1.2.0    |
 | ripgrep              | 15.1.0   |
 | nvim                 | 0.10.2   |
@@ -46,84 +40,77 @@ List of tools and packages needed:
 
 ## Configuration
 
-These steps will configure your Zsh, Ghostty, Neovim, Lazy, Prettier and Tmux environments.
+Steps to configure Zsh, Ghostty, Neovim, Lazy, Prettier, and Tmux.
 
-### 1\. Clone the Configuration Repository
-
-Navigate to your home directory and clone the configuration repository:
+### 1. Clone the Configuration Repository
 
 ```bash
 cd ~/ && git clone git@github.com:michaeljymsgutierrez/bashrc-cg.git
+
 ```
 
-### 2\. Install fzf (Optional but Recommended)
-
-**fzf** is a fuzzy finder that helps you quickly search for files and commands. Install it with the following commands:
+### 2. Install fzf (Optional)
 
 ```bash
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
+
 ```
 
-### 3\. Configure Zsh
+### 3. Configure Zsh
 
-Add the following lines to your `~/.zshrc` file to load the custom configurations for your command-line environment:
+Add to `~/.zshrc`:
 
 ```bash
 source ~/bashrc-cg/path.cgf
 source ~/bashrc-cg/prompt.cgf
 source ~/bashrc-cg/alias.cgf
+
 ```
 
-### 4\. Configure Ghostty
+### 4. Configure Ghostty
 
-Add this line to your `~/.config/ghostty/config` file to load the custom Ghostty configuration:
+Add to `~/.config/ghostty/config`:
 
 ```bash
 config-file = "~/bashrc-cg/ghostty.cgf"
+
 ```
 
-### 5\. Configure Neovim
+### 5. Configure Neovim
 
-Add the following lines to your `~/.config/nvim/init.lua` file to set up Neovim:
+Add to `~/.config/nvim/init.lua`:
 
 ```lua
 local homeDirectory = os.getenv('HOME') .. '/bashrc-cg/nvim-cgf.lua'
 local initNvimConfig = loadfile(homeDirectory)
-initNvimConfig()
+if initNvimConfig then initNvimConfig() end
+
 ```
 
-### 6\. Configure Tmux
+### 6. Configure Tmux
 
-Add this line to your `~/.tmux.conf` file to load the custom Tmux configuration:
+Add to `~/.tmux.conf`:
 
 ```bash
 source ~/bashrc-cg/tmux.cgf
+
 ```
 
-### 7\. Configure Prettier
-
-Copy the Prettier configuration file to your home directory:
+### 7. Global Tooling Configs
 
 ```bash
 cat ~/bashrc-cg/prettier.cgf > ~/.prettierrc
-```
-
-### 8\. Configure Lazy Lock
-
-Copy the Lazy lock file to your home directory:
-
-```bash
 cat ~/bashrc-cg/lazy-lock.cgf > ~/.config/nvim/lazy-lock.json
+
 ```
 
 ---
 
 ## Finalize and Restart
 
-After making all these changes, restart your terminal or run the commands below to apply the new configurations:
-
 ```bash
-source ~/.zshrc # Applies Zsh configuration
-nvim # Starts Neovim
+source ~/.zshrc # Apply Zsh changes
+nvim            # Launch Neovim
+
 ```
