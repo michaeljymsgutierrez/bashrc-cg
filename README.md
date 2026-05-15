@@ -1,8 +1,19 @@
 ## Prerequisites
 
-- **Git:** You'll need Git for version control. You can find installation instructions on the official Git website: [https://git-scm.com/downloads](https://git-scm.com/downloads)
-- **Terminal Shell:** This guide uses **Zsh**, which is the default shell on macOS.
-- **Homebrew:** This is the package manager for macOS. If you don't have it installed, you can get it from the official Homebrew website: [https://brew.sh/](https://brew.sh/)
+- **Git** | _Version Control_
+  The industry standard for tracking code changes. It acts as a safety net, allowing you to save snapshots of your work and collaborate with others without losing progress.
+  [**Download Git**](https://git-scm.com/downloads)
+
+- **Zsh** | _Terminal Shell_
+  The default command-line interface for macOS. It acts as the bridge between you and your operating system, used to execute scripts and manage files via text commands.
+
+- **NVM** | _Node Version Manager_
+  A specialized tool used to install and switch between different versions of Node.js. It ensures that older projects and brand-new ones can coexist on the same machine without conflict.
+  [**Install NVM**](https://github.com/nvm-sh/nvm)
+
+- **Homebrew** | _Package Manager_
+  The "App Store for developers." It automates the installation of software and utilities directly from your terminal, keeping your tools updated and organized.
+  [**Install Homebrew**](https://brew.sh/)
 
 ---
 
@@ -17,7 +28,6 @@ List of tools and packages needed:
 | nvim                 | 0.10.2   |
 | tmux                 | 3.4      |
 | jq                   | 1.8.1    |
-| nvm                  | 0.39.3   |
 | node                 | 20.19.14 |
 | npm                  | 11.5.2   |
 | @google/gemini-cli   | 0.39.0   |
