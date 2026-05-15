@@ -81,6 +81,14 @@ Execute the following command to install the Prettier configuration:
 cat ~/bashrc-cg/prettier.cgf > ~/.prettierrc
 ```
 
+### 8\. Configure Lazy
+
+Execute the following command to install the Lazy configuration:
+
+```bash
+cat ~/bashrc-cg/lazy.cgf > ~/.config/nvim/lazy-lock.json
+```
+
 ---
 
 ## Finalize and Restart

@@ -75,9 +75,6 @@ require('lazy').setup({
     {
       'tpope/vim-fugitive'
     },
-    -- {
-    --   'mattn/webapi-vim'
-    -- },
     {
       'ya2s/nvim-cursorline',
       config = function()
@@ -139,14 +136,6 @@ require('lazy').setup({
         })
       end
     },
-    -- {
-    --   'mattn/vim-gist',
-    --   config = function()
-    --    vim.cmd('source ~/.vim/.gh-credentials')
-    --    vim.g.gist_username = vim.g.gh_user
-    --    vim.g.gist_token = vim.g.gh_token
-    --   end
-    -- },
     {
       'goolord/alpha-nvim',
       dependencies = {
@@ -162,13 +151,11 @@ require('lazy').setup({
     },
     {
       'loctvl842/monokai-pro.nvim',
-      -- 'folke/tokyonight.nvim',
       config = function()
         require('monokai-pro').setup({
           filter = 'spectrum', -- classic | octagon | pro | machine | ristretto | spectrum
         })
         vim.cmd('colorscheme monokai-pro')
-        -- vim.cmd('colorscheme tokyonight-night')
       end
     },
     {
