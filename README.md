@@ -93,18 +93,18 @@ source ~/bashrc-cg/tmux.cgf
 
 ### 7\. Configure Prettier
 
-Execute the following command to install the Prettier configuration:
+Copy the Prettier configuration file to your home directory:
 
 ```bash
 cat ~/bashrc-cg/prettier.cgf > ~/.prettierrc
 ```
 
-### 8\. Configure Lazy
+### 8\. Configure Lazy Lock
 
-Execute the following command to install the Lazy configuration:
+Copy the Lazy lock file to your home directory:
 
 ```bash
-cat ~/bashrc-cg/lazy.cgf > ~/.config/nvim/lazy-lock.json
+cat ~/bashrc-cg/lazy-lock.cgf > ~/.config/nvim/lazy-lock.json
 ```
 
 ---
