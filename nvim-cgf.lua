@@ -75,9 +75,9 @@ require('lazy').setup({
     {
       'tpope/vim-fugitive'
     },
-    {
-      'mattn/webapi-vim'
-    },
+    -- {
+    --   'mattn/webapi-vim'
+    -- },
     {
       'ya2s/nvim-cursorline',
       config = function()
@@ -139,14 +139,14 @@ require('lazy').setup({
         })
       end
     },
-    {
-      'mattn/vim-gist',
-      config = function()
-       vim.cmd('source ~/.vim/.gh-credentials')
-       vim.g.gist_username = vim.g.gh_user
-       vim.g.gist_token = vim.g.gh_token
-      end
-    },
+    -- {
+    --   'mattn/vim-gist',
+    --   config = function()
+    --    vim.cmd('source ~/.vim/.gh-credentials')
+    --    vim.g.gist_username = vim.g.gh_user
+    --    vim.g.gist_token = vim.g.gh_token
+    --   end
+    -- },
     {
       'goolord/alpha-nvim',
       dependencies = {
