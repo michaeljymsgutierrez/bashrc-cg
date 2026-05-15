@@ -9,32 +9,30 @@
 - **[Homebrew](https://brew.sh/)** | _Package Manager_
   Simplifies the installation and management of software and utilities from the terminal.
 
----
-
 ## Installation
 
 List of required tools and packages:
 
-| NAME                 | VERSION  |
-| -------------------- | -------- |
-| ghostty              | 1.2.0    |
-| ripgrep              | 15.1.0   |
-| nvim                 | 0.10.2   |
-| tmux                 | 3.4      |
-| jq                   | 1.8.1    |
+| NAME                 |  VERSION |
+| :------------------- | -------: |
+| ghostty              |    1.2.0 |
+| ripgrep              |   15.1.0 |
+| nvim                 |   0.10.2 |
+| tmux                 |      3.4 |
+| jq                   |    1.8.1 |
 | node                 | 20.19.14 |
-| npm                  | 11.5.2   |
-| @google/gemini-cli   | 0.39.0   |
-| @googleworkspace/cli | 0.22.5   |
-| corepack             | 0.32.0   |
-| dts-generator        | 3.0.0    |
-| http-server          | 14.1.1   |
-| jsdoc-to-markdown    | 9.1.2    |
-| jsdoc                | 4.0.4    |
-| pdf2json             | 3.2.0    |
-| prettier             | 3.6.2    |
-| typescript           | 5.9.2    |
-| yarn                 | 1.22.22  |
+| npm                  |   11.5.2 |
+| @google/gemini-cli   |   0.39.0 |
+| @googleworkspace/cli |   0.22.5 |
+| corepack             |   0.32.0 |
+| dts-generator        |    3.0.0 |
+| http-server          |   14.1.1 |
+| jsdoc-to-markdown    |    9.1.2 |
+| jsdoc                |    4.0.4 |
+| pdf2json             |    3.2.0 |
+| prettier             |    3.6.2 |
+| typescript           |    5.9.2 |
+| yarn                 |  1.22.22 |
 
 ---
 
