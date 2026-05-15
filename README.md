@@ -34,8 +34,6 @@ List of required tools and packages:
 | typescript           |    5.9.2 |
 | yarn                 |  1.22.22 |
 
----
-
 ## Configuration
 
 Steps to configure Zsh, Ghostty, Neovim, Lazy, Prettier, and Tmux.
@@ -102,8 +100,6 @@ cat ~/bashrc-cg/prettier.cgf > ~/.prettierrc
 cat ~/bashrc-cg/lazy-lock.cgf > ~/.config/nvim/lazy-lock.json
 
 ```
-
----
 
 ## Finalize and Restart
 
