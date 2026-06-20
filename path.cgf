@@ -21,8 +21,11 @@ if [[ -n $GHOSTTY_RESOURCES_DIR ]]; then
   source "$GHOSTTY_RESOURCES_DIR"/shell-integration/zsh/ghostty-integration
 fi
 
-# Added by Antigravity CLI installer
+# ANTIGRAVITY HOME
 export PATH="$HOME/.local/bin:$PATH"
+
+# OPENCODE HOME
+export PATH="$HOME/.opencode/bin:$PATH"
 
 # GO
 #export PATH=$PATH:/usr/local/go/bin
