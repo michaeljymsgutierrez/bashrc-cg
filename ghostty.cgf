@@ -6,6 +6,7 @@ font-family = MesloLGS Nerd Font
 window-padding-balance = false
 mouse-hide-while-typing = true
 auto-update = off
+scrollback-limit = 50000000
 
 # MY BUILT-IN SHADERS
 # custom-shader = shaders/cg-shader-original.glsl
