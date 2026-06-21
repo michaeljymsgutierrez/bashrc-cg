@@ -11,11 +11,8 @@ icons[7]="󰭀"
 icons[8]="󰭁"
 icons[9]="󰭂"
 
-cpu_usage=$(top -l 1 | awk '/CPU usage:/ {idle=$(NF-1); gsub(/[^0-9.]/, "", idle); printf "%.0f", 100-idle}')
-
-if [ -z "$cpu_usage" ]; then
-  cpu_usage=$(ps aux | awk 'NR>2 && $3!="-" {sum+=$3} END {printf "%.0f", sum}')
-fi
+cpu_cores=$(sysctl -n hw.logicalcpu)
+cpu_usage=$(ps -A -o %cpu | awk -v cores="$cpu_cores" '{sum+=$1} END {printf "%.0f", sum/cores}')
 
 if [ "$cpu_usage" -lt 0 ] 2>/dev/null; then cpu_usage=0; fi
 if [ "$cpu_usage" -gt 99 ] 2>/dev/null; then cpu_usage=99; fi
