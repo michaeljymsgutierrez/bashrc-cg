@@ -32,9 +32,10 @@ display_battery_status='#(bash -c ~/bashrc-cg/shellscripts/battery.sh)'
 display_network_status='#(bash -c ~/bashrc-cg/shellscripts/network.sh)'
 display_earth_status='#(bash -c ~/bashrc-cg/shellscripts/earth.sh)'
 display_cpu_status='#(bash -c ~/bashrc-cg/shellscripts/cpu.sh)'
+display_memory_status='#(bash -c ~/bashrc-cg/shellscripts/memory.sh)'
 
 display_left_section_content="$display_network_status "
-display_right_section_content="$display_mail_notification_count $display_calendar_notification_count $display_slack_notification_count $display_discord_notification_count $display_cpu_status $display_battery_status $display_earth_status $display_datetime $display_system_notification_count"
+display_right_section_content="$display_mail_notification_count $display_calendar_notification_count $display_slack_notification_count $display_discord_notification_count $display_cpu_status $display_memory_status $display_battery_status $display_earth_status $display_datetime $display_system_notification_count"
 
 
 window_name="#(bash -c '~/bashrc-cg/shellscripts/iconize-string.sh #W')"
